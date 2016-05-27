@@ -68,18 +68,18 @@ def get_sale_order(*args,**kwargs):
 def get_purchase_order(*args,**kwargs):
     start_time, end_time = utils.get_report_time()
     extra_query_params = dict(
-        start_time=("create_time",">=", start_time),
-        end_time=("create_time","<=", end_time),
+        start_time=("create_date",">=", start_time.split(".")[0]),
+        end_time=("create_date","<=", end_time.split(".")[0]),
     )
     query_params = dict(
-        partner_id=84,
-        user_id=11,
+        partner_id=90,
     )
-    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
-    pdb.set_trace()
-    sale_order_list = utils.read_obj(xmlrpcclient, query_params, extra_query_params)
-    return sale_order_list
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("PurchaseOrder")
+    purchase_order_list = utils.read_obj(xmlrpcclient, query_params, extra_query_params)
+    print purchase_order_list
+    return purchase_order_list
 
 
 if __name__ == "__main__":
     get_sale_order()
+    get_purchase_order()

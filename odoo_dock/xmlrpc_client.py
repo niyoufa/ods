@@ -92,8 +92,6 @@ class XmlRpcClient(object):
         return count
 
     def read(self,query_params,*args):
-        import pdb
-        pdb.set_trace()
         query_list = []
         if len(args) :
             extra_query_params = args[0]
