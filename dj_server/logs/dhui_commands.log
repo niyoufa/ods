@@ -1,0 +1,10 @@
+2016-05-27 06:12:13,531 [MainThread:139687986440000] [dhui_init_product_data_command:handle:32] [ERROR]  - global name 'd' is not defined
+2016-05-27 06:13:42,696 [MainThread:139771898419008] [dhui_init_product_data_command:handle:29] [INFO]  - 2016-05-27 06:13:42.696051:导入订单数据到odoo.
+2016-05-27 06:13:55,387 [MainThread:140040143742784] [dhui_init_product_data_command:handle:29] [INFO]  - 2016-05-27 06:13:55.387336:导入订单数据到odoo.
+2016-05-27 06:15:01,071 [MainThread:140396996400960] [dhui_init_product_data_command:handle:35] [ERROR]  - 错误信息：global name 'd' is not defined
+2016-05-27 07:12:11,931 [MainThread:139847570437952] [dhui_init_partner_info_command:handle:25] [INFO]  - 2016-05-27 07:12:11.931170:初始化供应商数据.
+2016-05-27 07:12:14,080 [MainThread:140469044139840] [dhui_init_partner_info_command:handle:25] [INFO]  - 2016-05-27 07:12:14.080955:初始化供应商数据.
+2016-05-27 07:17:08,037 [MainThread:139868105582400] [dhui_init_partner_info_command:handle:26] [INFO]  - 2016-05-27 07:17:08.037030:初始化供应商数据.
+2016-05-27 07:17:16,728 [MainThread:140664915531584] [dhui_init_product_data_command:handle:30] [INFO]  - 2016-05-27 07:17:16.728651:导入商品数据到odoo.
+2016-05-27 07:17:27,238 [MainThread:140499828864832] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-27 07:17:27.238397:导入订单数据到odoo.
+2016-05-27 10:29:12,589 [MainThread:140568197756736] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-27 10:29:12.589400:导入订单数据到odoo.

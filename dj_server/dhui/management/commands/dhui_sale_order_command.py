@@ -1,0 +1,29 @@
+#coding=utf-8
+
+from django.core.management.base import BaseCommand
+from django.core.management import call_command
+from django.conf import settings
+from optparse import make_option
+import datetime,logging
+
+import sys,pdb
+sys.path.append(settings.ODS_PARENT_PATH)
+import ods.dhui.dhui_order as dso
+import ods.dhui.dhui_sale_order_line as dsol
+
+InfoLogger = logging.getLogger("dhui_commands")
+ErrorLogger = logging.getLogger("dhui_commands_error")
+
+class Command(BaseCommand):
+    help = "导入订单数据到odoo"
+
+    def handle(self, *args, **options):
+        try :
+            # 订单基本信息
+            dso.import_sale_order_data()
+            # 订单商品信息
+            dsol.import_sale_order_line()
+            # 记录日志
+            InfoLogger.info("%s:导入订单数据到odoo." % str(datetime.datetime.now()))
+        except Exception,e:
+            print e

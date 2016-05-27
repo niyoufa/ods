@@ -1,0 +1,7 @@
+django server
+
+1. 使用django的BaseCommmand命令工具
+
+2. 使用django的日志系统
+
+3. sqlalchemy orm

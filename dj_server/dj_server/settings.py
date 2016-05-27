@@ -1,0 +1,176 @@
+#coding=utf-8
+"""
+Django settings for dj_server project.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/1.6/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/1.6/ref/settings/
+"""
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '#*@ub+($vn)w23v)vw$2$byk9uj%iki3tic9+k=8437@vmopz+'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+TEMPLATE_DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+# Application definition
+
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'dhui',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+ROOT_URLCONF = 'dj_server.urls'
+
+WSGI_APPLICATION = 'dj_server.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'test',
+        'USER':'odoo',
+        'PASSWORD':'odoo',
+        'HOST':'localhost',
+        'PORT':'5432',
+    }
+}
+
+# This setting is used by sqlalchemy orm
+# 第一个数据库将用来存一些全局的数据，和用户表格等
+# 第二个以后的数据库将用做sharding
+SQL_BACKENDS = [
+    {
+        'db_name': 'first db',
+        'db_url': 'postgresql://dhui100:dhui123@127.0.0.1/dhui100',
+        'db_pool_size': 15,
+        'db_charset': 'utf-8',
+        'db_pool_recycle': 20000
+    },
+    {
+        'db_name': 'db2',
+        'db_url': 'postgresql://dhui100:dhui123@127.0.0.1/dhui100',
+        'db_pool_size': 15,
+        'db_charset': 'utf-8',
+        'db_pool_recycle': 20000
+    },
+    {
+        'db_name': 'db3',
+        'db_url': 'postgresql://dhui100:dhui123@127.0.0.1/dhui100',
+        'db_pool_size': 15,
+        'db_charset': 'utf-8',
+        'db_pool_recycle': 20000
+    },
+]
+SQL_DEBUG = DEBUG
+
+CACHES = {
+    'default':{
+        'BACKEND':'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION':'127.0.0.1:11211',
+    }
+}
+MEMCACHED_TIMEOUT = 7*24*60*60
+NEVER_MEMCACHED_TIMEOUT = 365*24*60*60
+
+MAX_NB_SITE = 320
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.6/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+STATIC_URL = '/static/'
+
+ODS_PARENT_PATH = '/home/dhui100/develop/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(module)s:%(funcName)s:%(lineno)d] [%(levelname)s]  - %(message)s'
+        },
+    },
+    'filters': {
+    },
+    'handlers': {
+        'dhui_commands_handler': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR+'/logs/dhui_commands.log',
+            'maxBytes': 1024*1024*5,
+            'backupCount': 5,
+            'formatter':'standard',
+        },
+        'dhui_commands_error_handler': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR + '/logs/dhui_commands.log',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+    },
+    'loggers': {
+        'dhui_commands' : {
+            'handlers' : ['dhui_commands_handler'] ,
+            'level' : 'DEBUG' ,
+            'propagate' : True
+        },
+        'dhui_commands_error': {
+            'handlers': ['dhui_commands_error_handler'],
+            'level': 'ERROR',
+            'propagate': True
+        },
+    }
+}

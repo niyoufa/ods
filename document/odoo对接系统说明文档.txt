@@ -1,0 +1,28 @@
+odoo 对接系统说明文档
+
+author : youfa ni
+date   : 2016-05-26
+
+一、商品信息对接
+
+1. 导入商品基本数据
+
+python dhui_product_template.py
+
+2. 更新商品供应商信息
+
+python dhui_product_supplierinfo.py
+
+3. 更新商品重订货规则
+
+python dhui_product_warehouse_orderpoint.py
+
+二、订单信息对接
+
+1. 导入订单信息
+
+python dhui_sale_order.py
+
+2. 倒入订单商品信息
+
+python dhui_sale_order_line.py
