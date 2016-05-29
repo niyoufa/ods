@@ -4,13 +4,13 @@ import pdb
 import sys
 sys.path.append("..")
 import odoo_dock
-import odoo_dock.xmlrpc_client as xmlrpc_client
-import odoo_dock.mongodb_utils as mongodb_utils
+import ods.clients.xmlrpc_client as xmlrpc_client
+import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
 import odoo_dock.settings as settings
 
 def init_partner_info(*args,**kwargs):
-    coll = mongodb_utils.get_coll("DHUI_Partner")
+    coll = mongodb_client.get_coll("DHUI_Partner")
     partner_list = coll.find()
     if not partner_list.count():
         partner_list = [

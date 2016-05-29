@@ -4,13 +4,13 @@ import pdb
 import sys
 sys.path.append("..")
 import odoo_dock
-import odoo_dock.xmlrpc_client as xmlrpc_client
-import odoo_dock.mongodb_utils as mongodb_utils
+import ods.clients.xmlrpc_client as xmlrpc_client
+import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
 import odoo_dock.settings as settings
 
 def init_stock_info(*args,**options):
-    coll = mongodb_utils.get_coll("DHUI_Product")
+    coll = mongodb_client.get_coll("DHUI_Product")
 
     print "start init product good ..."
 

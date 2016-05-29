@@ -131,7 +131,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ODS_PARENT_PATH = '/home/dhui100/develop/'
+# ODS_PARENT_PATH = '/home/dhui100/develop/'
+ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
 
 LOGGING = {
     'version': 1,

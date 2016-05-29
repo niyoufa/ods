@@ -64,3 +64,7 @@ def get_report_time():
     print start_time , end_time
     return start_time , end_time
 
+def get_order_list(xmlrpcclient,query_params,extra_query_params):
+    sale_order_list = read_obj(xmlrpcclient,query_params,extra_query_params)
+    return sale_order_list
+

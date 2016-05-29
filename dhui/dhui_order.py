@@ -4,15 +4,15 @@ import pdb
 import sys
 sys.path.append("..")
 import odoo_dock
-import odoo_dock.xmlrpc_client as xmlrpc_client
-import odoo_dock.mongodb_utils as mongodb_utils
+import ods.clients.xmlrpc_client as xmlrpc_client
+import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
 import odoo_dock.settings as settings
 from bson.objectid import ObjectId
 import datetime
 
 def import_sale_order_data(*args, **options):
-    coll = mongodb_utils.get_coll("DHUI_SaleOrder")
+    coll = mongodb_client.get_coll("DHUI_SaleOrder")
     print "start load dhui sale order...\n"
     # order_list = coll.find({"order_status": 0})
     order_list = coll.find({"_id":ObjectId("571e45ef006f87607b834180")})
@@ -50,7 +50,7 @@ def import_sale_order_data(*args, **options):
 
     print "load complete !"
 
-def get_sale_order(*args,**kwargs):
+def get_sale_order_list(*args,**kwargs):
     start_time , end_time = utils.get_report_time()
     extra_query_params = dict(
         start_time = ("order_purchase_time",">=",start_time),
@@ -65,7 +65,7 @@ def get_sale_order(*args,**kwargs):
     print sale_order_list
     return sale_order_list
 
-def get_purchase_order(*args,**kwargs):
+def get_purchase_order_list(*args,**kwargs):
     start_time, end_time = utils.get_report_time()
     extra_query_params = dict(
         start_time=("create_date",">=", start_time.split(".")[0]),
@@ -81,5 +81,5 @@ def get_purchase_order(*args,**kwargs):
 
 
 if __name__ == "__main__":
-    get_sale_order()
-    get_purchase_order()
+    get_sale_order_list()
+    get_purchase_order_list()

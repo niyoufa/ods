@@ -100,3 +100,40 @@ def deserialize_trans_id(long_trans_id):
     #获取金额
     money=num & 0x1FF
     return (time, shard_id, site_id, gun_id, money)
+
+#字典支持点操作类
+class easyaccessdict(dict):
+    def __getattr__(self,name):
+        if name in self:
+            return self[name]
+        n=easyaccessdict()
+        super(easyaccessdict,self).__setitem__(name, n)
+        return n
+    def __getitem__(self,name):
+        if name not in self:
+            super(easyaccessdict,self).__setitem__(name,nicedict())
+        return super(easyaccessdict,self).__getitem__(name)
+    def __setattr__(self,name,value):
+        super(easyaccessdict,self).__setitem__(name,value)
+
+#字典支持点操作
+def tran_dict_to_obj(dict_data) :
+    obj = easyaccessdict()
+    for item in dict_data :
+        obj[item] = dict_data[item]
+    return obj 
+
+#把object对象转化为可json序列化的字典
+def convert_to_dict(obj):
+    dic = {}
+    if not isinstance(obj, dict):
+        dic.update(obj.__dict__)
+    else:
+        dic = obj
+    for key,value in dic.items():
+        if isinstance(value,datetime.datetime):
+            dic[key] = str(value)
+        elif key[0] == '_':
+            dic.pop(key)
+
+    return dic
