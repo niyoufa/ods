@@ -271,9 +271,12 @@ def convert_to_dict(obj):
     return dic
 
 #获取东汇商城用户名
-def get_customer_name(coll,user_id):
-    user = coll.find_one({"_id":ObjectId(user_id)})
+def get_customer(coll,user_id):
     result = {}
+    try :
+        user = coll.find_one({"_id":ObjectId(user_id)})
+    except :
+        return result
     if user:
         result.update(user["wx_info"])
     else :
@@ -281,9 +284,13 @@ def get_customer_name(coll,user_id):
     return result
 
 #返回地址信息
-def get_address_desc(coll,address_id):
-    address = coll.find_one({"_id":ObjectId(address_id)})
+def get_address(coll,address_id):
     result = {}
+    try :
+        address = coll.find_one({"_id":ObjectId(address_id)})
+    except:
+        return result
+
     if address :
         result["district"] = address["district"]
         result["area"] = address["area"]
@@ -293,11 +300,11 @@ def get_address_desc(coll,address_id):
         result["contact_name"] = address["contact_name"]
         result["remark"] = address["remark"]
     else:
-        address = {}
+        result = {}
     return result
 
 def get_report_date():
-    curr_date = datetime.datetime.now() - datetime.timedelta(days=3)
+    curr_date = datetime.datetime.now() - datetime.timedelta(days=0)
     return curr_date
 
 def get_report_time():

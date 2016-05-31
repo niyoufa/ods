@@ -48,7 +48,7 @@ class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
             self.write(result)
             return
         coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
-        order_partner_deliver_detail_list = coll.find({"partner_id":partner_id,"report_time":{"$gte":start_time,"$lte":end_time}})
+        order_partner_deliver_detail_list = coll.find({"partner_id":partner_id,"create_time":{"$gte":start_time,"$lte":end_time}})
         result["data"]["deliver_list"] = []
         for order_partner_deliver_detail in order_partner_deliver_detail_list:
             order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
