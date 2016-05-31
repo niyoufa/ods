@@ -3,11 +3,10 @@
 import pdb
 import sys
 sys.path.append("..")
-import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
-import odoo_dock.utils as utils
-import settings
+import ods.utils as utils
+import ods.settings as settings
 
 def import_product_template_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_Product")
@@ -25,6 +24,10 @@ def import_product_template_data(*args, **options):
 
         # partner dhui user id
         dhui_user_id = "571dbf0c006f874b52b126aa"
+        if good["goods_type"] == settings.DHUI_PARTNER_DICT["seckill"][2]:
+            dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][0]
+        else :
+            dhui_user_id = settings.DHUI_PARTNER_DICT["default"][0]
         product_template_obj = dict(
             create_uid = 5,
             sku=sku,
@@ -76,9 +79,39 @@ def import_product_template_data(*args, **options):
 
     print "load complete !"
 
-def get_product_template():
-    pass
+def get_product_template(*args,**kwargs):
+    sku = kwargs["sku"]
+    query_params = dict(
+        sku = sku,
+        categ_id=settings.PRODUCT_CATEGRAY_ID,
+    )
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
+    if utils.has_obj(xmlrpcclient, query_params):
+        result = utils.read_obj(xmlrpcclient,query_params)
+    else:
+        good = None
+    return result[0]
 
+def get_product_template_by_id(*args,**kwargs):
+    product_id = kwargs["product_id"]
+    query_params = dict(
+        id = product_id,
+    )
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("Product")
+    if utils.has_obj(xmlrpcclient,query_params):
+        [product_obj] = utils.read_obj(xmlrpcclient,query_params)
+        product_tmpl_id = tuple(product_obj["product_tmpl_id"])[0]
+    else :
+        return None
+    query_params = dict(
+        id = product_tmpl_id,
+    )
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
+    if utils.has_obj(xmlrpcclient,query_params):
+        product_template_obj = utils.read_obj(xmlrpcclient,query_params)
+    else :
+        return None
+    return product_template_obj[0]
 
 if __name__ == "__main__":
     import_product_template_data()

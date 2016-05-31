@@ -19,9 +19,13 @@ class Collections :
 
         DHUI_SaleOrder = dict(coll_name="order",db_name="dhui100",coll_type=None),
 
+        DHUI_User = dict(coll_name="user",db_name="dhui100",coll_type=None),
+
+        DHUI_Address = dict(coll_name="address",db_name="dhui100",coll_type=None),
+
         DHUI_Partner = dict(coll_name="partner",db_name="dhui100",coll_type=None),
 
-        DHUI_PartnerOrderDeliverDetail = dict(coll_name="PartnerOrderDeliverDetail",db_name="dhui100",coll_type=None),
+        DHUI_PartnerOrderDeliverDetail = dict(coll_name="PartnerOrderDeliverDetail",db_name="dhuiodoo",coll_type=None),
 
     )
 

@@ -67,3 +67,9 @@
 2016-05-30 12:55:30,773 [MainThread:140400100124480] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-30 12:55:30.773790:导入订单数据到odoo.
 2016-05-30 13:03:49,176 [MainThread:140304166258496] [dhui_init_product_data_command:handle:30] [INFO]  - 2016-05-30 13:03:49.175981:导入商品数据到odoo.
 2016-05-30 13:04:20,350 [MainThread:139636442138432] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-30 13:04:20.350822:导入订单数据到odoo.
+2016-05-31 00:52:41,317 [MainThread:140072685180736] [dhui_init_product_data_command:handle:30] [INFO]  - 2016-05-31 00:52:41.317783:导入商品数据到odoo.
+2016-05-31 08:34:24,097 [MainThread:139649726453568] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 08:34:24.097727:导入订单数据到odoo.
+2016-05-31 08:45:54,495 [MainThread:140411744261952] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 08:45:54.495007:导入订单数据到odoo.
+2016-05-31 09:38:17,942 [MainThread:140305276446528] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:38:17.942772:导入订单数据到odoo.
+2016-05-31 09:38:36,083 [MainThread:140555007141696] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:38:36.083414:导入订单数据到odoo.
+2016-05-31 09:44:29,072 [MainThread:140248822216512] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:44:29.072043:导入订单数据到odoo.

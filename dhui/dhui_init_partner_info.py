@@ -6,8 +6,8 @@ sys.path.append("..")
 import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
-import odoo_dock.utils as utils
-import settings
+import ods.utils as utils
+import ods.settings as settings
 
 def init_partner_info(*args,**kwargs):
     coll = mongodb_client.get_coll("DHUI_Partner")
@@ -18,12 +18,10 @@ def init_partner_info(*args,**kwargs):
                 contact_name="dhui_partner",
                 address="dhui_street",
                 city="dhui_city",
-                display_name="东汇城",
+                display_name="东汇商城秒拍商品供应商",
                 zip=222000,
-                email="dhui@qq.com",
+                email="dhui0@qq.com",
                 phone='15996458299',
-                # dhui100 user_id
-                # partner_id = '571dbf0c006f874b52b126aa',
             ),
         ]
     for partner in partner_list :
@@ -37,7 +35,6 @@ def init_partner_info(*args,**kwargs):
         email = partner["email"]
         phone = partner["phone"]
         supplier = True
-        # partner_id = partner["partner_id"]
 
         res_partner_obj = dict(
             name = name,
@@ -49,7 +46,6 @@ def init_partner_info(*args,**kwargs):
             email = email,
             phone = phone,
             supplier = supplier,
-            # partner_id = partner_id,
         )
 
         query_params = dict(

@@ -10,7 +10,7 @@ handlers = []
 ui_modules = {}
 
 # the handler module list
-handler_names = ["address_handlers",]
+handler_names = ["address_handlers", "partner_handlers"]
 
 def _generate_handler_patterns(root_module, handler_names, prefix=""):
     for name in handler_names:

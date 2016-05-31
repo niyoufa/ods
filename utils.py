@@ -1,12 +1,10 @@
 #coding=utf-8
 
+import time
+import datetime
 import json , pdb
 from bson.objectid import ObjectId
 from bson.json_util import dumps
-
-import status
-import models
-from models import Collections
 
 #生成objectid
 def create_objectid(str):
@@ -66,12 +64,6 @@ def load_project():
     BASE_DIR = "E:\\develop\\tornado_demo\\swallow"
     sys.path.append(BASE_DIR)
 
-#coding=utf-8
-
-import time
-import datetime
-import settings
-
 def timestamp_from_objectid(objectid):
   result = 0
   try:
@@ -124,21 +116,12 @@ def get_product_id(pt_xmlrpcclient,pp_xmlrpcclient,good):
 
     return product_id , product_template_id
 
-def get_report_time():
-    curr_date = datetime.datetime.now()
-    yester_date = curr_date - datetime.timedelta(days=2)
-    end_time = str(curr_date).split(" ")[0] + " " + settings.REPORT_END_TIME
-    start_time = str(yester_date).split(" ")[0] + " " + settings.REPORT_STRAT_TIME
-    print start_time , end_time
-    return start_time.split(".")[0] , end_time.split(".")[0]
-
 def get_order_list(xmlrpcclient,query_params,extra_query_params):
     sale_order_list = read_obj(xmlrpcclient,query_params,extra_query_params)
     return sale_order_list
 
 
-# -*- coding: utf-8 -*-
-from django.conf import settings
+# dj_server
 import re, time
 
 
@@ -286,3 +269,47 @@ def convert_to_dict(obj):
             dic.pop(key)
 
     return dic
+
+#获取东汇商城用户名
+def get_customer_name(coll,user_id):
+    user = coll.find_one({"_id":ObjectId(user_id)})
+    result = {}
+    if user:
+        result.update(user["wx_info"])
+    else :
+        result = {}
+    return result
+
+#返回地址信息
+def get_address_desc(coll,address_id):
+    address = coll.find_one({"_id":ObjectId(address_id)})
+    result = {}
+    if address :
+        result["district"] = address["district"]
+        result["area"] = address["area"]
+        result["city"] = address["city"]
+        result["detailed_address"] = address["detailed_address"]
+        result["contact_mobile"] = address["contact_mobile"]
+        result["contact_name"] = address["contact_name"]
+        result["remark"] = address["remark"]
+    else:
+        address = {}
+    return result
+
+def get_report_date():
+    curr_date = datetime.datetime.now() - datetime.timedelta(days=3)
+    return curr_date
+
+def get_report_time():
+    curr_date = get_report_date()
+    curr_time = str(curr_date).split(".")[0]
+    cmp_time = str(curr_date).split(" ")[0] + " " +"00:00:00"
+    if curr_time < cmp_time :
+        yester_date = curr_date - datetime.timedelta(days=1)
+        end_time = str(curr_date).split(" ")[0] + " " + "00:00:00"
+        start_time = str(yester_date).split(" ")[0] + " " + "00:00:00"
+    else :
+        tormo_date = curr_date + datetime.timedelta(days=1)
+        end_time = str(tormo_date).split(" ")[0] + " " + "00:00:00"
+        start_time = str(curr_date).split(" ")[0] + " " + "00:00:00"
+    return start_time, end_time

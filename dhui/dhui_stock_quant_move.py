@@ -6,8 +6,8 @@ sys.path.append("..")
 import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
-import odoo_dock.utils as utils
-import odoo_dock.settings as settings
+import ods.utils as utils
+import ods.settings as settings
 
 def init_stock_info(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")

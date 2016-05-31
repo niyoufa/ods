@@ -15,10 +15,11 @@ import lib.options
 from lib.options import parse_options
 
 from tornado.options import define, options
+define("port" , default=8002 , help="tornado server service port setting" , type=int)
 
 if __name__ == "__main__":
     parse_options()
     http_server = tornado.httpserver.HTTPServer(app.Application())
-    http_server.listen(options.SERVER_PORT)
+    http_server.listen(options.port)
     print "\nserver start ! \n"
     tornado.ioloop.IOLoop.instance().start()

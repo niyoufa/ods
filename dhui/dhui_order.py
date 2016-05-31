@@ -6,8 +6,8 @@ sys.path.append("..")
 import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
-import odoo_dock.utils as utils
-import settings
+import ods.utils as utils
+import ods.settings as settings
 from bson.objectid import ObjectId
 import datetime
 
@@ -69,7 +69,7 @@ def get_sale_order_list(*args,**kwargs):
     )
     xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
     sale_order_list = utils.read_obj(xmlrpcclient,query_params,extra_query_params)
-    print sale_order_list
+    # print sale_order_list
     return sale_order_list
 
 def get_purchase_order_list(*args,**kwargs):
