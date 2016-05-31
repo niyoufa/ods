@@ -9,19 +9,23 @@ import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
-import odoo_dock.settings as settings
+import settings
 from bson.objectid import ObjectId
 
 def import_sale_order_line(*args,**options):
     print "start insert...\n"
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    # order_list = coll.find({"order_status": 0})[0:1]
-    order_list = coll.find({"_id": ObjectId("571e45ef006f87607b834180")})
+    # order_list = coll.find({"_id": ObjectId("571e45ef006f87607b834180")})
+    start_time, end_time = utils.get_report_time()
+    order_list = coll.find({
+        "pay_time": {"$gte": start_time, "$lte": end_time},
+        "order_status": 1,
+        "order_goods.goods_type": {"$nin": ["goldbean", "profit", "indiana_count"]}})
     for order in order_list:
         order_id = str(order["_id"])
         query_params = dict(
             _id=order_id,
-            user_id=11,
+            user_id=settings.DHUI_MANAGER_USER_ID,
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
         if utils.has_obj(xmlrpcclient, query_params):

@@ -58,11 +58,11 @@ def get_product_id(pt_xmlrpcclient,pp_xmlrpcclient,good):
 
 def get_report_time():
     curr_date = datetime.datetime.now()
-    yester_date = curr_date - datetime.timedelta(days=1)
+    yester_date = curr_date - datetime.timedelta(days=2)
     end_time = str(curr_date).split(" ")[0] + " " + settings.REPORT_END_TIME
     start_time = str(yester_date).split(" ")[0] + " " + settings.REPORT_STRAT_TIME
     print start_time , end_time
-    return start_time , end_time
+    return start_time.split(".")[0] , end_time.split(".")[0]
 
 def get_order_list(xmlrpcclient,query_params,extra_query_params):
     sale_order_list = read_obj(xmlrpcclient,query_params,extra_query_params)

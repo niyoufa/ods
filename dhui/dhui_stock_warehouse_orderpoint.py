@@ -9,13 +9,13 @@ import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
-import odoo_dock.settings as settings
+import settings
 
 def update_stock_warehouse_orderpoint(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")
 
     print "start update stock warehouse order point ...\n"
-    good_list = coll.find()[0:1]
+    good_list = coll.find()
     for good in good_list:
         sku = good["sku"]
 

@@ -7,14 +7,14 @@ import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
-import odoo_dock.settings as settings
+import settings
 
 def import_product_template_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_Product")
 
     print "start load dhui product...\n"
 
-    good_list = coll.find()[0:1]
+    good_list = coll.find()
     for good in good_list:
         sku = good["sku"]
         goods_name = good["goods_name"]
@@ -22,14 +22,19 @@ def import_product_template_data(*args, **options):
         goods_brief = good["goods_brief"]
         shop_price = good["shop_price"]
         goods_name = box_name + goods_brief
-        import pdb
-        # pdb.set_trace()
+
+        # partner dhui user id
+        dhui_user_id = "571dbf0c006f874b52b126aa"
         product_template_obj = dict(
+            create_uid = 5,
             sku=sku,
             name=goods_name,
             type="product",
             list_price=shop_price,
             categ_id=settings.PRODUCT_CATEGRAY_ID,
+            dhui_user_id = dhui_user_id,
+            weight_net = 0.0,
+            weight = 0.0,
         )
 
         query_params = dict(
@@ -37,7 +42,6 @@ def import_product_template_data(*args, **options):
             categ_id=settings.PRODUCT_CATEGRAY_ID,
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
-
         if utils.has_obj(xmlrpcclient, query_params):
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_template_obj)
@@ -59,7 +63,7 @@ def import_product_template_data(*args, **options):
             value_float=cost,
             name="standard_price",
             type='float',
-            company_id=1,
+            company_id=settings.COMPANY_ID,
             res_id=res_id,
             fields_id=2041,
         )
@@ -71,6 +75,9 @@ def import_product_template_data(*args, **options):
             utils.load_obj(xmlrpcclient, ir_property_obj)
 
     print "load complete !"
+
+def get_product_template():
+    pass
 
 
 if __name__ == "__main__":

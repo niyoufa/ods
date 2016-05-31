@@ -9,7 +9,7 @@ import odoo_dock
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import odoo_dock.utils as utils
-import odoo_dock.settings as settings
+import settings
 
 
 def update_product_supplierinfo(*args,**options):
@@ -17,10 +17,9 @@ def update_product_supplierinfo(*args,**options):
 
     print "start update product supplierinfo ...\n"
 
-    good_list = coll.find()[0:1]
+    good_list = coll.find()
     for good in good_list:
         sku = good["sku"]
-
         query_params = dict(
             sku=sku,
             categ_id=settings.PRODUCT_CATEGRAY_ID,
@@ -35,9 +34,11 @@ def update_product_supplierinfo(*args,**options):
 
         product_supplierinfo_obj = dict(
             # 东汇其他供应商
-            name=90,
+            name=settings.DHUI_PARTNER_ID,
             min_qty=1,
             product_tmpl_id=product_template_id,
+            # dhui100 user_id
+            # dhui_user_id = "571dbf0c006f874b52b126aa",
         )
 
         query_params = dict(

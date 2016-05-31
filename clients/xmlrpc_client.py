@@ -61,15 +61,15 @@ class TABLES :
 
 class XmlRpcClient(object):
 
-    def __init__(self,model,host=settings.HOST,port=settings.PORT,
-        db=settings.DB,user=settings.USER,password=settings.PASS):
+    def __init__(self,model,db,host=settings.HOST,port=settings.PORT,
+        user=settings.USER,password=settings.PASS):
         self._model = model
         self._host = host
         self._port = port
-        self._db = db
         self._user = user
         self._pass = password
         self._root = 'http://%s:%d/xmlrpc/' % (host,port)
+        self._db = db
         self._uid = xmlrpclib.ServerProxy(self._root + 'common').login(db,user,password)
         self._models = xmlrpclib.ServerProxy(self._root + 'object')
 
@@ -160,7 +160,8 @@ def get_xmlrpcclient(table_name):
         return xmlrpcclient_dict[table_name]
     else :
         model = TABLES.get_table_name(table_name)
-        xmlrpcclient = XmlRpcClient(model)
+        db = TABLES.get_db_name(table_name)
+        xmlrpcclient = XmlRpcClient(model,db)
         xmlrpcclient_dict[table_name] = xmlrpcclient
         return xmlrpcclient
 
