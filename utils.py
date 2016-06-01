@@ -5,6 +5,7 @@ import datetime
 import json , pdb
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+import ods.tnd_server.status as status
 
 #生成objectid
 def create_objectid(str):
@@ -74,6 +75,9 @@ def timestamp_from_objectid(objectid):
     pass
   return result
 
+
+# odoo 数据操作
+
 def load_obj(xmlrpcclient,obj):
     return xmlrpcclient.create(obj)
 
@@ -119,6 +123,9 @@ def get_product_id(pt_xmlrpcclient,pp_xmlrpcclient,good):
 def get_order_list(xmlrpcclient,query_params,extra_query_params):
     sale_order_list = read_obj(xmlrpcclient,query_params,extra_query_params)
     return sale_order_list
+
+def update_obj_list(xmlrpcclient, obj_list):
+    xmlrpcclient.batch_update(obj_list)
 
 
 # dj_server
@@ -270,6 +277,8 @@ def convert_to_dict(obj):
 
     return dic
 
+# mongodb 相关处理
+
 #获取东汇商城用户名
 def get_customer(coll,user_id):
     result = {}
@@ -303,20 +312,48 @@ def get_address(coll,address_id):
         result = {}
     return result
 
-def get_report_date():
-    curr_date = datetime.datetime.now() - datetime.timedelta(days=0)
+#python time时间处理相关工具
+
+def get_report_date(time=datetime.datetime.now(),delta=0):
+    curr_date = time - datetime.timedelta(days=delta)
     return curr_date
 
-def get_report_time():
-    curr_date = get_report_date()
-    curr_time = str(curr_date).split(".")[0]
-    cmp_time = str(curr_date).split(" ")[0] + " " +"00:00:00"
-    if curr_time < cmp_time :
-        yester_date = curr_date - datetime.timedelta(days=1)
-        end_time = str(curr_date).split(" ")[0] + " " + "00:00:00"
+def get_report_time(query_time=datetime.datetime.now()):
+    report_date = get_report_date(query_time)
+    report_time = str(report_date).split(".")[0]
+    cmp_time = str(report_date).split(" ")[0] + " " +"00:00:00"
+    if report_time < cmp_time :
+        yester_date = report_date - datetime.timedelta(days=1)
+        end_time = str(report_date).split(" ")[0] + " " + "00:00:00"
         start_time = str(yester_date).split(" ")[0] + " " + "00:00:00"
     else :
-        tormo_date = curr_date + datetime.timedelta(days=1)
+        tormo_date = report_date + datetime.timedelta(days=1)
         end_time = str(tormo_date).split(" ")[0] + " " + "00:00:00"
-        start_time = str(curr_date).split(" ")[0] + " " + "00:00:00"
+        start_time = str(report_date).split(" ")[0] + " " + "00:00:00"
     return start_time, end_time
+
+def get_date_time(date_time_str):
+    date_time_str = str(date_time_str).split(".")[0]
+    date_time_arr = time.strptime(date_time_str, "%Y-%m-%d %H:%M:%S")
+    this_date = datetime.datetime(date_time_arr[0],date_time_arr[1],date_time_arr[2],date_time_arr[3],
+                                  date_time_arr[4],date_time_arr[5])
+    this_time = str(this_date).split(".")[0]
+    cmp_time = str(this_date).split(" ")[0] + " " + "00:00:00"
+    if this_time < cmp_time:
+        yester_date = this_date - datetime.timedelta(days=1)
+        end_time = str(this_date).split(" ")[0] + " " + "00:00:00"
+        start_time = str(yester_date).split(" ")[0] + " " + "00:00:00"
+    else:
+        tormo_date = this_date + datetime.timedelta(days=1)
+        end_time = str(tormo_date).split(" ")[0] + " " + "00:00:00"
+        start_time = str(this_date).split(" ")[0] + " " + "00:00:00"
+    return start_time, end_time
+
+def get_curr_time(delta=0):
+    curr_date = datetime.datetime.now() - datetime.timedelta(days=delta)
+    curr_time = str(curr_date).split(".")[0]
+    return curr_time
+
+# 测试
+if __name__ == "__main__":
+    print get_date_time("2016-05-31 10:10:10")

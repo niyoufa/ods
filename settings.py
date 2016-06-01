@@ -56,6 +56,3 @@ DHUI_STOCK_WAREHOUSE_ID = 1
 
 # 东汇进销存管理员 id
 DHUI_MANAGER_USER_ID = 5
-
-
-

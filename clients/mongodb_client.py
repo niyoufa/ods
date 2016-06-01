@@ -1,7 +1,7 @@
 #coding=utf-8
 
 import pymongo
-import settings
+import ods.settings as settings
 
 class DB_CONST :
     DB_NAME = "db_name"
@@ -83,16 +83,22 @@ def get_coll_names(db_name) :
     coll_names = db.collection_names(include_system_collections=False)
     return coll_names
 
+coll_dict = {}
 def get_coll(table_name) :
-    db_name = Collections.get_db_name(table_name)
-    coll_name = Collections.get_coll_name(table_name)
-    if db_name and coll_name :
-        client = get_client()
-        coll = client[db_name][coll_name]
+    if coll_dict.has_key((table_name)):
+        return coll_dict[table_name]
     else :
-        coll = None
-        print u"集合不存在!"
-    return coll
+        db_name = Collections.get_db_name(table_name)
+        coll_name = Collections.get_coll_name(table_name)
+        if db_name and coll_name :
+            client = get_client()
+            coll = client[db_name][coll_name]
+        else :
+            coll = None
+            print u"集合不存在!"
+            return coll
+        coll_dict[table_name] = coll
+        return coll
 
 def get_coll_db_name(table_name) :
     db_name = Collections.get_db_name(table_name)

@@ -2,7 +2,7 @@
 
 import pdb
 import sys
-sys.path.append("..")
+
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils

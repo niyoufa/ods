@@ -1,20 +1,27 @@
 #coding=utf-8
 
-import pdb
-import sys
-sys.path.append("..")
-import odoo_dock
+import pdb, sys, datetime
+from bson.objectid import ObjectId
+
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils
 import ods.settings as settings
-from bson.objectid import ObjectId
-import datetime
+
+# state
+# ('draft', 'Draft Quotation'),
+# ('sent', 'Quotation Sent'),
+# ('cancel', 'Cancelled'),
+# ('waiting_date', 'Waiting Schedule'),
+# ('progress', 'Sales Order'),
+# ('manual', 'Sale to Invoice'),
+# ('shipping_except', 'Shipping Exception'),
+# ('invoice_except', 'Invoice Exception'),
+# ('done', 'Done'),
 
 def import_sale_order_data(*args, **options):
     print "start load dhui sale order...\n"
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    # order_list = coll.find({"_id":ObjectId("571e45ef006f87607b834180")})
     start_time, end_time = utils.get_report_time()
     order_list = coll.find({
         "pay_time":{"$gte":start_time, "$lte":end_time},
@@ -58,10 +65,11 @@ def import_sale_order_data(*args, **options):
     print "load complete !"
 
 def get_sale_order_list(*args,**kwargs):
-    start_time , end_time = utils.get_report_time()
+    start_time , end_time = utils.get_report_time(datetime.datetime.now())
     extra_query_params = dict(
         start_time = ("order_purchase_time",">=",start_time),
         end_tme = ("order_purchase_time","<=",end_time),
+        state=("state", "=", "manual"),
     )
     query_params = dict(
         partner_id=settings.COMMON_CUSTOMER_ID,
@@ -86,7 +94,29 @@ def get_purchase_order_list(*args,**kwargs):
     print purchase_order_list
     return purchase_order_list
 
+def update_sale_order_status(*args,**kwargs):
+    start_time = args[0]
+    end_time = args[1]
+    extra_query_params = dict(
+        start_time=("order_purchase_time", ">=", start_time),
+        end_tme=("order_purchase_time", "<=", end_time),
+        state=("state", "=", "manual"),
+    )
+    query_params = dict(
+        partner_id=settings.COMMON_CUSTOMER_ID,
+        user_id=settings.DHUI_MANAGER_USER_ID,
+    )
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
+    sale_order_list = utils.get_order_list(xmlrpcclient, query_params, extra_query_params)
+    obj_list = []
+    for sale_order in sale_order_list:
+        obj_list.append(dict(
+            id=sale_order["id"],
+            alter_params=dict(
+                state="done",
+            )
+        ))
+    utils.update_obj_list(xmlrpcclient, obj_list)
 
 if __name__ == "__main__":
-    get_sale_order_list()
-    get_purchase_order_list()
+    update_sale_order_status()

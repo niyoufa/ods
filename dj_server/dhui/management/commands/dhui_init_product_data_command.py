@@ -1,13 +1,13 @@
 #coding=utf-8
 
+import sys,pdb
+import datetime,logging
+
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from django.conf import settings
 from optparse import make_option
-import datetime,logging
 
-import sys,pdb
-sys.path.append(settings.ODS_PARENT_PATH)
 import ods.dhui.dhui_product_template as dpt
 import ods.dhui.dhui_product_supplierinfo as dps
 import ods.dhui.dhui_stock_warehouse_orderpoint as dpwo

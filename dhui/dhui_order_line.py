@@ -2,15 +2,14 @@
 
 # order and good map
 
-import pdb
-import sys
-sys.path.append("..")
-import odoo_dock
+import pdb, sys
+from bson.objectid import ObjectId
+
 import ods.clients.xmlrpc_client as xmlrpc_client
 import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils
 import ods.settings as settings
-from bson.objectid import ObjectId
+
 
 def import_sale_order_line(*args,**options):
     print "start insert...\n"

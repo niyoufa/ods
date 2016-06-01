@@ -1,7 +1,7 @@
 #coding=utf-8
 
 import xmlrpclib
-import settings
+import ods.settings as settings
 
 class DB_CONST :
     DB_NAME = "db_name"
@@ -152,6 +152,17 @@ class XmlRpcClient(object):
         print alter_params
         print "\n"
 
+    def batch_update(self,obj_list):
+        if type(obj_list) != type([]):
+            raise Exception("param error")
+        else:
+            for obj in obj_list:
+                obj_id = obj["id"]
+                alter_params = obj["alter_params"]
+                # self._models.execute_kw(self._db, self._uid, self._pass,
+                # self._model, 'write', [[obj_id],alter_params])
+                # print "update success :%s\n" % id
+                self.update(obj_id,alter_params)
 
 xmlrpcclient_dict = {}
 

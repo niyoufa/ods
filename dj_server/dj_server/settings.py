@@ -13,6 +13,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+#配置ods系统根路径
+ODS_PARENT_PATH = '/home/dhui100/develop/'
+# ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
+sys.path.append(ODS_PARENT_PATH)
+from ods.settings import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -130,9 +136,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
-ODS_PARENT_PATH = '/home/dhui100/develop/'
-# ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
 
 LOGGING = {
     'version': 1,

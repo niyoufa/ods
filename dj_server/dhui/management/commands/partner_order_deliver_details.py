@@ -1,11 +1,11 @@
 #coding=utf-8
 
+import datetime, logging, sys, pdb
+
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from optparse import make_option
-import datetime, logging, sys, pdb
 
-sys.path.append(settings.ODS_PARENT_PATH)
 import ods.dhui.dhui_order as do
 import ods.dhui.dhui_order_line as dol
 import ods.dhui.dhui_product_template as dpt
@@ -20,9 +20,10 @@ class Command(BaseCommand):
     help = "供应商发货单发货明细"
 
     def handle(self, *args, **options):
+        print "开始创建或更新供应商发货单发货明细... 日期：%s"%str(utils.get_report_date()).split(" ")[0]
+        print "\n"
         # sale_product_detail_info 订单商品信息明细
         sale_order_list = do.get_sale_order_list()
-        sale_product_detail_info = {}
         sale_order_line_dict = {}
         sale_order_user_dict = {}
         for sale_order in sale_order_list :
@@ -62,17 +63,6 @@ class Command(BaseCommand):
                 partner_id = product_template_obj["dhui_user_id"]
                 if sale_product_detail_info.has_key(product_id):
                     sale_product_detail_info[product_id]["total_count"] += product_uom_qty
-
-                    if temp_user_info.has_key(order_customer_id):
-                        temp_user_info[order_customer_id]["count"] += 1
-                    else :
-                        temp_user_info[order_customer_id] = dict(
-                            product_id=product_id,
-                            partner_id=partner_id,
-                            user_id=order_customer_id,
-                            address_id=order_address_id,
-                            count=1
-                        )
                 else :
                     sale_product_detail_info[product_id] = {}
                     sale_product_detail_info[product_id]["total_count"] = product_uom_qty
@@ -80,24 +70,24 @@ class Command(BaseCommand):
                     sale_product_detail_info[product_id]["sku"] = sku
                     sale_product_detail_info[product_id]["user_info"] = []
 
-                    if temp_user_info.has_key(order_customer_id):
-                        temp_user_info[order_customer_id]["count"] += 1
-                    else:
-                        temp_user_info[order_customer_id] = dict(
-                            product_id=product_id,
-                            partner_id=partner_id,
-                            user_id=order_customer_id,
-                            address_id=order_address_id,
-                            count=1
-                        )
+                if temp_user_info.has_key(order_customer_id):
+                    temp_user_info[order_customer_id]["count"] += 1
+                else:
+                    temp_user_info[order_customer_id] = dict(
+                        product_id=product_id,
+                        partner_id=partner_id,
+                        user_id=order_customer_id,
+                        address_id=order_address_id,
+                        count=1
+                    )
 
                 temp_user_info[order_customer_id].update(customer)
                 temp_user_info[order_customer_id].update(address)
 
-            # user_info
-            for order_customer_id in temp_user_info :
-                good_user_info = temp_user_info[order_customer_id]
-                sale_product_detail_info[product_id]["user_info"].append(good_user_info)
+                # user_info
+                for order_customer_id in temp_user_info :
+                    good_user_info = temp_user_info[order_customer_id]
+                    sale_product_detail_info[product_id]["user_info"].append(good_user_info)
 
         temp_sale_product_detail_info = []
         for product_id in sale_product_detail_info :
@@ -120,6 +110,7 @@ class Command(BaseCommand):
         start_time, end_time = utils.get_report_time()
         coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
 
+        flag = None
         for partner_id in partner_order_deliver_details:
             partner_order_deliver_detail = partner_order_deliver_details[partner_id]
             curr_time = str(utils.get_report_date()).split(" ")[0] + " 01:00:00"
@@ -128,8 +119,12 @@ class Command(BaseCommand):
                 partner_order_deliver_detail.update(dict(
                     create_time = curr_time,
                     alter_time = curr_time,
+                    deliver_status = 0,# stastus 0:为发货 1:已发货
                 ))
                 coll.insert_one(partner_order_deliver_detail)
+
+                if flag == False :
+                    flag = True
 
                 print "创建发货订单明细"
                 print  partner_order_deliver_detail
@@ -138,9 +133,20 @@ class Command(BaseCommand):
                     _id = result["_id"],
                     create_time = result["create_time"],
                     alter_time = result["alter_time"],
+                    deliver_status = result["deliver_status"],
                     partner_id = result["partner_id"]
                 ))
                 coll.update({"_id":result["_id"]},partner_order_deliver_detail)
                 print "更新发货订单明细"
                 print partner_order_deliver_detail
+
+        if flag == True :
+            print "完成创建供应商发货单发货明细..."
+            print "\n"
+        elif flag == False :
+            print "完成更新供应商发货单发货明细..."
+            print "\n"
+        else :
+            print "当前没有发货信息..."
+            print "\n"
 

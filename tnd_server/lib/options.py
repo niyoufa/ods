@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import os
-import settings
+import os,pdb
+import ods.tnd_server.settings as settings
 
 from tornado.options import parse_command_line, options, define
 

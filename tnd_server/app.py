@@ -1,7 +1,7 @@
 #coding=utf-8
 import os
 import tornado.web
-import urls
+import ods.tnd_server.urls as urls
 
 class Application(tornado.web.Application):
     def __init__(self):

@@ -1,0 +1,6 @@
+1. 测试发货明细
+count = 0
+deliver_list = db.PartnerOrderDeliverDetail.find({})[0]["detail_info"]
+for (deliver in deliver_list){ count = count + deliver_list[deliver]["total_count"]}
+deliver_list = db.PartnerOrderDeliverDetail.find({})[1]["detail_info"]
+for (deliver in deliver_list){ count = count + deliver_list[deliver]["total_count"]}

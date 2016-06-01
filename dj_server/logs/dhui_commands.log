@@ -73,3 +73,14 @@
 2016-05-31 09:38:17,942 [MainThread:140305276446528] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:38:17.942772:导入订单数据到odoo.
 2016-05-31 09:38:36,083 [MainThread:140555007141696] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:38:36.083414:导入订单数据到odoo.
 2016-05-31 09:44:29,072 [MainThread:140248822216512] [dhui_sale_order_command:handle:27] [INFO]  - 2016-05-31 09:44:29.072043:导入订单数据到odoo.
+2016-06-01 06:50:56,598 [MainThread:139923040319296] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 06:50:56.598204:导入订单数据到odoo.
+2016-06-01 06:52:13,718 [MainThread:139785560680256] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 06:52:13.718835:导入订单数据到odoo.
+2016-06-01 06:54:13,716 [MainThread:139990372067136] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 06:54:13.716653:导入订单数据到odoo.
+2016-06-01 06:54:24,452 [MainThread:139690300589888] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 06:54:24.452420:导入订单数据到odoo.
+2016-06-01 07:01:05,459 [MainThread:139679235086144] [dhui_init_partner_info_command:handle:26] [INFO]  - 2016-06-01 07:01:05.459370:初始化供应商数据.
+2016-06-01 07:08:00,785 [MainThread:140279894476608] [dhui_init_partner_info_command:handle:27] [INFO]  - 2016-06-01 07:08:00.785688:初始化供应商数据.
+2016-06-01 07:39:00,750 [MainThread:139860201539392] [dhui_init_partner_info_command:handle:26] [INFO]  - 2016-06-01 07:39:00.750564:初始化供应商数据.
+2016-06-01 07:39:10,424 [MainThread:140566655321920] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 07:39:10.424020:导入订单数据到odoo.
+2016-06-01 07:43:43,932 [MainThread:140317096957760] [dhui_init_partner_info_command:handle:26] [INFO]  - 2016-06-01 07:43:43.932644:初始化供应商数据.
+2016-06-01 07:43:50,438 [MainThread:139728549050176] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 07:43:50.438833:导入订单数据到odoo.
+2016-06-01 09:01:47,897 [MainThread:140369267447616] [dhui_sale_order_command:handle:27] [INFO]  - 2016-06-01 09:01:47.897330:导入订单数据到odoo.

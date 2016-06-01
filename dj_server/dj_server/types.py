@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import utils
+import ods.utils as utils
 
 class DashDefiningClass(type):
     "Metaclass for Dash classes"
