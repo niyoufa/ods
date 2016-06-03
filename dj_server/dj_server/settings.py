@@ -123,7 +123,8 @@ MAX_NB_SITE = 320
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -142,7 +143,8 @@ LOGGING = {
     'disable_existing_loggers': True,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(module)s:%(funcName)s:%(lineno)d] [%(levelname)s]  - %(message)s'
+            #'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(module)s:%(funcName)s:%(lineno)d] [%(levelname)s]  - %(message)s'
+            'format': '%(asctime)s [%(module)s:%(funcName)s:%(lineno)d] [%(levelname)s]  - %(message)s'
         },
     },
     'filters': {
@@ -159,7 +161,7 @@ LOGGING = {
         'dhui_commands_error_handler': {
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR + '/logs/dhui_commands.log',
+            'filename': BASE_DIR + '/logs/dhui_commands_error.log',
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',

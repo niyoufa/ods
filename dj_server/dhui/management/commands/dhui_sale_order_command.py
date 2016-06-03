@@ -18,12 +18,20 @@ class Command(BaseCommand):
     help = "导入订单数据到odoo"
 
     def handle(self, *args, **options):
+        print "\n"
+        print "开始导入订单数据到odoo..."
+        InfoLogger.info("开始导入订单数据到odoo...")
+
         try :
             # 订单基本信息
-            do.import_sale_order_data()
+            result = do.import_sale_order_data()
+            InfoLogger.info(result)
             # 订单商品信息
-            dol.import_sale_order_line()
+            result = dol.import_sale_order_line()
             # 记录日志
-            InfoLogger.info("%s:导入订单数据到odoo." % str(datetime.datetime.now()))
+            InfoLogger.info(result)
         except Exception,e:
             print e
+
+        print "完成导入订单数据到odoo!"
+        InfoLogger.info("完成导入订单数据到odoo!")

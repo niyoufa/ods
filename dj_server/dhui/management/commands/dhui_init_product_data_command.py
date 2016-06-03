@@ -19,16 +19,25 @@ class Command(BaseCommand):
     help = "导入商品数据到odoo"
 
     def handle(self, *args, **options):
+        print ""
+        print "开始导入商品数据到odoo..."
+        InfoLogger.info("开始导入商品数据到odoo...")
+
         try :
             # 商品基本信息
-            dpt.import_product_template_data()
+            result = dpt.import_product_template_data()
+            InfoLogger.info(result)
             # 更新商品供应商信息
-            dps.update_product_supplierinfo()
+            result = dps.update_product_supplierinfo()
+            InfoLogger.info(result)
             # 更新商品重订货规则
-            dpwo.update_stock_warehouse_orderpoint()
-            # 记录日志
-            InfoLogger.info("%s:导入商品数据到odoo."%str(datetime.datetime.now()))
+            result = dpwo.update_stock_warehouse_orderpoint()
+            InfoLogger.info(result)
         except Exception,e:
             print e
             # 打印错误信息
-            ErrorLogger.error("错误信息：%s"%str(e))
+            ErrorLogger.error("错误信息：%s."%(str(e)))
+            print "日期：%s 错误信息：%s."%(str(datetime.datetime.now()),str(e))
+
+        print "完成导入商品数据到odoo！"
+        InfoLogger.info("完成导入商品数据到odoo！")

@@ -12,7 +12,6 @@ import ods.settings as settings
 
 
 def import_sale_order_line(*args,**options):
-    print "start insert...\n"
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
     # order_list = coll.find({"_id": ObjectId("571e45ef006f87607b834180")})
     start_time, end_time = utils.get_report_time()
@@ -20,7 +19,10 @@ def import_sale_order_line(*args,**options):
         "pay_time": {"$gte": start_time, "$lte": end_time},
         "order_status": 1,
         "order_goods.goods_type": {"$nin": ["goldbean", "profit", "indiana_count"]}})
+    order_log_result = []
     for order in order_list:
+        order_log_result.append(order)
+
         order_id = str(order["_id"])
         query_params = dict(
             _id=order_id,
@@ -28,6 +30,7 @@ def import_sale_order_line(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
         if utils.has_obj(xmlrpcclient, query_params):
+            continue
             result = xmlrpcclient.search(query_params)
             sale_order_id = result[0]
         else:
@@ -71,7 +74,7 @@ def import_sale_order_line(*args,**options):
             else:
                 utils.load_obj(xmlrpcclient, sale_order_line_obj)
 
-    print "insert complete !"
+    return order_log_result
 
 def get_sale_order_line_list(order_id):
         query_params = dict(

@@ -14,9 +14,10 @@ import ods.settings as settings
 def update_product_supplierinfo(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")
 
-    print "start update product supplierinfo ...\n"
+    print "update product supplierinfo ...\n"
 
     good_list = coll.find()
+    log_result = []
     for good in good_list:
         sku = good["sku"]
         query_params = dict(
@@ -31,13 +32,16 @@ def update_product_supplierinfo(*args,**options):
             print "continue\n"
             continue
 
+        # partner dhui user id
+        if good["goods_type"] == settings.DHUI_PARTNER_DICT["seckill"][2]:
+            dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][1]
+        else:
+            dhui_user_id = settings.DHUI_PARTNER_DICT["default"][1]
         product_supplierinfo_obj = dict(
-            # 东汇其他供应商
-            name=settings.DHUI_PARTNER_ID,
+            # 东汇商城供应商
+            name = dhui_user_id,
             min_qty=1,
             product_tmpl_id=product_template_id,
-            # dhui100 user_id
-            # dhui_user_id = "571dbf0c006f874b52b126aa",
         )
 
         query_params = dict(
@@ -45,10 +49,13 @@ def update_product_supplierinfo(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductSupplierInfo")
         if utils.has_obj(xmlrpcclient, query_params):
+            continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_supplierinfo_obj)
         else:
+            log_result.append(product_supplierinfo_obj)
             utils.load_obj(xmlrpcclient, product_supplierinfo_obj)
+    return log_result
 
 if __name__ == "__main__":
     update_product_supplierinfo()

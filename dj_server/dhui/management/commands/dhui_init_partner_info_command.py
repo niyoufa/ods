@@ -19,12 +19,15 @@ class Command(BaseCommand):
     help = "初始化供应商数据"
 
     def handle(self, *args, **options):
+        print "开始导入供应商数据..."
+        InfoLogger.info("开始导入供应商数据...")
+
         try :
             # 初始化供应商数据
             dipi.init_partner_info()
-            # 记录日志
-            InfoLogger.info("%s:初始化供应商数据."%str(datetime.datetime.now()))
         except Exception,e:
-            print e
-            # 打印错误信息
+            print "错误信息：%s"%str(e)
             ErrorLogger.error("错误信息：%s"%str(e))
+
+        print "完成供应商数据导入!"
+        InfoLogger.info("完成供应商数据导入!")

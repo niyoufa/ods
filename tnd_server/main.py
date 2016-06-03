@@ -18,6 +18,7 @@ parse_options()
 
 from tornado.options import define,options
 define("port" , default=8002 , help="tornado server service port setting" , type=int)
+# supervisorctl stop all
 
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(app.Application())

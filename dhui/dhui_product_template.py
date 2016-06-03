@@ -11,9 +11,11 @@ import ods.settings as settings
 def import_product_template_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_Product")
 
-    print "start load dhui product...\n"
+    print ""
+    print "update dhui product...\n"
 
     good_list = coll.find()
+    log_result = []
     for good in good_list:
         sku = good["sku"]
         goods_name = good["goods_name"]
@@ -23,7 +25,6 @@ def import_product_template_data(*args, **options):
         goods_name = box_name + goods_brief
 
         # partner dhui user id
-        dhui_user_id = "571dbf0c006f874b52b126aa"
         if good["goods_type"] == settings.DHUI_PARTNER_DICT["seckill"][2]:
             dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][0]
         else :
@@ -46,9 +47,11 @@ def import_product_template_data(*args, **options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
         if utils.has_obj(xmlrpcclient, query_params):
+            continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_template_obj)
         else:
+            log_result.append(good)
             utils.load_obj(xmlrpcclient, product_template_obj)
 
         # update good cost
@@ -77,7 +80,8 @@ def import_product_template_data(*args, **options):
         else:
             utils.load_obj(xmlrpcclient, ir_property_obj)
 
-    print "load complete !"
+    return log_result
+
 
 def get_product_template(*args,**kwargs):
     sku = kwargs["sku"]

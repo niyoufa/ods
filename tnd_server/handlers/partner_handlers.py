@@ -40,15 +40,18 @@ class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
         try:
             start_time = self.get_argument("start_time")
             end_time = self.get_argument("end_time")
-            start_time = start_time.split(".")[0]
-            end_time = end_time.split(".")[0]
+            start_time = start_time.split(" ")[0] + " " + "00:00:00"
+            end_time = end_time.split(" ")[0] + " " + "59:59:59"
             partner_id = self.get_argument("partner_id")
         except Exception, e:
             result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
             self.write(result)
             return
         coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
-        order_partner_deliver_detail_list = coll.find({"partner_id":partner_id,"create_time":{"$gte":start_time,"$lte":end_time}})
+        order_partner_deliver_detail_list = coll.find(
+            {"partner_id":partner_id,"create_time":{"$gte":start_time,"$lte":end_time}},
+            sort=[("create_time",-1)],
+        )
         result["data"]["deliver_list"] = []
         for order_partner_deliver_detail in order_partner_deliver_detail_list:
             order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
@@ -164,10 +167,10 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
             "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}}
             update_params = {
                 "$set" : {
-                    "deliver_status":3,# 订单已完成
+                    "order_status":3,# 订单已完成
                 }
             }
-            coll.update(query_params,update_params)
+            coll.update_many(query_params,update_params)
         except Exception ,e :
             result = utils.reset_response_data(status.Status.ERROR,error_info=str(e))
 

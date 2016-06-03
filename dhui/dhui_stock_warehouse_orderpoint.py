@@ -13,8 +13,9 @@ import ods.settings as settings
 def update_stock_warehouse_orderpoint(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")
 
-    print "start update stock warehouse order point ...\n"
+    print "update stock warehouse order point ...\n"
     good_list = coll.find()
+    log_result = []
     for good in good_list:
         sku = good["sku"]
 
@@ -50,11 +51,13 @@ def update_stock_warehouse_orderpoint(*args,**options):
         query_params = stock_warehouse_orderpoint_obj
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("StockWarehouseOrderpoint")
         if utils.has_obj(xmlrpcclient, query_params):
+            continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], stock_warehouse_orderpoint_obj)
         else:
+            log_result.append(stock_warehouse_orderpoint_obj)
             utils.load_obj(xmlrpcclient, stock_warehouse_orderpoint_obj)
-
+    return log_result
 
 if __name__ == "__main__":
     update_stock_warehouse_orderpoint()

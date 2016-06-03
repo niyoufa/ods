@@ -20,23 +20,23 @@ import ods.settings as settings
 # ('done', 'Done'),
 
 def import_sale_order_data(*args, **options):
-    print "start load dhui sale order...\n"
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
     start_time, end_time = utils.get_report_time()
     order_list = coll.find({
         "pay_time":{"$gte":start_time, "$lte":end_time},
         "order_status":1,
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
-
+    order_log_result = []
     for order in order_list:
+
+        order_log_result.append(order)
 
         order_id = str(order["_id"])
         # 普通客户
         partner_id = settings.COMMON_CUSTOMER_ID
         amount_total = order["goods_amount"]
-        state = "draft"
-        # state = "manual"
-        # state = "progress"
+        # state = "draft" # 报价单
+        state = "manual" # 销售订单
 
         sale_order_obj = dict(
             _id=order_id,
@@ -57,12 +57,13 @@ def import_sale_order_data(*args, **options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
         if utils.has_obj(xmlrpcclient, query_params):
+            # continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], sale_order_obj)
         else:
             utils.load_obj(xmlrpcclient, sale_order_obj)
 
-    print "load complete !"
+    return order_log_result
 
 def get_sale_order_list(*args,**kwargs):
     start_time , end_time = utils.get_report_time(datetime.datetime.now())

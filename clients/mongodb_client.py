@@ -1,6 +1,6 @@
 #coding=utf-8
 
-import pymongo
+import pymongo, pdb
 import ods.settings as settings
 
 class DB_CONST :
