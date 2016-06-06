@@ -13,17 +13,59 @@ class Collections :
     # MongoDB文档配置
     __COLLECTIONS = dict(
 
-        DHUI_Product = dict(coll_name="goods",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_Product = dict(
+            coll_name="goods",
+            db_name="dhui100",
+            host=settings.SERVER_MONOGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username = settings.SERVER_MONGODB_USER,
+            password = settings.SERVER_MONGODB_PASS,
+            coll_type=None),
 
-        DHUI_SaleOrder = dict(coll_name="order",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_SaleOrder = dict(
+            coll_name="order",
+            db_name="dhui100",
+            host=settings.SERVER_MONOGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username=settings.SERVER_MONGODB_USER,
+            password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
 
-        DHUI_User = dict(coll_name="user",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_User = dict(
+            coll_name="user",
+            db_name="dhui100",
+            host=settings.SERVER_MONOGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username=settings.SERVER_MONGODB_USER,
+            password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
 
-        DHUI_Address = dict(coll_name="address",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_Address = dict(
+            coll_name="address",
+            db_name="dhui100",
+            host=settings.SERVER_MONOGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username=settings.SERVER_MONGODB_USER,
+            password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
 
-        DHUI_Partner = dict(coll_name="partner",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_Partner = dict(
+            coll_name="partner",
+            db_name="dhui100",
+            host=settings.SERVER_MONOGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username=settings.SERVER_MONGODB_USER,
+            password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
 
-        DHUI_PartnerOrderDeliverDetail = dict(coll_name="PartnerOrderDeliverDetail",db_name="dhuiodoo",host=LOCAL_MONGODB_HOST,port=LOCAL_MONGODB_PORT,coll_type=None),
+        DHUI_PartnerOrderDeliverDetail = dict(
+            coll_name="PartnerOrderDeliverDetail",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username="",
+            password="",
+            coll_type=None),
 
     )
 
