@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
+sys.path.append("/opt/odoo/develop/ods/dj_server/dj_server")
 #配置ods系统根路径
-ODS_PARENT_PATH = '/opt/odoo/develop/'
+ODS_PARENT_PATH = '/home/dhui100/develop/'
 # ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
 sys.path.append(ODS_PARENT_PATH)
 from ods.settings import *

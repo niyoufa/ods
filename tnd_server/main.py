@@ -17,7 +17,7 @@ from ods.tnd_server.lib.options import parse_options
 parse_options()
 
 from tornado.options import define,options
-define("port" , default=8002 , help="tornado server service port setting" , type=int)
+define("port" , default=9092 , help="tornado server service port setting" , type=int)
 # supervisorctl stop all
 
 if __name__ == "__main__":
