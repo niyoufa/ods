@@ -69,7 +69,6 @@ class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
             action = "create_dhui_invoice",
             data = {}
         )
-        pdb.set_trace()
         data = urllib.urlencode(query_params)
         response = yield tornado.gen.Task(client.fetch,
           settings.ODS_ADDRESS + settings.DHUI_URL_PREFIX + data)
@@ -130,6 +129,7 @@ class OrderPartnerDeliverDetail(tornado.web.RequestHandler):
             self.write(result)
             return
         else :
+            order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
             result["data"] = order_partner_deliver_detail
         self.write(result)
 

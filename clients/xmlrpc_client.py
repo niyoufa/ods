@@ -61,8 +61,8 @@ class TABLES :
 
 class XmlRpcClient(object):
 
-    def __init__(self,model,db,host=settings.HOST,port=settings.PORT,
-        user=settings.USER,password=settings.PASS):
+    def __init__(self,model,db,host=settings.ODOO_HOST,port=settings.ODOO_PORT,
+        user=settings.ODOO_USER,password=settings.ODOO_PASS):
         self._model = model
         self._host = host
         self._port = port

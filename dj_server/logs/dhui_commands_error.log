@@ -84,3 +84,6 @@ LINE 1: ...nfo" SET "product_tmpl_id"=3,"min_qty"=1.0,"name"='571dbf0c0...
 2016-06-06 14:34:55,266 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
 2016-06-06 14:34:55,434 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
 2016-06-06 14:37:36,331 [api_views:api_router:57] [ERROR]  - 'str' object is not callable
+2016-06-06 18:48:19,894 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
+2016-06-06 18:53:14,635 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
+2016-06-06 18:53:20,252 [dhui_init_product_data_command:handle:26] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
