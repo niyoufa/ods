@@ -13,19 +13,17 @@ class Collections :
     # MongoDB文档配置
     __COLLECTIONS = dict(
 
-        UserAddress = dict(coll_name="UserAddress",db_name="user",coll_type=None),
+        DHUI_Product = dict(coll_name="goods",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
 
-        DHUI_Product = dict(coll_name="goods",db_name="dhui100",coll_type=None),
+        DHUI_SaleOrder = dict(coll_name="order",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
 
-        DHUI_SaleOrder = dict(coll_name="order",db_name="dhui100",coll_type=None),
+        DHUI_User = dict(coll_name="user",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
 
-        DHUI_User = dict(coll_name="user",db_name="dhui100",coll_type=None),
+        DHUI_Address = dict(coll_name="address",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
 
-        DHUI_Address = dict(coll_name="address",db_name="dhui100",coll_type=None),
+        DHUI_Partner = dict(coll_name="partner",db_name="dhui100",host=settings.SERVER_MONOGODB_HOST,port=settings.LOCAL_MONGODB_PORT,coll_type=None),
 
-        DHUI_Partner = dict(coll_name="partner",db_name="dhui100",coll_type=None),
-
-        DHUI_PartnerOrderDeliverDetail = dict(coll_name="PartnerOrderDeliverDetail",db_name="dhuiodoo",coll_type=None),
+        DHUI_PartnerOrderDeliverDetail = dict(coll_name="PartnerOrderDeliverDetail",db_name="dhuiodoo",host=LOCAL_MONGODB_HOST,port=LOCAL_MONGODB_PORT,coll_type=None),
 
     )
 
@@ -45,10 +43,8 @@ class Collections :
             coll_name = ""
         return coll_name
 
-def get_client(host=settings.MONGODB_HOST,port=settings.MONGODB_PORT,**kwargs) :
-    # url = "mongodb://root:dhui123@120.26.241.214:27017/dhui100"
-    # client = pymongo.MongoClient(url)
-    client = pymongo.MongoClient(host=host,port=port)
+def get_client() :
+    client = pymongo.MongoClient(settings.SERVER_MONGODB_HOST,settings.SERVER_MONGODB_PORT)
     return client
 
 def get_address(client=None):
@@ -92,6 +88,28 @@ def get_coll(table_name) :
         coll_name = Collections.get_coll_name(table_name)
         if db_name and coll_name :
             client = get_client()
+            db = client[db_name]
+            db.authenticate(settings.SERVER_MONGODB_USER,settings.SERVER_MONGODB_PASS)
+            coll = client[db_name][coll_name]
+        else :
+            coll = None
+            print u"集合不存在!"
+            return coll
+        coll_dict[table_name] = coll
+        return coll
+
+def get_local_client() :
+    client = pymongo.MongoClient(settings.LOCAL_MONGODB_HOST,settings.LOCAL_MONGODB_PORT)
+    return client
+    
+def get_local_coll(table_name):
+    if coll_dict.has_key((table_name)):
+        return coll_dict[table_name]
+    else :
+        db_name = Collections.get_db_name(table_name)
+        coll_name = Collections.get_coll_name(table_name)
+        if db_name and coll_name :
+            client = get_local_client()
             coll = client[db_name][coll_name]
         else :
             coll = None
