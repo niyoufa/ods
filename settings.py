@@ -56,3 +56,6 @@ DHUI_STOCK_WAREHOUSE_ID = 1
 
 # 东汇进销存管理员 id
 DHUI_MANAGER_USER_ID = 5
+
+DHUI_URL_PREFIX = "dhui/api?"
+ODS_ADDRESS = "http://192.168.151.54:8085/"

@@ -1,12 +1,15 @@
 #coding=utf-8
 
-import sys, pdb, json, datetime, pymongo
-import sys,pdb
+import sys, pdb, json, datetime, pymongo, urllib
 
 import tornado.web
+from tornado.httpclient import AsyncHTTPClient
 
-import ods.dhui.dhui_product_template as dpt
 import ods.dhui.dhui_order as do
+import ods.dhui.dhui_order_line as dol
+import ods.dhui.dhui_product_template as dpt
+import ods.dhui.dhui_product_supplierinfo as dps
+import ods.dhui.dhui_stock_warehouse_orderpoint as dpwo
 import ods.clients.mongodb_client as mongodb_client
 
 import ods.tnd_server.status as status
@@ -33,7 +36,6 @@ class GoodPartner(tornado.web.RequestHandler):
         result["data"]["partner_id"] = partner_id
         self.write(result)
 
-
 class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
     def get(self):
         result = utils.init_response_data()
@@ -58,6 +60,59 @@ class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
             result["data"]["deliver_list"].append(order_partner_deliver_detail)
         self.write(result)
 
+    @tornado.web.asynchronous
+    @tornado.gen.engine
+    def post(self):
+        result = utils.init_response_data()
+        client = AsyncHTTPClient()
+        query_params = dict(
+            action = "create_dhui_invoice",
+            data = {}
+        )
+        data = urllib.urlencode(query_params)
+        response = yield tornado.gen.Task(client.fetch,
+          settings.ODS_ADDRESS + settings.DHUI_URL_PREFIX + data)
+        try :
+            data = json.loads(response.body)
+            print data
+            if not data["success"] == status.Status.OK:
+                self.write(data)
+                self.finish()
+        except Exception,e :
+            trace_info = utils.get_trace_info()
+            result = utils.reset_response_data(status.Status.ERROR, error_info=str(trace_info))
+            self.write(result)
+            self.finish()
+
+        result["data"] = data["data"]
+        self.write(result)
+        self.finish()
+
+class OrderPartnerDeliverCreate(tornado.web.RequestHandler):
+    def get(self):
+        import ods.dhui.dhui_product_template as dpt
+        import ods.dhui.dhui_product_supplierinfo as dps
+        import ods.dhui.dhui_stock_warehouse_orderpoint as dpwo
+
+        import ods.dhui.dhui_order as do
+        import ods.dhui.dhui_order_line as dol
+
+        import ods.clients.mongodb_client as mongodb_client
+
+        result = utils.init_response_data()
+        try:
+            partner_order_deliver_details = utils.manual_create_invoice(dpt=dpt, dps=dps, dpwo=dpwo, do=do, dol=dol,
+                                                                        mongodb_client=mongodb_client)
+        except Exception, e:
+            result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
+            self.write(result)
+            self.finish()
+            return
+        result["return_code"] = "完成创建供应商发货单发货明细!"
+        result["data"] = partner_order_deliver_details
+        self.write(result)
+        self.finish()
+
 class OrderPartnerDeliverDetail(tornado.web.RequestHandler):
     def get(self):
         result = utils.init_response_data()
@@ -74,7 +129,6 @@ class OrderPartnerDeliverDetail(tornado.web.RequestHandler):
             self.write(result)
             return
         else :
-            order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
             result["data"] = order_partner_deliver_detail
         self.write(result)
 
@@ -189,6 +243,7 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
 handlers = [
     (r"/odoo/api/good_partner",GoodPartner),
     (r"/odoo/api/order_partner_deliver_detail_list",OrderPartnerDeliverDetailList),
+    (r"/odoo/api/order_partner_deliver_detail_list/post",OrderPartnerDeliverDetailList),
     (r"/odoo/api/order_partner_deliver_detail/get",OrderPartnerDeliverDetail),
     (r"/odoo/api/order_partner_deliver_status/get",OrderPartnerDeliverStatus),
     (r"/odoo/api/order_partner_deliver_status/post",OrderPartnerDeliverStatus),

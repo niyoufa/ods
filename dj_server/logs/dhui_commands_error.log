@@ -7,3 +7,80 @@
 LINE 1: ...nfo" SET "product_tmpl_id"=3,"min_qty"=1.0,"name"='571dbf0c0...
                                                              ^
 : 'Traceback (most recent call last):\n  File "/opt/odoo/openerp/service/wsgi_server.py", line 75, in xmlrpc_return\n    result = openerp.http.dispatch_rpc(service, method, params)\n  File "/opt/odoo/openerp/http.py", line 115, in dispatch_rpc\n    result = dispatch(method, params)\n  File "/opt/odoo/openerp/service/model.py", line 37, in dispatch\n    res = fn(db, uid, *params)\n  File "/opt/odoo/openerp/service/model.py", line 167, in execute_kw\n    return execute(db, uid, obj, method, *args, **kw or {})\n  File "/opt/odoo/openerp/service/model.py", line 118, in wrapper\n    return f(dbname, *args, **kwargs)\n  File "/opt/odoo/openerp/service/model.py", line 175, in execute\n    res = execute_cr(cr, uid, obj, method, *args, **kw)\n  File "/opt/odoo/openerp/service/model.py", line 164, in execute_cr\n    return getattr(object, method)(cr, uid, *args, **kw)\n  File "/opt/odoo/openerp/api.py", line 268, in wrapper\n    return old_api(self, *args, **kwargs)\n  File "/opt/odoo/openerp/api.py", line 399, in old_api\n    result = method(recs, *args, **kwargs)\n  File "/opt/odoo/openerp/models.py", line 3788, in write\n    self._write(old_vals)\n  File "/opt/odoo/openerp/api.py", line 266, in wrapper\n    return new_api(self, *args, **kwargs)\n  File "/opt/odoo/openerp/api.py", line 592, in new_api\n    result = method(self._model, cr, uid, self.ids, *args, **old_kwargs)\n  File "/opt/odoo/openerp/models.py", line 3899, in _write\n    cr.execute(query, params + (sub_ids,))\n  File "/opt/odoo/openerp/sql_db.py", line 158, in wrapper\n    return f(self, *args, **kwargs)\n  File "/opt/odoo/openerp/sql_db.py", line 234, in execute\n    res = self._obj.execute(query, params)\nDataError: invalid input syntax for integer: "571dbf0c006f874b52b126aa"\nLINE 1: ...nfo" SET "product_tmpl_id"=3,"min_qty"=1.0,"name"=\'571dbf0c0...\n                                                             ^\n\n'>.
+2016-06-06 12:02:29,887 [api_views:api_router:56] [ERROR]  - 'module' object has no attribute 'init_response_data'
+2016-06-06 12:03:26,606 [api_views:api_router:57] [ERROR]  - "'action'"
+2016-06-06 12:03:39,378 [api_views:api_router:57] [ERROR]  - "'action'"
+2016-06-06 12:03:42,461 [api_views:api_router:57] [ERROR]  - "'action'"
+2016-06-06 12:12:53,261 [api_views:api_router:58] [ERROR]  - "'action'"
+2016-06-06 12:13:11,616 [api_views:api_router:58] [ERROR]  - check_action_access() takes no arguments (1 given)
+2016-06-06 12:13:13,742 [api_views:api_router:58] [ERROR]  - check_action_access() takes no arguments (1 given)
+2016-06-06 12:13:14,173 [api_views:api_router:58] [ERROR]  - check_action_access() takes no arguments (1 given)
+2016-06-06 12:13:20,176 [api_views:api_router:58] [ERROR]  - check_action_access() takes no arguments (1 given)
+2016-06-06 12:34:55,772 [api_views:api_router:56] [ERROR]  - "'data'"
+2016-06-06 12:35:14,068 [api_views:api_router:59] [ERROR]  - "'data'"
+2016-06-06 12:40:34,724 [utils:manual_create_invoice:541] [ERROR]  - 错误信息：'NoneType' object has no attribute 'import_product_template_data'.
+2016-06-06 12:40:39,319 [api_views:_param_except_handler:30] [ERROR]  - error 错误信息 : 'NoneType' object has no attribute 'get_sale_order_list'
+2016-06-06 12:42:41,452 [utils:manual_create_invoice:541] [ERROR]  - 错误信息：'NoneType' object has no attribute 'import_product_template_data'.
+2016-06-06 12:42:41,452 [api_views:_param_except_handler:30] [ERROR]  - error 错误信息 : 'NoneType' object has no attribute 'get_sale_order_list'
+2016-06-06 12:51:48,131 [api_views:api_router:60] [ERROR]  - global name 'a' is not defined
+2016-06-06 14:16:08,875 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:16:41,572 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:18:09,073 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:20:36,885 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:21:02,991 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:21:04,266 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:21:11,633 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:21:30,692 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:21:31,323 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:11,809 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:12,623 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:12,771 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:12,892 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:13,036 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:13,923 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:25,548 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:26,143 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:22:26,379 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:54,449 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:55,228 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:55,529 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:55,804 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:56,004 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:56,147 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:56,324 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:56,479 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:26:56,619 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:27:25,592 [api_views:api_router:59] [ERROR]  - "'action'"
+2016-06-06 14:27:42,349 [api_views:api_router:59] [ERROR]  - "'action'"
+2016-06-06 14:27:43,756 [api_views:api_router:59] [ERROR]  - "'action'"
+2016-06-06 14:28:17,650 [api_views:api_router:56] [ERROR]  - "'action'"
+2016-06-06 14:28:58,962 [api_views:api_router:57] [ERROR]  - 'str' object is not callable
+2016-06-06 14:29:09,419 [api_views:api_router:52] [ERROR]  - 'str' object is not callable
+2016-06-06 14:29:16,082 [api_views:api_router:59] [ERROR]  - 'str' object is not callable
+2016-06-06 14:30:14,619 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:30:26,193 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:31:38,849 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:32:39,080 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:32:40,350 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:32:47,127 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:32:52,699 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:33:21,629 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:50,038 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:51,116 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:51,499 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:51,634 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:51,754 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:51,891 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:52,044 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:52,754 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:52,890 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:53,446 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:53,573 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:53,715 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:54,227 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:54,416 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:54,562 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:55,091 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:55,266 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:34:55,434 [api_views:api_router:58] [ERROR]  - 'str' object is not callable
+2016-06-06 14:37:36,331 [api_views:api_router:57] [ERROR]  - 'str' object is not callable

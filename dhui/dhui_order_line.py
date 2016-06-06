@@ -30,7 +30,7 @@ def import_sale_order_line(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
         if utils.has_obj(xmlrpcclient, query_params):
-            continue
+            # continue
             result = xmlrpcclient.search(query_params)
             sale_order_id = result[0]
         else:
