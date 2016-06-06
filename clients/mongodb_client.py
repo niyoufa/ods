@@ -6,6 +6,10 @@ import ods.settings as settings
 class DB_CONST :
     DB_NAME = "db_name"
     COLL_NAME = "coll_name"
+    COLL_HOST = "host"
+    COLL_PORT = "port"
+    USERNAME = "username"
+    PASSWORD = "password"
     COLL_TYPE = "coll_type"
 
 class Collections :
@@ -16,8 +20,8 @@ class Collections :
         DHUI_Product = dict(
             coll_name="goods",
             db_name="dhui100",
-            host=settings.SERVER_MONOGODB_HOST,
-            port=settings.LOCAL_MONGODB_PORT,
+            host=settings.SERVER_MONGODB_HOST,
+            port=settings.SERVER_MONGODB_PORT,
             username = settings.SERVER_MONGODB_USER,
             password = settings.SERVER_MONGODB_PASS,
             coll_type=None),
@@ -25,7 +29,7 @@ class Collections :
         DHUI_SaleOrder = dict(
             coll_name="order",
             db_name="dhui100",
-            host=settings.SERVER_MONOGODB_HOST,
+            host=settings.SERVER_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,
             username=settings.SERVER_MONGODB_USER,
             password=settings.SERVER_MONGODB_PASS,
@@ -34,7 +38,7 @@ class Collections :
         DHUI_User = dict(
             coll_name="user",
             db_name="dhui100",
-            host=settings.SERVER_MONOGODB_HOST,
+            host=settings.SERVER_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,
             username=settings.SERVER_MONGODB_USER,
             password=settings.SERVER_MONGODB_PASS,
@@ -43,7 +47,7 @@ class Collections :
         DHUI_Address = dict(
             coll_name="address",
             db_name="dhui100",
-            host=settings.SERVER_MONOGODB_HOST,
+            host=settings.SERVER_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,
             username=settings.SERVER_MONGODB_USER,
             password=settings.SERVER_MONGODB_PASS,
@@ -52,7 +56,7 @@ class Collections :
         DHUI_Partner = dict(
             coll_name="partner",
             db_name="dhui100",
-            host=settings.SERVER_MONOGODB_HOST,
+            host=settings.SERVER_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,
             username=settings.SERVER_MONGODB_USER,
             password=settings.SERVER_MONGODB_PASS,
@@ -85,8 +89,42 @@ class Collections :
             coll_name = ""
         return coll_name
 
-def get_client() :
-    client = pymongo.MongoClient(settings.SERVER_MONGODB_HOST,settings.SERVER_MONGODB_PORT)
+    @classmethod
+    def get_coll_host(cls,table_name) :
+        if cls.__COLLECTIONS.has_key(table_name):
+            coll_host = cls.__COLLECTIONS[table_name][DB_CONST.COLL_HOST]
+        else :
+            coll_host = ""
+        return coll_host
+   
+    @classmethod
+    def get_coll_port(cls,table_name) :
+        if cls.__COLLECTIONS.has_key(table_name):
+            coll_port = cls.__COLLECTIONS[table_name][DB_CONST.COLL_PORT]
+        else :
+            coll_port = ""
+        return coll_port
+
+    @classmethod
+    def get_coll_username(cls,table_name) :
+        if cls.__COLLECTIONS.has_key(table_name):
+            username = cls.__COLLECTIONS[table_name][DB_CONST.USERNAME]
+        else :
+            username = ""
+        return username
+
+    @classmethod
+    def get_coll_password(cls,table_name) :
+        if cls.__COLLECTIONS.has_key(table_name):
+            password = cls.__COLLECTIONS[table_name][DB_CONST.PASSWORD]
+        else :
+            password = ""
+        return password
+
+def get_client(table_name) :
+    host = Collections.get_coll_host(table_name)
+    port = Collections.get_coll_port(table_name)
+    client = pymongo.MongoClient(host,port)
     return client
 
 def get_address(client=None):
@@ -125,34 +163,20 @@ coll_dict = {}
 def get_coll(table_name) :
     if coll_dict.has_key((table_name)):
         return coll_dict[table_name]
-    else :
+    else : 
         db_name = Collections.get_db_name(table_name)
         coll_name = Collections.get_coll_name(table_name)
+        username = Collections.get_coll_username(table_name)
+        password = Collections.get_coll_password(table_name)
         if db_name and coll_name :
-            client = get_client()
-            db = client[db_name]
-            db.authenticate(settings.SERVER_MONGODB_USER,settings.SERVER_MONGODB_PASS)
-            coll = client[db_name][coll_name]
-        else :
-            coll = None
-            print u"集合不存在!"
-            return coll
-        coll_dict[table_name] = coll
-        return coll
-
-def get_local_client() :
-    client = pymongo.MongoClient(settings.LOCAL_MONGODB_HOST,settings.LOCAL_MONGODB_PORT)
-    return client
-    
-def get_local_coll(table_name):
-    if coll_dict.has_key((table_name)):
-        return coll_dict[table_name]
-    else :
-        db_name = Collections.get_db_name(table_name)
-        coll_name = Collections.get_coll_name(table_name)
-        if db_name and coll_name :
-            client = get_local_client()
-            coll = client[db_name][coll_name]
+            if username and password :
+                client = get_client(table_name)
+                db = client[db_name]
+                db.authenticate(username,password)
+                coll = client[db_name][coll_name]
+            else :
+                client = get_client(table_name)
+                coll = client[db_name][coll_name]
         else :
             coll = None
             print u"集合不存在!"
