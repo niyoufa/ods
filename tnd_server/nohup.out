@@ -16,3 +16,84 @@ INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.80ms
 INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 3.09ms
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.67ms
+WARNING:tornado.access:404 GET / (121.42.0.35) 1.22ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/order_partner_deliver_detail_list/post?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50)
+HTTPServerRequest(protocol='http', host='120.26.226.63:9092', method='GET', uri='/odoo/api/order_partner_deliver_detail_list/post?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00', version='HTTP/1.1', remote_ip='218.2.208.50', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': '120.26.226.63:9092', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'Connection': 'keep-alive', 'Cookie': 'website_lang=en_US; session_id=d01ab5aa01c85e1f17d6d532dd77fe0eca2270b7', 'Cache-Control': 'max-age=0', 'If-None-Match': '"5997c3939d5a20f66531a59bbf7ef5e079702c33"', 'Upgrade-Insecure-Requests': '1'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 58, in get
+    for order_partner_deliver_detail in order_partner_deliver_detail_list:
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1090, in next
+    if len(self.__data) or self._refresh():
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1012, in _refresh
+    self.__read_concern))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 850, in __send_message
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 781, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 142, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 118, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 120.26.226.63:27018: [Errno 111] Connection refused
+ERROR:tornado.access:500 GET /odoo/api/order_partner_deliver_detail_list/post?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 30007.21ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50)
+HTTPServerRequest(protocol='http', host='120.26.226.63:9092', method='GET', uri='/odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165', version='HTTP/1.1', remote_ip='218.2.208.50', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': '120.26.226.63:9092', 'Accept': '*/*', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Postman-Token': 'f79c948d-01dc-8cc0-aa55-a1d14cc91e47'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 146, in get
+    order_partner_deliver_detail = coll.find_one({"_id": utils.create_objectid(deliver_id)})
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/collection.py", line 1006, in find_one
+    for result in cursor.limit(-1):
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1090, in next
+    if len(self.__data) or self._refresh():
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1012, in _refresh
+    self.__read_concern))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 850, in __send_message
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 781, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 142, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 118, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: 120.26.226.63:27018: [Errno 111] Connection refused
+ERROR:tornado.access:500 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 30395.43ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 5.62ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.95ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.88ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.75ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 3.10ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 3.74ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 1169.71ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 16.06ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 16.41ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.17ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.16ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.11ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 16.83ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.08ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 17.27ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.49ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.27ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 14.95ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 14.82ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 14.65ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 14.71ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.03ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.13ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 15.64ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_status/post?deliver_id=57555801006f8773dbdce165&deliver_status=1 (218.2.208.50) 16.24ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.80ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 2.86ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 3.35ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 3.41ms
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_order.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/clients/mongodb_client.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_order.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/good_partner?sku=dhd200 (218.2.208.50) 352.99ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 5.82ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 5.04ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.28ms
