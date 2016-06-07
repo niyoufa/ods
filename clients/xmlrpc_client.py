@@ -1,6 +1,6 @@
 #coding=utf-8
 
-import xmlrpclib
+import xmlrpclib,pdb
 import ods.settings as settings
 
 class DB_CONST :

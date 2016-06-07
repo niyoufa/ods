@@ -389,6 +389,27 @@ def get_date_time(date_time_str):
         start_time = str(this_date).split(" ")[0] + " " + "00:00:00"
     return start_time, end_time
 
+# utc 与本地时间转换
+def utc2local(utc_st):
+    """UTC时间转本地时间（+8:00）"""
+    now_stamp = time.time()
+    local_time = datetime.datetime.fromtimestamp(now_stamp)
+    utc_time = datetime.datetime.utcfromtimestamp(now_stamp)
+    offset = local_time - utc_time
+    local_st = utc_st + offset
+    return local_st
+
+def local2utc(local_st):
+    """本地时间转UTC时间（-8:00）"""
+    time_struct = time.mktime(local_st.timetuple())
+    utc_st = datetime.datetime.utcfromtimestamp(time_struct)
+    return utc_st
+
+def str2datetime(timestr):
+    t = time.strptime(timestr, "%Y-%m-%d %H:%M:%S")
+    d = datetime.datetime(*t[:6])
+    return d
+
 # ods 调用 dj_server
 
 #生成发货单
@@ -602,7 +623,11 @@ def manual_create_invoice(*args,**options):
         deliver_detail["_id"] = str(deliver_detail["_id"])
     return log_result
 
-
-# 测试
+# 测试timestr
 if __name__ == "__main__":
-    get_trace_info()
+    pdb.set_trace()
+    curr_time = str(datetime.datetime.now()).split(".")[0]
+
+    print local2utc(str2datetime(curr_time))
+
+
