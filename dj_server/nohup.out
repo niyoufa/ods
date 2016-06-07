@@ -118,3 +118,29 @@ Quit the server with CONTROL-C.
 [07/Jun/2016 04:56:24] "GET http://www.baidu.com/cache/global/img/gs.gif HTTP/1.1" 404 1721
 [07/Jun/2016 05:17:04] "GET http://www.izhongsai.com/ HTTP/1.1" 404 1668
 [07/Jun/2016 08:08:19] "GET http://www.baidu.com/cache/global/img/gs.gif HTTP/1.1" 404 1721
+[07/Jun/2016 11:24:00] "GET http://www.baidu.com/cache/global/img/gs.gif HTTP/1.1" 404 1721
+Validating models...
+
+0 errors found
+June 06, 2016 - 22:48:38
+Django version 1.6, using settings 'dj_server.settings'
+Starting development server at http://0.0.0.0:8085/
+Quit the server with CONTROL-C.
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 399, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 392, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 261, in fetch_command
+    commands = get_commands()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 107, in get_commands
+    apps = settings.INSTALLED_APPS
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 54, in __getattr__
+    self._setup(name)
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 49, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 132, in __init__
+    % (self.SETTINGS_MODULE, e)
+ImportError: Could not import settings 'dj_server.settings' (Is it on sys.path? Is there an import error in the settings file?): No module named ods.settings

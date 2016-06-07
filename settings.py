@@ -1,6 +1,6 @@
 #coding=utf-8
 
-ODS_PARENT_PATH = '/home/dhui100/develop/'
+ODS_PARENT_PATH = '/opt/odoo/develop/'
 
 ODOO_HOST = "120.26.226.63"
 ODOO_PORT = 8889
