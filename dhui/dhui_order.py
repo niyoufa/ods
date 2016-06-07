@@ -27,6 +27,7 @@ def import_sale_order_data(*args, **options):
         "order_status":1,
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
     order_log_result = []
+    pdb.set_trace()
     for order in order_list:
 
         order_log_result.append(order)
@@ -35,6 +36,7 @@ def import_sale_order_data(*args, **options):
         # 普通客户
         partner_id = settings.COMMON_CUSTOMER_ID
         amount_total = order["goods_amount"]
+        add_time = order["add_time"]
         # state = "draft" # 报价单
         state = "manual" # 销售订单
 
@@ -45,6 +47,7 @@ def import_sale_order_data(*args, **options):
             partner_shipping_id=partner_id,
             amount_total=amount_total,
             state=state,
+            date_order = add_time,
             # 东汇进销存管理员
             user_id=settings.DHUI_MANAGER_USER_ID,
             order_customer_id = order["user_id"],
@@ -120,4 +123,4 @@ def update_sale_order_status(*args,**kwargs):
     utils.update_obj_list(xmlrpcclient, obj_list)
 
 if __name__ == "__main__":
-    update_sale_order_status()
+    import_sale_order_data()

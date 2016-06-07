@@ -10,7 +10,6 @@ import ods.settings as settings
 
 def import_product_template_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_Product")
-
     print ""
     print "update dhui product...\n"
 
