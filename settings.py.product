@@ -1,12 +1,17 @@
 #coding=utf-8
 
-ODS_PARENT_PATH = '/opt/odoo/develop/'
+ODS_PARENT_PATH = '/home/dhui100/develop/'
 
-HOST = "120.26.226.63"
-PORT = 8889
+HOST = "localhost"
+PORT = 8888
 DB = "dhui"
 USER = "admin"
 PASS = "dhui123"
+
+MONGODB_HOST = "localhost"
+MONGODB_PORT = 27017
+MONGO_DB = "dhui100"
+MONGO_DB = "dhui100"
 
 SERVER_MONGODB_HOST = "120.26.241.214"
 SERVER_MONGODB_PORT = 27017
@@ -53,4 +58,4 @@ DHUI_STOCK_WAREHOUSE_ID = 1
 DHUI_MANAGER_USER_ID = 5
 
 DHUI_URL_PREFIX = "dhui/api?"
-ODS_ADDRESS = "http://120.26.226.63:8085/"
+ODS_ADDRESS = "http://192.168.151.54:8085/"
