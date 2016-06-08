@@ -87,3 +87,4 @@ LINE 1: ...nfo" SET "product_tmpl_id"=3,"min_qty"=1.0,"name"='571dbf0c0...
 2016-06-06 18:48:19,894 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
 2016-06-06 18:53:14,635 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
 2016-06-06 18:53:20,252 [dhui_init_product_data_command:handle:26] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
+2016-06-08 13:39:08,231 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：list index out of range.

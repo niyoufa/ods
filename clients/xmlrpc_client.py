@@ -12,7 +12,7 @@ class TABLES :
 
     # odoo table 配置
     __TABLES = dict(
-        ProductTemplate = dict(table_name="product.template",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+        ProductTemplate = dict(table_name="dhuistock.good",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         IrProperty  = dict(table_name="ir.property",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 

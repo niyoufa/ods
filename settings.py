@@ -1,6 +1,6 @@
 #coding=utf-8
 
-ODS_PARENT_PATH = '/opt/odoo/develop/'
+ODS_PARENT_PATH = '/home/dhui100/develop/'
 
 ODOO_HOST = "192.168.151.54"
 ODOO_PORT = 8888
@@ -59,5 +59,3 @@ DHUI_MANAGER_USER_ID = 5
 
 DHUI_URL_PREFIX = "dhui/api?"
 ODS_ADDRESS = "http://120.26.226.63:8085/"
-
-DHUI100_ADDRESS = "192.168.150.242:8002"

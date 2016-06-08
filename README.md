@@ -36,7 +36,7 @@ ods.clients.mongodb_client   : 提供操作mongodb数据对象接口
 提供给客户端app数据接口
 
 相关认证命令：
-sudo ssh admin@120.26.226.63 -i /opt/odoo/develop/id_rsa
+sudo ssh admin@120.26.226.63 -i id_rsa
 su odoo -s /bin/bash
 nohup mongod -f /etc/local_mongdb.conf &
 mongo --host 120.26.226.63 --port 27018
