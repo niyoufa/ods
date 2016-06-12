@@ -27,7 +27,6 @@ def import_sale_order_data(*args, **options):
         "order_status":1,
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
     order_log_result = []
-    pdb.set_trace()
     for order in order_list:
 
         order_log_result.append(order)

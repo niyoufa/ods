@@ -11,6 +11,7 @@ import ods.dhui.dhui_order_line as dol
 import ods.dhui.dhui_product_template as dpt
 import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils
+import ods.dhui.dhui_invoice as di
 
 InfoLogger = logging.getLogger("dhui_commands")
 ErrorLogger = logging.getLogger("dhui_commands_error")
@@ -19,4 +20,4 @@ class Command(BaseCommand):
     help = "供应商发货单发货明细"
 
     def handle(self, *args, **options):
-        utils.create_invoice(do=do,dol=dol,dpt=dpt,mongodb_client=mongodb_client)
+        utils.create_invoice(do=do,dol=dol,dpt=dpt,di=di,mongodb_client=mongodb_client)

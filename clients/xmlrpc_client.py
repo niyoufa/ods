@@ -12,7 +12,7 @@ class TABLES :
 
     # odoo table 配置
     __TABLES = dict(
-        ProductTemplate = dict(table_name="dhuistock.good",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+        ProductTemplate = dict(table_name="product.template",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         IrProperty  = dict(table_name="ir.property",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
@@ -41,6 +41,14 @@ class TABLES :
         StockInventoryLine = dict(table_name="stock.inventory.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         ResPartner = dict(table_name="res.partner",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiUser = dict(table_name="dhui.user",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiPurchaseUserLine = dict(table_name="dhui.purchase.user.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiPurchase = dict(table_name="dhui.purchase",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiInvoice = dict(table_name="dhui.invoice",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
     )
 
     @classmethod

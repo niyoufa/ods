@@ -418,6 +418,7 @@ def create_invoice(*args,**kwargs):
     do = kwargs.get("do")
     dol = kwargs.get("dol")
     dpt = kwargs.get("dpt")
+    di = kwargs.get("di")
     print ""
     print "开始创建或更新供应商发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0]
     InfoLogger.info("开始创建或更新供应商发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0])
@@ -553,6 +554,13 @@ def create_invoice(*args,**kwargs):
             print partner_order_deliver_detail
 
         log_result.append(partner_order_deliver_detail)
+
+    try:
+        # 发货信息
+        result = di.import_invoice()
+        InfoLogger.info(result)
+    except Exception, e:
+        print e
 
     if flag == True:
         print "完成创建供应商发货单发货明细..."

@@ -88,3 +88,21 @@ LINE 1: ...nfo" SET "product_tmpl_id"=3,"min_qty"=1.0,"name"='571dbf0c0...
 2016-06-06 18:53:14,635 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
 2016-06-06 18:53:20,252 [dhui_init_product_data_command:handle:26] [ERROR]  - 错误信息：<ProtocolError for localhost:8888/xmlrpc/common: 404 Not Found>.
 2016-06-08 13:39:08,231 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：list index out of range.
+2016-06-12 15:24:54,546 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhuistock.good doesn't exist: ''>.
+2016-06-12 15:27:39,807 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhuistock.good doesn't exist: ''>.
+2016-06-12 15:31:31,175 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhuistock.good doesn't exist: ''>.
+2016-06-12 15:34:34,839 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhuistock.good doesn't exist: ''>.
+2016-06-12 17:06:07,945 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "user", filter: {}, skip: 12100 }.
+2016-06-12 17:06:08,009 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "goods", filter: {} }.
+2016-06-12 17:06:27,979 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "user", filter: {}, skip: 12100 }.
+2016-06-12 17:06:28,050 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "goods", filter: {} }.
+2016-06-12 17:10:15,219 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "user", filter: {}, skip: 12100 }.
+2016-06-12 17:10:15,297 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "goods", filter: {} }.
