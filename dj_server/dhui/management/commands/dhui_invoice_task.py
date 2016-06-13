@@ -21,6 +21,8 @@ class Command(BaseCommand):
         print "开始发货单作业流程..."
         InfoLogger.info("开始发货单作业流程...")
         try :
+            # 更新用户
+            call_command("dhui_init_user_info")
             # 更新商品
             call_command("dhui_init_product_data_command")
             # 刷新订单

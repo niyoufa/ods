@@ -28,13 +28,24 @@ def import_sale_order_data(*args, **options):
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
     order_log_result = []
     for order in order_list:
-
         order_log_result.append(order)
+
+        try :
+            xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiUser")
+            user_id = order["user_id"]
+            query_params = dict(
+                user_id = user_id,
+            )
+            result = xmlrpcclient.search(query_params)
+            dhui_user_id = result[0]
+        except Exception ,e:
+            continue
 
         order_id = str(order["_id"])
         # 普通客户
         partner_id = settings.COMMON_CUSTOMER_ID
         amount_total = order["goods_amount"]
+        add_time = order["add_time"]
         # state = "draft" # 报价单
         state = "manual" # 销售订单
 
@@ -45,9 +56,11 @@ def import_sale_order_data(*args, **options):
             partner_shipping_id=partner_id,
             amount_total=amount_total,
             state=state,
+            date_order = add_time,
             # 东汇进销存管理员
             user_id=settings.DHUI_MANAGER_USER_ID,
-            order_customer_id = order["user_id"],
+            dhui_user_id = dhui_user_id,
+            order_customer_id = user_id,
             order_address_id = order["address_id"],
             order_purchase_time = order["pay_time"],
         )
@@ -120,4 +133,4 @@ def update_sale_order_status(*args,**kwargs):
     utils.update_obj_list(xmlrpcclient, obj_list)
 
 if __name__ == "__main__":
-    update_sale_order_status()
+    import_sale_order_data()

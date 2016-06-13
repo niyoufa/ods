@@ -389,6 +389,27 @@ def get_date_time(date_time_str):
         start_time = str(this_date).split(" ")[0] + " " + "00:00:00"
     return start_time, end_time
 
+# utc 与本地时间转换
+def utc2local(utc_st):
+    """UTC时间转本地时间（+8:00）"""
+    now_stamp = time.time()
+    local_time = datetime.datetime.fromtimestamp(now_stamp)
+    utc_time = datetime.datetime.utcfromtimestamp(now_stamp)
+    offset = local_time - utc_time
+    local_st = utc_st + offset
+    return local_st
+
+def local2utc(local_st):
+    """本地时间转UTC时间（-8:00）"""
+    time_struct = time.mktime(local_st.timetuple())
+    utc_st = datetime.datetime.utcfromtimestamp(time_struct)
+    return utc_st
+
+def str2datetime(timestr):
+    t = time.strptime(timestr, "%Y-%m-%d %H:%M:%S")
+    d = datetime.datetime(*t[:6])
+    return d
+
 # ods 调用 dj_server
 
 #生成发货单
@@ -397,6 +418,7 @@ def create_invoice(*args,**kwargs):
     do = kwargs.get("do")
     dol = kwargs.get("dol")
     dpt = kwargs.get("dpt")
+    di = kwargs.get("di")
     print ""
     print "开始创建或更新供应商发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0]
     InfoLogger.info("开始创建或更新供应商发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0])
@@ -533,6 +555,13 @@ def create_invoice(*args,**kwargs):
 
         log_result.append(partner_order_deliver_detail)
 
+    try:
+        # 发货信息
+        result = di.import_invoice()
+        InfoLogger.info(result)
+    except Exception, e:
+        print e
+
     if flag == True:
         print "完成创建供应商发货单发货明细..."
         InfoLogger.info("完成创建供应商发货单发货明细...")
@@ -602,7 +631,10 @@ def manual_create_invoice(*args,**options):
         deliver_detail["_id"] = str(deliver_detail["_id"])
     return log_result
 
-
-# 测试
+# 测试timestr
 if __name__ == "__main__":
-    get_trace_info()
+    curr_time = str(datetime.datetime.now()).split(".")[0]
+
+    print local2utc(str2datetime(curr_time))
+
+

@@ -155,6 +155,8 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
             )
         self.write(result)
 
+    @tornado.web.asynchronous
+    @tornado.gen.engine
     def post(self):
         result = utils.init_response_data()
         try:
@@ -162,14 +164,12 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
             deliver_status = self.get_argument("deliver_status")
         except Exception, e:
             result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
-            self.write(result)
-            return
+
         coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
         order_partner_deliver_detail = coll.find_one({"_id": utils.create_objectid(deliver_id)})
         if not order_partner_deliver_detail:
             result = utils.reset_response_data(status.Status.NOT_EXIST)
-            self.write(result)
-            return
+
         else:
             deliver_status = int(deliver_status)
             if deliver_status == 0 :# 取消发货
@@ -180,32 +180,58 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
                 curr_time = utils.get_curr_time()
                 if curr_time.split(" ")[0] <= create_time.split(" ")[0]:
                     result = utils.reset_response_data(status.Status.ERROR, error_info="当前不可发货,请联系后端开发人员！")
-                    self.write(result)
-                    return
                 else:
-                    deliver_result = self.__deliver(order_partner_deliver_detail)
-                    if deliver_result["success"] != status.Status.OK:
-                        result = deliver_result
-                        self.write(result)
-                        return
-                    else:
-                        # 不做处理
-                        pass
+                    create_time = order_partner_deliver_detail["create_time"]
+                    start_time, end_time = utils.get_date_time(create_time)
+                    try:
+                        # 更新odoo中订单状态
+                        do.update_sale_order_status(start_time, end_time)
+                    except Exception, e:
+                        result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
 
+                    try:
+                        # 更新mongodb中订单状态
+                        query_params = {
+                            "pay_time": {"$gte": start_time, "$lte": end_time},
+                            "order_status": 1,  # 订单已支付
+                            "order_goods.goods_type": {"$nin": ["goldbean", "profit", "indiana_count"]}}
+                        update_params = {
+                            "$set": {
+                                "order_status": 3,  # 订单已完成
+                            }
+                        }
+                        # coll = mongodb_client.get_coll("DHUI_SaleOrder")
+                        # coll.update_many(query_params,update_params)
+                        #response = yield client.fetch(url, method=POST, body=json.dumps(data))
+                        client = AsyncHTTPClient()
+                        data=dict(
+                            coll_name = "order",
+                            query_params = json.dumps(query_params),
+                            update_params = json.dumps(update_params),
+                        )
+                        data = urllib.urlencode(data)
+                        response = yield tornado.gen.Task(client.fetch,"http://%s/api/odoo?"%settings.DHUI100_ADDRESS + data)
+                        try:
+                            data = json.loads(response.body)["response"]
+                            if not data["success"] == status.Status.OK:
+                                self.finish(result)
+                            else :
+                                # 更新发货单
+                                order_partner_deliver_detail["deliver_status"] = deliver_status
+                                try:
+                                    coll.save(order_partner_deliver_detail)
+                                except Exception, e:
+                                    result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
+                        except Exception, e:
+                            trace_info = utils.get_trace_info()
+                            result = utils.reset_response_data(status.Status.ERROR, error_info=str(trace_info))
+
+                    except Exception, e:
+                        result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
             else :
                 result = utils.reset_response_data(status.Status.ERROR)
-                self.write(result)
-                return
-            #更新发货单
-            order_partner_deliver_detail["deliver_status"] = deliver_status
-            try :
-                coll.save(order_partner_deliver_detail)
-            except Exception,e:
-                result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
-                self.write(result)
-                return
 
-        self.write(result)
+        self.finish(result)
 
     # 发货
     def __deliver(self,*args,**options):
@@ -213,9 +239,14 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
         order_partner_deliver_detail = args[0]
         create_time = order_partner_deliver_detail["create_time"]
         start_time , end_time = utils.get_date_time(create_time)
+        try:
+            # 更新odoo中订单状态
+            do.update_sale_order_status(start_time, end_time)
+        except Exception, e:
+            result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
+
         try :
             # 更新mongodb中订单状态
-            coll = mongodb_client.get_coll("DHUI_SaleOrder")
             query_params = {
             "pay_time":{"$gte":start_time, "$lte":end_time},
             "order_status":1, # 订单已支付
@@ -225,17 +256,10 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
                     "order_status":3,# 订单已完成
                 }
             }
+            coll = mongodb_client.get_coll("DHUI_SaleOrder")
             coll.update_many(query_params,update_params)
         except Exception ,e :
             result = utils.reset_response_data(status.Status.ERROR,error_info=str(e))
-
-        try :
-            # 更新odoo中订单状态
-            do.update_sale_order_status(start_time,end_time)
-        except Exception ,e :
-            result = utils.reset_response_data(status.Status.ERROR,error_info=str(e))
-
-        return result
 
     # 取消发货
     def __cancel_deliver(self,*args,**options):
