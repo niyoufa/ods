@@ -106,3 +106,12 @@ Object dhuistock.good doesn't exist: ''>.
 2016-06-12 17:06:28,050 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "goods", filter: {} }.
 2016-06-12 17:10:15,219 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "user", filter: {}, skip: 12100 }.
 2016-06-12 17:10:15,297 [dhui_init_product_data_command:handle:39] [ERROR]  - 错误信息：not authorized on dhui100 to execute command { find: "goods", filter: {} }.
+2016-06-12 17:58:20,452 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhui.user doesn't exist: ''>.
+2016-06-12 18:01:18,390 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhui.user doesn't exist: ''>.
+2016-06-12 18:03:59,836 [dhui_init_user_info:handle:31] [ERROR]  - 错误信息：<Fault warning -- Object Error
+
+Object dhui.user doesn't exist: ''>.
