@@ -633,7 +633,6 @@ def manual_create_invoice(*args,**options):
 
 # 测试timestr
 if __name__ == "__main__":
-    pdb.set_trace()
     curr_time = str(datetime.datetime.now()).split(".")[0]
 
     print local2utc(str2datetime(curr_time))
