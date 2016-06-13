@@ -22,7 +22,6 @@ def init_stock_info(*args,**options):
         if not product_id:
             continue
         else:
-            pdb.set_trace()
 
             # xmlrpcclient = xc.get_xmlrpcclient("StockQuant")
             # stock_quant_obj = dict(

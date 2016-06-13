@@ -49,6 +49,8 @@ class TABLES :
         DhuiPurchase = dict(table_name="dhui.purchase",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         DhuiInvoice = dict(table_name="dhui.invoice",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiAddress = dict(table_name="dhui.address",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
     )
 
     @classmethod
