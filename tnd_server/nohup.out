@@ -196,3 +196,36 @@ INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 3.01ms
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 5.85ms
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
+Traceback (most recent call last):
+  File "main.py", line 15, in <module>
+    import ods.tnd_server.app as app
+  File "/opt/odoo/develop/ods/tnd_server/app.py", line 4, in <module>
+    import ods.tnd_server.urls as urls
+  File "/opt/odoo/develop/ods/tnd_server/urls.py", line 39, in <module>
+    _generate_handler_patterns("handlers", handler_names)
+  File "/opt/odoo/develop/ods/tnd_server/urls.py", line 17, in _generate_handler_patterns
+    module = importlib.import_module(".%s" % name, root_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 8, in <module>
+    import ods.dhui.dhui_order as do
+  File "/opt/odoo/develop/ods/dhui/dhui_order.py", line 6, in <module>
+    import ods.clients.xmlrpc_client as xmlrpc_client
+  File "/opt/odoo/develop/ods/clients/xmlrpc_client.py", line 4, in <module>
+    import ods.settings as settings
+  File "/opt/odoo/develop/ods/settings.py", line 15
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 9.08ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.56ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.04ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 9.35ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.27ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.15ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail/get?deliver_id=575fc76b87b2446fc6357129 (218.2.208.50) 4.38ms
+INFO:tornado.access:200 GET /odoo/api/good_partner?sku=dhd200 (218.2.208.50) 357.61ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=575fc76b87b2446fc6357129 (218.2.208.50) 5.77ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.52ms

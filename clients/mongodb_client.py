@@ -72,7 +72,7 @@ class Collections :
             coll_type=None),
 
         DHUI_PartnerGoodDeliverDetail=dict(
-            coll_name="PartnerOrderDeliverDetail",
+            coll_name="PartnerGoodDeliverDetail",
             db_name="dhuiodoo",
             host=settings.LOCAL_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,

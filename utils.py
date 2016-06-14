@@ -529,7 +529,6 @@ def create_good_invoice(*args,**kwargs):
             )
     # 持久化商家发货信息明细
     start_time, end_time = get_report_time()
-    pdb.set_trace()
     coll = mongodb_client.get_coll("DHUI_PartnerGoodDeliverDetail")
 
     flag = None
