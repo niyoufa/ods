@@ -208,6 +208,7 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
             )
         self.write(result)
 
+    # 同步发货状态
     @tornado.web.asynchronous
     @tornado.gen.engine
     def post(self):
@@ -318,6 +319,61 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
     def __cancel_deliver(self,*args,**options):
         pass
 
+# 发货订单列表
+class PartnerDeliverOrderList(tornado.web.RequestHandler):
+    def get(self):
+        result = utils.init_response_data()
+        query_params = {}
+
+        try:
+            partner_id = self.get_argument("partner_id",None)
+            if not partner_id:
+                result = utils.reset_response_data(status.Status.PARMAS_ERROR)
+                self.write(result)
+                return
+
+            _start_time = self.get_argument("start_time","")
+            _end_time = self.get_argument("end_time","")
+            if _start_time and _end_time :
+                start_time = _start_time.split(" ")[0] + " " + "00:00:00"
+                end_time = _end_time.split(" ")[0] + " " + "59:59:59"
+                query_params = {
+                    "partner_id": partner_id,
+                    "create_time": {"$gte": start_time, "$lte": end_time},
+                }
+            else :
+                query_params = {
+                    "partner_id": partner_id,
+                }
+
+            _shipping_status = self.get_argument("shipping_status",None)
+            if _shipping_status:
+                shipping_status = [int(_shipping_status)]
+            else :
+                shipping_status = [1,10,20,30]
+        except Exception, e:
+            result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
+            self.write(result)
+            return
+        coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
+        order_partner_deliver_detail_list = coll.find(
+            query_params,
+            sort=[("create_time", -1)],
+        )
+        result["data"] = []
+        order_list = []
+        for order_partner_deliver_detail in order_partner_deliver_detail_list:
+            for order in order_partner_deliver_detail["order_list"]:
+                if order['shipping_status'] in shipping_status:
+                    order_list.append(order)
+        result["data"] = order_list
+
+        self.write(result)
+
+class PartnerDeliverOrderStatus(tornado.web.RequestHandler):
+    def get(self, *args, **kwargs):
+        pass
+
 handlers = [
     (r"/odoo/api/good_partner",OrderPartner),
     (r"/odoo/api/order_partner_deliver_detail_list",OrderPartnerDeliverDetailList),
@@ -325,6 +381,7 @@ handlers = [
     (r"/odoo/api/order_partner_deliver_detail/get",OrderPartnerDeliverDetail),
     (r"/odoo/api/order_partner_deliver_status/get",OrderPartnerDeliverStatus),
     (r"/odoo/api/order_partner_deliver_status/post",OrderPartnerDeliverStatus),
+    (r"/odoo/api/partner_deliver_order_list",PartnerDeliverOrderList),
 ]
 
 
