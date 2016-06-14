@@ -184,3 +184,4 @@ Traceback (most recent call last):
 TypeError: ObjectId('575f400909a057641c73f705') is not JSON serializable
 ERROR:tornado.access:500 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 3.23ms
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_status/get?deliver_id=5756373b006f87612192e6a9 (218.2.208.50) 1.35ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
