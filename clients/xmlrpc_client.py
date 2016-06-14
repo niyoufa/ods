@@ -51,6 +51,16 @@ class TABLES :
         DhuiInvoice = dict(table_name="dhui.invoice",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         DhuiAddress = dict(table_name="dhui.address",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiShipping = dict(table_name="dhui.shipping",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiShippingAddress = dict(table_name="dhui.shipping.address",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiShippingKuaidi = dict(table_name="dhui.kuaidi",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiShippingKuaidiLastresult = dict(table_name="dhui.kuaidi.lastresult",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
+        DhuiShippingKuaidiLastresultLine = dict(table_name="dhui.kuaidi.lastresult.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
     )
 
     @classmethod

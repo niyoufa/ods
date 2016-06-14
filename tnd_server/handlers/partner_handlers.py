@@ -16,27 +16,8 @@ import ods.tnd_server.status as status
 import ods.utils as utils
 import ods.tnd_server.settings as settings
 
-class GoodPartner(tornado.web.RequestHandler):
-    def get(self):
-        result = utils.init_response_data()
-
-        try :
-            sku = self.get_argument("sku")
-        except Exception ,e :
-            result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
-            self.write(result)
-            return
-        good = dpt.get_product_template(sku=sku)
-        if not good :
-            result = utils.reset_response_data(status.Status.ERROR, error_info=str("query error,good not exist"))
-            self.write(result)
-            return
-        else :
-            partner_id = good["dhui_user_id"]
-        result["data"]["partner_id"] = partner_id
-        self.write(result)
-
-class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
+# 商品发货明细
+class GoodPartnerDeliverDetailList(tornado.web.RequestHandler):
     def get(self):
         result = utils.init_response_data()
         try:
@@ -113,6 +94,26 @@ class OrderPartnerDeliverCreate(tornado.web.RequestHandler):
         self.write(result)
         self.finish()
 
+class OrderPartner(tornado.web.RequestHandler):
+    def get(self):
+        result = utils.init_response_data()
+
+        try :
+            sku = self.get_argument("sku")
+        except Exception ,e :
+            result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
+            self.write(result)
+            return
+        good = dpt.get_product_template(sku=sku)
+        if not good :
+            result = utils.reset_response_data(status.Status.ERROR, error_info=str("query error,good not exist"))
+            self.write(result)
+            return
+        else :
+            partner_id = good["dhui_user_id"]
+        result["data"]["partner_id"] = partner_id
+        self.write(result)
+
 class OrderPartnerDeliverDetail(tornado.web.RequestHandler):
     def get(self):
         result = utils.init_response_data()
@@ -132,6 +133,58 @@ class OrderPartnerDeliverDetail(tornado.web.RequestHandler):
             order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
             result["data"] = order_partner_deliver_detail
         self.write(result)
+
+class OrderPartnerDeliverDetailList(tornado.web.RequestHandler):
+    def get(self):
+        result = utils.init_response_data()
+        try:
+            start_time = self.get_argument("start_time")
+            end_time = self.get_argument("end_time")
+            start_time = start_time.split(" ")[0] + " " + "00:00:00"
+            end_time = end_time.split(" ")[0] + " " + "59:59:59"
+            partner_id = self.get_argument("partner_id")
+        except Exception, e:
+            result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
+            self.write(result)
+            return
+        coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
+        order_partner_deliver_detail_list = coll.find(
+            {"partner_id":partner_id,"create_time":{"$gte":start_time,"$lte":end_time}},
+            sort=[("create_time",-1)],
+        )
+        result["data"]["deliver_list"] = []
+        for order_partner_deliver_detail in order_partner_deliver_detail_list:
+            order_partner_deliver_detail["_id"] = str(order_partner_deliver_detail["_id"])
+            result["data"]["deliver_list"].append(order_partner_deliver_detail)
+        self.write(result)
+
+    @tornado.web.asynchronous
+    @tornado.gen.engine
+    def post(self):
+        result = utils.init_response_data()
+        client = AsyncHTTPClient()
+        query_params = dict(
+            action = "create_dhui_invoice",
+            data = {}
+        )
+        data = urllib.urlencode(query_params)
+        response = yield tornado.gen.Task(client.fetch,
+          settings.ODS_ADDRESS + settings.DHUI_URL_PREFIX + data)
+        try :
+            data = json.loads(response.body)
+            print data
+            if not data["success"] == status.Status.OK:
+                self.write(data)
+                self.finish()
+        except Exception,e :
+            trace_info = utils.get_trace_info()
+            result = utils.reset_response_data(status.Status.ERROR, error_info=str(trace_info))
+            self.write(result)
+            self.finish()
+
+        result["data"] = data["data"]
+        self.write(result)
+        self.finish()
 
 class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
     def get(self):
@@ -233,7 +286,7 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
 
         self.finish(result)
 
-    # 发货
+    # 同步发货
     def __deliver(self,*args,**options):
         result = utils.init_response_data()
         order_partner_deliver_detail = args[0]
@@ -245,28 +298,28 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
         except Exception, e:
             result = utils.reset_response_data(status.Status.ERROR, error_info=str(e))
 
-        try :
-            # 更新mongodb中订单状态
-            query_params = {
-            "pay_time":{"$gte":start_time, "$lte":end_time},
-            "order_status":1, # 订单已支付
-            "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}}
-            update_params = {
-                "$set" : {
-                    "order_status":3,# 订单已完成
-                }
-            }
-            coll = mongodb_client.get_coll("DHUI_SaleOrder")
-            coll.update_many(query_params,update_params)
-        except Exception ,e :
-            result = utils.reset_response_data(status.Status.ERROR,error_info=str(e))
+        # try :
+        #     # 更新mongodb中订单状态
+        #     query_params = {
+        #     "pay_time":{"$gte":start_time, "$lte":end_time},
+        #     "order_status":1, # 订单已支付
+        #     "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}}
+        #     update_params = {
+        #         "$set" : {
+        #             "order_status":3,# 订单已完成
+        #         }
+        #     }
+        #     coll = mongodb_client.get_coll("DHUI_SaleOrder")
+        #     coll.update_many(query_params,update_params)
+        # except Exception ,e :
+        #     result = utils.reset_response_data(status.Status.ERROR,error_info=str(e))
 
     # 取消发货
     def __cancel_deliver(self,*args,**options):
         pass
 
 handlers = [
-    (r"/odoo/api/good_partner",GoodPartner),
+    (r"/odoo/api/good_partner",OrderPartner),
     (r"/odoo/api/order_partner_deliver_detail_list",OrderPartnerDeliverDetailList),
     (r"/odoo/api/order_partner_deliver_detail_list/post",OrderPartnerDeliverDetailList),
     (r"/odoo/api/order_partner_deliver_detail/get",OrderPartnerDeliverDetail),
