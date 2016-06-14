@@ -2,8 +2,8 @@
 
 ODS_PARENT_PATH = '/home/dhui100/develop/'
 
-ODOO_HOST = "192.168.151.54"
-ODOO_PORT = 8888
+ODOO_HOST = "120.26.226.63"
+ODOO_PORT = 8889
 ODOO_DB = "dhui"
 ODOO_USER = "admin"
 ODOO_PASS = "dhui123"

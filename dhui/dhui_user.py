@@ -11,7 +11,11 @@ import ods.settings as settings
 def import_user_data(*args,**options):
     customer_coll = mongodb_client.get_coll("DHUI_User")
     address_coll = mongodb_client.get_coll("DHUI_Address")
+<<<<<<< HEAD
+    user_list = customer_coll.find({}).skip(12800)
+=======
     user_list = customer_coll.find({}).skip(12900)
+>>>>>>> 035433d90d71ee634af151eb036b349c7a59432a
     for user in user_list :
         user_id = utils.objectid_str(user["_id"])
         address = address_coll.find_one({"user_id":user_id})
@@ -49,6 +53,7 @@ def import_user_data(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiUser")
         if utils.has_obj(xmlrpcclient, query_params):
+            print 'continue'
             continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], dhui_user_obj)

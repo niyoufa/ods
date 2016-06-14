@@ -97,3 +97,25 @@ INFO:tornado.access:200 GET /odoo/api/good_partner?sku=dhd200 (218.2.208.50) 352
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail/get?deliver_id=57555801006f8773dbdce165 (218.2.208.50) 5.82ms
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 5.04ms
 INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.28ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 22.97ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 20.46ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 21.95ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 20.98ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 23.26ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 20.48ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 17.64ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 20.45ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 18.85ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 17.54ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 19.04ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 19.63ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 21.67ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 19.15ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 19.79ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 20.11ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 19.66ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 21.74ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 21.06ms
+INFO:tornado.general:/opt/odoo/develop/ods/clients/xmlrpc_client.py modified; restarting server
