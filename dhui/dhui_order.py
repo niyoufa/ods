@@ -21,7 +21,7 @@ import ods.settings as settings
 
 def import_sale_order_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    start_time, end_time = utils.get_report_time()
+    start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
     order_list = coll.find({
         "pay_time":{"$gte":start_time, "$lte":end_time},
         "order_status":1,
@@ -79,7 +79,7 @@ def import_sale_order_data(*args, **options):
     return order_log_result
 
 def get_sale_order_list(*args,**kwargs):
-    start_time , end_time = utils.get_report_time(datetime.datetime.now())
+    start_time , end_time = utils.get_report_time(datetime.datetime.now(),delta=kwargs.get("delta",0))
     extra_query_params = dict(
         start_time = ("order_purchase_time",">=",start_time),
         end_tme = ("order_purchase_time","<=",end_time),
@@ -95,7 +95,7 @@ def get_sale_order_list(*args,**kwargs):
     return sale_order_list
 
 def get_purchase_order_list(*args,**kwargs):
-    start_time, end_time = utils.get_report_time()
+    start_time, end_time = utils.get_report_time(delta=kwargs.get("delta",0))
     extra_query_params = dict(
         start_time=("create_date",">=", start_time),
         end_time=("create_date","<=", end_time),

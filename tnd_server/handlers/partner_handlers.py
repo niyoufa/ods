@@ -15,6 +15,7 @@ import ods.clients.mongodb_client as mongodb_client
 import ods.tnd_server.status as status
 import ods.utils as utils
 import ods.tnd_server.settings as settings
+import ods.tnd_server.handler as handler
 
 # 商品发货明细
 class GoodPartnerDeliverDetailList(tornado.web.RequestHandler):
@@ -320,8 +321,8 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
         pass
 
 # 发货订单列表
-class PartnerDeliverOrderList(tornado.web.RequestHandler):
-    def get(self):
+class PartnerDeliverOrderList(handler.APIHandler):
+    def get(self,*args, **kwargs):
         result = utils.init_response_data()
         query_params = {}
 
@@ -366,6 +367,8 @@ class PartnerDeliverOrderList(tornado.web.RequestHandler):
             for order in order_partner_deliver_detail["order_list"]:
                 if order['shipping_status'] in shipping_status:
                     order_list.append(order)
+        order_list.sort(key=lambda obj: obj["pay_time"])
+        order_list.reverse()
         result["data"] = order_list
 
         self.write(result)

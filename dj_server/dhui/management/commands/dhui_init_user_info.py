@@ -24,11 +24,11 @@ class Command(BaseCommand):
 
         try :
             # 用户基本信息
-            result = du.import_user_data()
+            result = du.import_user_data(*args,**options)
             InfoLogger.info(result)
 
             # 用户地址信息
-            result = dadd.import_address_data()
+            result = dadd.import_address_data(*args,**options)
             InfoLogger.info(result)
         except Exception,e:
             print e

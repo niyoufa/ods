@@ -25,13 +25,13 @@ class Command(BaseCommand):
 
         try :
             # 商品基本信息
-            result = dpt.import_product_template_data()
+            result = dpt.import_product_template_data(*args, **options)
             InfoLogger.info(result)
             # 更新商品供应商信息
-            result = dps.update_product_supplierinfo()
+            result = dps.update_product_supplierinfo(*args, **options)
             InfoLogger.info(result)
             # 更新商品重订货规则
-            result = dpwo.update_stock_warehouse_orderpoint()
+            result = dpwo.update_stock_warehouse_orderpoint(*args, **options)
             InfoLogger.info(result)
         except Exception,e:
             print e
