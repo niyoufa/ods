@@ -77,3 +77,6 @@ INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 6.02ms
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.91ms
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.96ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=57611e0609a0573e8819c596&shipping_status=1 (218.2.208.50) 7.61ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
