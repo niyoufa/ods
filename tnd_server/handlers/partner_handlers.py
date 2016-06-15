@@ -370,10 +370,6 @@ class PartnerDeliverOrderList(handler.APIHandler):
         order_list.sort(key=lambda obj: obj["pay_time"])
         order_list.reverse()
         result["data"] = order_list
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ddc7cc1d42a75293c803449c71791286d8e10ba
         self.finish(result)
 
 class PartnerDeliverOrderStatus(tornado.web.RequestHandler):

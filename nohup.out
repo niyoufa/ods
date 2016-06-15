@@ -53,3 +53,14 @@ Traceback (most recent call last):
     <<<<<<< HEAD
      ^
 SyntaxError: invalid syntax
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=10 (218.2.208.50) 4.63ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=10 (218.2.208.50) 1.69ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.53ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 5.21ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server

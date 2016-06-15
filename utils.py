@@ -606,7 +606,6 @@ def create_order_invoice(*args,**kwargs):
     print ""
     # sale_product_detail_info 订单商品信息明细
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    
     start_time, end_time = get_report_time(delta=kwargs.get("delta",0))
     sale_order_list = coll.find({
         "pay_time": {"$gte": start_time, "$lte": end_time},
@@ -633,7 +632,6 @@ def create_order_invoice(*args,**kwargs):
         else:
             continue
         partner_id = good_obj['dhui_user_id']
-
         if partner_sale_order_dict.has_key(partner_id):
             partner_sale_order_dict[partner_id].append(sale_order)
         else :
