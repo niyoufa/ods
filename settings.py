@@ -8,25 +8,23 @@ ODOO_DB = "dhui"
 ODOO_USER = "admin"
 ODOO_PASS = "dhui123"
 
-# ODOO_HOST = "120.26.226.63"
-# ODOO_PORT = 8889
-# ODOO_DB = "dhui"
-# ODOO_USER = "admin"
-# ODOO_PASS = "dhui123"
+ODOO_HOST = "120.26.226.63"
+ODOO_PORT = 8889
+ODOO_DB = "dhui"
+ODOO_USER = "admin"
+ODOO_PASS = "dhui123"
 
-SERVER_MONGODB_HOST = "localhost"
-SERVER_MONGODB_PORT = 27017
-SERVER_MONGO_DB = "dhui100"
-
-SERVER_MONGODB_USER = ""
-SERVER_MONGODB_PASS = ""
-
-# SERVER_MONGODB_HOST = "120.26.226.63"
+# SERVER_MONGODB_HOST = "localhost"
 # SERVER_MONGODB_PORT = 27017
 # SERVER_MONGO_DB = "dhui100"
-#
-# SERVER_MONGODB_USER = "viewer"
-# SERVER_MONGODB_PASS = "DhuiViewer2016"
+# SERVER_MONGODB_USER = ""
+# SERVER_MONGODB_PASS = ""
+
+SERVER_MONGODB_HOST = "120.26.226.63"
+SERVER_MONGODB_PORT = 27017
+SERVER_MONGO_DB = "dhui100"
+SERVER_MONGODB_USER = "viewer"
+SERVER_MONGODB_PASS = "DhuiViewer2016"
 
 LOCAL_MONGODB_HOST = "120.26.226.63"
 LOCAL_MONGODB_PORT = 27018
@@ -58,10 +56,16 @@ DHUI_PARTNER_ID = 7
 DHUI_PARTNER_DICT = {
     "default":["571dbf0c006f874b52b126aa",7,"default"],
     "seckill":["57330c6c006f877f57fcc4e7",10,"seckill"],
+    "other":["5720201c006f873b606394fb",13,"other"],
+
     "7":["571dbf0c006f874b52b126aa",7,"default"],
     "10":["57330c6c006f877f57fcc4e7",10,"seckill"],
+    "13":["5720201c006f873b606394fb",13,"other"],
+
     "571dbf0c006f874b52b126aa":["571dbf0c006f874b52b126aa",7,"default"],
     "57330c6c006f877f57fcc4e7":["57330c6c006f877f57fcc4e7",10,"seckill"],
+    "5720201c006f873b606394fb":["5720201c006f873b606394fb",13,"other"]
+
 }
 
 #东汇商城商品 分类id
