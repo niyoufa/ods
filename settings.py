@@ -2,17 +2,17 @@
 
 ODS_PARENT_PATH = '/home/dhui100/develop/'
 
-ODOO_HOST = "192.168.151.54"
+#ODOO_HOST = "192.168.151.54"
+#ODOO_PORT = 8889
+#ODOO_DB = "dhui"
+#ODOO_USER = "admin"
+#ODOO_PASS = "dhui123"
+
+ODOO_HOST = "120.26.226.63"
 ODOO_PORT = 8889
 ODOO_DB = "dhui"
 ODOO_USER = "admin"
 ODOO_PASS = "dhui123"
-
-# ODOO_HOST = "120.26.226.63"
-# ODOO_PORT = 8889
-# ODOO_DB = "dhui"
-# ODOO_USER = "admin"
-# ODOO_PASS = "dhui123"
 
 SERVER_MONGODB_HOST = "localhost"
 SERVER_MONGODB_PORT = 27017
