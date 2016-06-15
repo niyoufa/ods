@@ -20,4 +20,5 @@ class Command(BaseCommand):
     help = "供应商发货单发货明细"
 
     def handle(self, *args, **options):
-        utils.create_good_invoice(do=do,dol=dol,dpt=dpt,di=di,mongodb_client=mongodb_client)
+        utils.create_good_invoice(do=do,dol=dol,dpt=dpt,di=di,mongodb_client=mongodb_client,
+                                  delta=options.get("delta", 0))

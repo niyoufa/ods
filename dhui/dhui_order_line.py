@@ -13,8 +13,7 @@ import ods.settings as settings
 
 def import_sale_order_line(*args,**options):
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    # order_list = coll.find({"_id": ObjectId("571e45ef006f87607b834180")})
-    start_time, end_time = utils.get_report_time()
+    start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
     order_list = coll.find({
         "pay_time": {"$gte": start_time, "$lte": end_time},
         "order_status": 1,

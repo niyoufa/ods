@@ -21,7 +21,7 @@ class Command(BaseCommand):
         InfoLogger.info("开始导入物流数据...")
         try :
             # 更新用户
-            ds.import_shipping_data()
+            ds.import_shipping_data(*args, **options)
         except Exception,e:
             print e
 

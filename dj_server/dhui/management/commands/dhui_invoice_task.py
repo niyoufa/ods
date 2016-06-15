@@ -28,6 +28,7 @@ class Command(BaseCommand):
             # 刷新订单
             call_command("dhui_sale_order_command")
             # 刷新发货单
+            call_command("partner_good_deliver_details")
             call_command("partner_order_deliver_details")
         except Exception,e:
             print e
