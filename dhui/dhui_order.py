@@ -23,7 +23,7 @@ def import_sale_order_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
     start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
     order_list = coll.find({
-        # "pay_time":{"$gte":start_time, "$lte":end_time},
+        "pay_time":{"$gte":start_time, "$lte":end_time},
         "order_status":1,
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
     order_log_result = []
