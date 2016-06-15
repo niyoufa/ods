@@ -23,7 +23,7 @@ def import_sale_order_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
     start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
     order_list = coll.find({
-        "pay_time":{"$gte":start_time, "$lte":end_time},
+        # "pay_time":{"$gte":start_time, "$lte":end_time},
         "order_status":1,
         "order_goods.goods_type":{"$nin":["goldbean","profit","indiana_count"]}})
     order_log_result = []
@@ -42,6 +42,7 @@ def import_sale_order_data(*args, **options):
             continue
 
         order_id = str(order["_id"])
+        shipping_status = str(order["shipping_status"])
         # 普通客户
         partner_id = settings.COMMON_CUSTOMER_ID
         amount_total = order["goods_amount"]
@@ -56,6 +57,7 @@ def import_sale_order_data(*args, **options):
             partner_shipping_id=partner_id,
             amount_total=amount_total,
             state=state,
+            shipping_status = shipping_status,
             date_order = add_time,
             # 东汇进销存管理员
             user_id=settings.DHUI_MANAGER_USER_ID,

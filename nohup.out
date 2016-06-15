@@ -37,3 +37,19 @@ INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=571d
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=571dbf0c006f874b52b126aa&start_time&end_time&shipping_status=1 (218.2.208.50) 145.12ms
 INFO:tornado.general:/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py modified; restarting server
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=571dbf0c006f874b52b126aa&start_time&end_time&shipping_status=1 (218.2.208.50) 155.12ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
+Traceback (most recent call last):
+  File "tnd_server/main.py", line 15, in <module>
+    import ods.tnd_server.app as app
+  File "/opt/odoo/develop/ods/tnd_server/app.py", line 4, in <module>
+    import ods.tnd_server.urls as urls
+  File "/opt/odoo/develop/ods/tnd_server/urls.py", line 39, in <module>
+    _generate_handler_patterns("handlers", handler_names)
+  File "/opt/odoo/develop/ods/tnd_server/urls.py", line 17, in _generate_handler_patterns
+    module = importlib.import_module(".%s" % name, root_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 373
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
