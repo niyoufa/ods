@@ -371,7 +371,7 @@ class PartnerDeliverOrderList(handler.APIHandler):
         order_list.reverse()
         result["data"] = order_list
 
-        self.write(result)
+        self.finish(result)
 
 class PartnerDeliverOrderStatus(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
