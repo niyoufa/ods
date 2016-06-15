@@ -64,3 +64,16 @@ INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_supplierinfo.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 4.75ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.45ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.44ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 6.02ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.91ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.96ms

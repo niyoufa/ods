@@ -54,7 +54,7 @@ def import_product_template_data(*args, **options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
         if utils.has_obj(xmlrpcclient, query_params):
-            continue
+            #continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_template_obj)
         else:
