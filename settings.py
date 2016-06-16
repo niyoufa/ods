@@ -1,7 +1,7 @@
 #coding=utf-8
 
 #ODS_PARENT_PATH = '/home/dhui100/develop/'
-ODS_PARENT_PATH = '/home/nyf/develop/
+ODS_PARENT_PATH = '/home/nyf/develop/'
 
 ODOO_HOST = "192.168.151.54"
 ODOO_PORT = 8889
@@ -19,7 +19,7 @@ LOCAL_MONGODB_HOST = "120.26.226.63"
 LOCAL_MONGODB_PORT = 27018
 LOCAL_MONGO_DB = "dhuiodoo"
 
-REPORT_PATH = "/home/dhui100/develop/ods/reports/"
+REPORT_PATH = "/home/nyf/develop/dhui/ods/reports/"
 
 # ODOO_HOST = "120.26.226.63"
 # ODOO_PORT = 8889
