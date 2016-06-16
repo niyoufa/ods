@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
         try :
             # 初始化供应商数据
-            dipi.init_partner_info()
+            dipi.init_partner_info(*args, **options)
         except Exception,e:
             print "错误信息：%s"%str(e)
             ErrorLogger.error("错误信息：%s"%str(e))

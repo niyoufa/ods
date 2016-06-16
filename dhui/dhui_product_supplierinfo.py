@@ -10,6 +10,7 @@ import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils
 import ods.settings as settings
 
+free_trade_goods = ["575e6e1f09a0574776a2b226","574d0bf8006f875336deda8c","5761624c09a0570e49af74c3"]
 
 def update_product_supplierinfo(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")
@@ -37,6 +38,11 @@ def update_product_supplierinfo(*args,**options):
             dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][1]
         else:
             dhui_user_id = settings.DHUI_PARTNER_DICT["default"][1]
+
+        good_id = utils.objectid_str(good["_id"])
+        if good_id in free_trade_goods :
+            dhui_user_id = settings.DHUI_PARTNER_DICT["other"][1]
+
         product_supplierinfo_obj = dict(
             # 东汇商城供应商
             name = dhui_user_id,
@@ -49,7 +55,7 @@ def update_product_supplierinfo(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductSupplierInfo")
         if utils.has_obj(xmlrpcclient, query_params):
-            continue
+            #continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_supplierinfo_obj)
         else:

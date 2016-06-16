@@ -15,6 +15,7 @@ import ods.clients.mongodb_client as mongodb_client
 import ods.tnd_server.status as status
 import ods.utils as utils
 import ods.tnd_server.settings as settings
+import ods.tnd_server.handler as handler
 
 # 商品发货明细
 class GoodPartnerDeliverDetailList(tornado.web.RequestHandler):
@@ -320,8 +321,8 @@ class OrderPartnerDeliverStatus(tornado.web.RequestHandler):
         pass
 
 # 发货订单列表
-class PartnerDeliverOrderList(tornado.web.RequestHandler):
-    def get(self):
+class PartnerDeliverOrderList(handler.APIHandler):
+    def get(self,*args, **kwargs):
         result = utils.init_response_data()
         query_params = {}
 
@@ -329,7 +330,7 @@ class PartnerDeliverOrderList(tornado.web.RequestHandler):
             partner_id = self.get_argument("partner_id",None)
             if not partner_id:
                 result = utils.reset_response_data(status.Status.PARMAS_ERROR)
-                self.write(result)
+                self.finish(result)
                 return
 
             _start_time = self.get_argument("start_time","")
@@ -353,7 +354,7 @@ class PartnerDeliverOrderList(tornado.web.RequestHandler):
                 shipping_status = [1,10,20,30]
         except Exception, e:
             result = utils.reset_response_data(status.Status.PARMAS_ERROR, error_info=str(e))
-            self.write(result)
+            self.finish(result)
             return
         coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
         order_partner_deliver_detail_list = coll.find(
@@ -366,13 +367,53 @@ class PartnerDeliverOrderList(tornado.web.RequestHandler):
             for order in order_partner_deliver_detail["order_list"]:
                 if order['shipping_status'] in shipping_status:
                     order_list.append(order)
+        order_list.sort(key=lambda obj: obj["pay_time"])
+        order_list.reverse()
         result["data"] = order_list
+        self.finish(result)
 
-        self.write(result)
+class PartnerDeliverOrderStatus(handler.APIHandler):
+    def post(self, *args, **kwargs):
+        result = utils.init_response_data()
+        try :
+            order_id = self.get_argument("order_id")
+            shipping_status = self.get_argument("shipping_status")
+        except Exception ,e :
+            result = utils.reset_response_data(status.Status.PARMAS_ERROR)
+            self.finish(result)
+            return
 
-class PartnerDeliverOrderStatus(tornado.web.RequestHandler):
-    def get(self, *args, **kwargs):
-        pass
+        try:
+            coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
+            query_params = {
+                "order_list._id":{
+                    "$in":[order_id]
+                }
+            }
+
+            partner_deliver_order = coll.find_one(query_params)
+            index = 0
+            for order in partner_deliver_order["order_list"]:
+                if order["_id"] == order_id :
+                    partner_deliver_order["order_list"][index]["shipping_status"] = int(shipping_status)
+                    break
+                index += 1
+            coll.save(partner_deliver_order)
+
+        except Exception ,e :
+            result = utils.reset_response_data(status.Status.ERROR)
+            self.finish(result)
+            return
+
+        #同步到odoo
+        try :
+            pass
+        except Exception,e:
+            print e
+
+        self.finish(result)
+
+
 
 handlers = [
     (r"/odoo/api/good_partner",OrderPartner),
@@ -382,6 +423,7 @@ handlers = [
     (r"/odoo/api/order_partner_deliver_status/get",OrderPartnerDeliverStatus),
     (r"/odoo/api/order_partner_deliver_status/post",OrderPartnerDeliverStatus),
     (r"/odoo/api/partner_deliver_order_list",PartnerDeliverOrderList),
+    (r"/odoo/api/partner_deliver_order_status/post",PartnerDeliverOrderStatus),
 ]
 
 

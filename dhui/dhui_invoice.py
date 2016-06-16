@@ -10,8 +10,8 @@ import ods.settings as settings
 
 
 def import_invoice(*args,**options):
-    start_time, end_time = utils.get_report_time()
-    coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
+    start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
+    coll = mongodb_client.get_coll("DHUI_PartnerGoodDeliverDetail")
     query_params = {
         "create_time" : {"$gte":start_time,"$lte":end_time}
     }
@@ -122,6 +122,7 @@ def import_invoice(*args,**options):
                     else:
                         utils.load_obj(purchase_user_line_xmlrpcclient, dhui_purchase_user_info_obj)
                 except Exception ,e :
+                    print e
                     continue
         log_result.append(partner_order_deliver_detail)
 

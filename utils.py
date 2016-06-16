@@ -359,8 +359,8 @@ def get_curr_time(delta=0):
     curr_time = str(curr_date).split(".")[0]
     return curr_time
 
-def get_report_time(query_time=datetime.datetime.now()):
-    report_date = get_report_date(query_time)
+def get_report_time(query_time=datetime.datetime.now(),*args,**options):
+    report_date = get_report_date(query_time,delta=options.get("delta",0))
     report_time = str(report_date).split(".")[0]
     cmp_time = str(report_date).split(" ")[0] + " " +"00:00:00"
     if report_time < cmp_time :
@@ -373,8 +373,8 @@ def get_report_time(query_time=datetime.datetime.now()):
         start_time = str(report_date).split(" ")[0] + " " + "00:00:00"
     return start_time, end_time
 
-def get_time_range(query_time=datetime.datetime.now()):
-    range_date = get_report_date(query_time)
+def get_time_range(query_time=datetime.datetime.now(),*args,**options):
+    range_date = get_report_date(query_time,delta=options.get("delta",0))
     range_time = str(range_date).split(".")[0]
     cmp_time = str(range_date).split(" ")[0] + " " + "00:00:00"
     if range_time < cmp_time:
@@ -435,8 +435,8 @@ def create_good_invoice(*args,**kwargs):
     dpt = kwargs.get("dpt")
     di = kwargs.get("di")
     print ""
-    print "开始创建或更新供应商商品发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0]
-    InfoLogger.info("开始创建或更新供应商商品发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0])
+    print "开始创建或更新供应商商品发货单发货明细... 日期：%s" % str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0]
+    InfoLogger.info("开始创建或更新供应商商品发货单发货明细... 日期：%s" % str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0])
     print ""
     # sale_product_detail_info 订单商品信息明细
     sale_order_list = do.get_sale_order_list()
@@ -528,14 +528,14 @@ def create_good_invoice(*args,**kwargs):
                 detail_info=[sale_product_detail]
             )
     # 持久化商家发货信息明细
-    start_time, end_time = get_report_time()
+    start_time, end_time = get_report_time(delta=kwargs.get("delta",0))
     coll = mongodb_client.get_coll("DHUI_PartnerGoodDeliverDetail")
 
     flag = None
     log_result = []
     for partner_id in partner_order_deliver_details:
         partner_order_deliver_detail = partner_order_deliver_details[partner_id]
-        curr_time = str(get_report_date()).split(" ")[0] + " 01:00:00"
+        curr_time = str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0] + " 01:00:00"
         alter_time = str(get_curr_time())
         result = coll.find_one({"partner_id": partner_id, "create_time": {"$gte": start_time, "$lte": end_time}})
         if not result:
@@ -601,17 +601,16 @@ def create_order_invoice(*args,**kwargs):
     dpt = kwargs.get("dpt")
     di = kwargs.get("di")
     print ""
-    print "开始创建或更新供应商订单发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0]
-    InfoLogger.info("开始创建或更新供应商订单发货单发货明细... 日期：%s" % str(get_report_date()).split(" ")[0])
+    print "开始创建或更新供应商订单发货单发货明细... 日期：%s" % str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0]
+    InfoLogger.info("开始创建或更新供应商订单发货单发货明细... 日期：%s" % str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0])
     print ""
     # sale_product_detail_info 订单商品信息明细
     coll = mongodb_client.get_coll("DHUI_SaleOrder")
-    start_time, end_time = get_report_time()
+    start_time, end_time = get_report_time(delta=kwargs.get("delta",0))
     sale_order_list = coll.find({
         "pay_time": {"$gte": start_time, "$lte": end_time},
         "order_status": 1,
         "order_goods.goods_type": {"$nin": ["goldbean", "profit", "indiana_count"]}})
-
     partner_sale_order_dict = {}
     for sale_order in sale_order_list:
         sale_order["_id"] = objectid_str(sale_order["_id"])
@@ -632,21 +631,19 @@ def create_order_invoice(*args,**kwargs):
         else:
             continue
         partner_id = good_obj['dhui_user_id']
-
         if partner_sale_order_dict.has_key(partner_id):
             partner_sale_order_dict[partner_id].append(sale_order)
         else :
             partner_sale_order_dict[partner_id] = [sale_order]
 
     # 持久化商家订单发货信息明细
+    flag = None
+    log_result = []
     coll = mongodb_client.get_coll("DHUI_PartnerOrderDeliverDetail")
     for partner_id in  partner_sale_order_dict:
         partner_order_deliver_detail = dict()
 
-        flag = None
-        log_result = []
-
-        curr_time = str(get_report_date()).split(" ")[0] + " 01:00:00"
+        curr_time = str(get_report_date(delta=kwargs.get("delta",0))).split(" ")[0] + " 01:00:00"
         alter_time = str(get_curr_time())
         result = coll.find_one({"partner_id": partner_id, "create_time": {"$gte": start_time, "$lte": end_time}})
         if not result:
@@ -692,13 +689,6 @@ def create_order_invoice(*args,**kwargs):
         print "当前没有订单发货信息..."
         InfoLogger.info("当前没有订单发货信息...")
         print ""
-
-    # try:
-    #     # 发货信息
-    #     result = di.import_invoice()
-    #     InfoLogger.info(result)
-    # except Exception, e:
-    #     print e
 
     return log_result
 

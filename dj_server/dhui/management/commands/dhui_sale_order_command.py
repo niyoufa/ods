@@ -24,10 +24,10 @@ class Command(BaseCommand):
 
         try :
             # 订单基本信息
-            result = do.import_sale_order_data()
+            result = do.import_sale_order_data(*args, **options)
             InfoLogger.info(result)
             # 订单商品信息
-            result = dol.import_sale_order_line()
+            result = dol.import_sale_order_line(*args, **options)
             # 记录日志
             InfoLogger.info(result)
         except Exception,e:

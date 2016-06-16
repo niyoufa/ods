@@ -8,6 +8,8 @@ import ods.clients.mongodb_client as mongodb_client
 import ods.utils as utils
 import ods.settings as settings
 
+free_trade_goods = ["575e6e1f09a0574776a2b226","574d0bf8006f875336deda8c","5761624c09a0570e49af74c3"]
+
 def import_product_template_data(*args, **options):
     coll = mongodb_client.get_coll("DHUI_Product")
     print ""
@@ -22,12 +24,19 @@ def import_product_template_data(*args, **options):
         goods_brief = good["goods_brief"]
         shop_price = good["shop_price"]
         goods_name = box_name + goods_brief
+        good_id = utils.objectid_str(good["_id"])
 
         # partner dhui user id
         if good["goods_type"] == settings.DHUI_PARTNER_DICT["seckill"][2]:
             dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][0]
+            partner_id = settings.DHUI_PARTNER_DICT["seckill"][1]
         else :
             dhui_user_id = settings.DHUI_PARTNER_DICT["default"][0]
+            partner_id = settings.DHUI_PARTNER_DICT["default"][1]
+        if good_id in free_trade_goods:
+            dhui_user_id = settings.DHUI_PARTNER_DICT["other"][0]
+            partner_id = settings.DHUI_PARTNER_DICT["other"][1]
+
         product_template_obj = dict(
             create_uid = 5,
             sku=sku,
@@ -36,6 +45,7 @@ def import_product_template_data(*args, **options):
             list_price=shop_price,
             categ_id=settings.PRODUCT_CATEGRAY_ID,
             dhui_user_id = dhui_user_id,
+            partner_id = partner_id,
             weight_net = 0.0,
             weight = 0.0,
         )
@@ -46,7 +56,7 @@ def import_product_template_data(*args, **options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductTemplate")
         if utils.has_obj(xmlrpcclient, query_params):
-            continue
+            #continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_template_obj)
         else:
