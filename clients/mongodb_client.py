@@ -88,6 +88,22 @@ class Collections :
             username="",
             password="",
             coll_type=None),
+        area = dict(
+            coll_name="area",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username="",
+            password="",
+            coll_type=None),
+        province = dict(
+            coll_name="province",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username="",
+            password="",
+            coll_type=None),
 
     )
 
