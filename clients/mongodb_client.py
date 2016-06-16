@@ -53,6 +53,15 @@ class Collections :
             password=settings.SERVER_MONGODB_PASS,
             coll_type=None),
 
+        DHUI_Shipping=dict(
+            coll_name="shipping",
+            db_name="dhui100",
+            host=settings.SERVER_MONGODB_HOST,
+            port=settings.SERVER_MONGODB_PORT,
+            username=settings.SERVER_MONGODB_USER,
+            password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
+
         DHUI_Partner = dict(
             coll_name="partner",
             db_name="dhui100",
@@ -60,6 +69,15 @@ class Collections :
             port=settings.LOCAL_MONGODB_PORT,
             username=settings.SERVER_MONGODB_USER,
             password=settings.SERVER_MONGODB_PASS,
+            coll_type=None),
+
+        DHUI_PartnerGoodDeliverDetail=dict(
+            coll_name="PartnerGoodDeliverDetail",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username="",
+            password="",
             coll_type=None),
 
         DHUI_PartnerOrderDeliverDetail = dict(
