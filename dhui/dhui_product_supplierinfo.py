@@ -55,7 +55,7 @@ def update_product_supplierinfo(*args,**options):
         )
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ProductSupplierInfo")
         if utils.has_obj(xmlrpcclient, query_params):
-            continue
+            #continue
             result = xmlrpcclient.search(query_params)
             xmlrpcclient.update(result[0], product_supplierinfo_obj)
         else:

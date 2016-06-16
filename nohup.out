@@ -64,3 +64,562 @@ INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
 INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_supplierinfo.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 4.75ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.45ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.44ms
+INFO:tornado.general:/opt/odoo/develop/ods/utils.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 6.02ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.91ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 1.96ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=57611e0609a0573e8819c596&shipping_status=1 (218.2.208.50) 7.61ms
+INFO:tornado.general:/opt/odoo/develop/ods/settings.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 5.86ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.24ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.16ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=57611e0609a0573e8819c596&shipping_status=10 (218.2.208.50) 1.54ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.20ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=57611e0609a0573e8819c596&shipping_status=10 (218.2.208.50) 1.51ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.11ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.31ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (120.26.241.214) 1.97ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a709a0571c907085a7&shipping_status=10 (218.2.208.50) 2.94ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.19ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=57611e0609a0573e8819c596&shipping_status=10 (218.2.208.50) 2.04ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.19ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (120.26.241.214) 1.38ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.20ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=10 (218.2.208.50) 2.33ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.07ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.15ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.19ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.07ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.09ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.12ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.53ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.15ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.11ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.12ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.24ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.10ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.46ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.12ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.09ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.25ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.10ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.08ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 2.06ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.25ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.51ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.11ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.11ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.14ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.25ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.11ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.14ms
+INFO:tornado.access:200 POST /odoo/api/order_partner_deliver_detail_list (121.42.0.36) 3.67ms
+ERROR:tornado.application:Uncaught exception POST /odoo/api/order_partner_deliver_detail_list (121.42.0.36)
+HTTPServerRequest(protocol='http', host='120.26.226.63:9092', method='POST', uri='/odoo/api/order_partner_deliver_detail_list', version='HTTP/1.1', remote_ip='121.42.0.36', headers={'Content-Length': '236', 'Connection': 'keep-alive', 'Accept': '*/*', 'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;Alibaba.Security.Heimdall.3129662)', 'Host': '120.26.226.63:9092', 'Referer': 'http://120.26.226.63:9092/odoo/api/order_partner_deliver_detail_list', 'Content-Type': 'application/x-www-form-urlencoded'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1401, in _stack_context_handle_exception
+    raise_exc_info((type, value, traceback))
+  File "/usr/local/lib/python2.7/dist-packages/tornado/stack_context.py", line 314, in wrapped
+    ret = fn(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tornado/gen.py", line 196, in final_callback
+    if future.result() is not None:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/concurrent.py", line 232, in result
+    raise_exc_info(self._exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/tornado/gen.py", line 1017, in run
+    yielded = self.gen.send(value)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 186, in post
+    result["data"] = data["data"]
+TypeError: string indices must be integers, not str
+WARNING:tornado.access:405 POST /odoo/api/order_partner_deliver_detail/get (121.42.0.36) 0.73ms
+WARNING:tornado.access:404 GET /odoo/api/order_partner_deliver_status/get/(%23_memberAccess%3D%40ognl.OgnlContext%40DEFAULT_MEMBER_ACCESS)%3F((%23writ%3D(%23attr%5B%23parameters.com%5B0%5D%5D).getWriter())%2C%23writ.println(23123*66667))%3Aindex.xhtml?com=com.opensymphony.xwork2.dispatcher.HttpServletResponse (121.42.0.36) 0.64ms
+ERROR:tornado.application:Uncaught exception POST /odoo/api/order_partner_deliver_status/get (121.42.0.36)
+HTTPServerRequest(protocol='http', host='120.26.226.63:9092', method='POST', uri='/odoo/api/order_partner_deliver_status/get', version='HTTP/1.1', remote_ip='121.42.0.36', headers={'Content-Length': '236', 'Connection': 'keep-alive', 'Accept': '*/*', 'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;Alibaba.Security.Heimdall.3129662)', 'Host': '120.26.226.63:9092', 'Referer': 'http://120.26.226.63:9092/odoo/api/order_partner_deliver_status/get', 'Content-Type': 'application/x-www-form-urlencoded'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1401, in _stack_context_handle_exception
+    raise_exc_info((type, value, traceback))
+  File "/usr/local/lib/python2.7/dist-packages/tornado/stack_context.py", line 314, in wrapped
+    ret = fn(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tornado/gen.py", line 196, in final_callback
+    if future.result() is not None:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/concurrent.py", line 232, in result
+    raise_exc_info(self._exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/tornado/gen.py", line 282, in wrapper
+    yielded = next(result)
+  File "/opt/odoo/develop/ods/tnd_server/handlers/partner_handlers.py", line 224, in post
+    order_partner_deliver_detail = coll.find_one({"_id": utils.create_objectid(deliver_id)})
+UnboundLocalError: local variable 'deliver_id' referenced before assignment
+ERROR:tornado.access:500 POST /odoo/api/order_partner_deliver_status/get (121.42.0.36) 1.28ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.14ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.11ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (218.2.208.50) 2.86ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.09ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (218.2.208.50) 2.86ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=1 (218.2.208.50) 2.84ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.17ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=10 (218.2.208.50) 2.84ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=1 (218.2.208.50) 2.93ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.07ms
+INFO:tornado.access:200 GET /odoo/api/order_partner_deliver_detail_list?partner_id=571dbf0c006f874b52b126aa&start_time=2016-06-01%2000:00:00&end_time=2016-06-30%2000:00:00 (218.2.208.50) 4.37ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.29ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.14ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.13ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.13ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time&shipping_status=1 (218.2.208.50) 2.33ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.27ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.19ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.17ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.16ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.91ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.21ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 3.13ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.44ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.08ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.19ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.06ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.16ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.20ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.15ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.22ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.07ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.64ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.19ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.44ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.18ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.52ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.08ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.13ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.11ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 3.13ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.14ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.19ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.68ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.21ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.30ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.05ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.25ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.23ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.23ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.19ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.17ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.50ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.45ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.27ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.26ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.23ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.15ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.12ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.15ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.23ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.19ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.19ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.09ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.10ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.05ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.18ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.55ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.14ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.08ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.17ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.23ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.82ms
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_supplierinfo.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 5.86ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.50ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.44ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.37ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.42ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.46ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.33ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.66ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.42ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.39ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10', version='HTTP/1.1', remote_ip='120.26.241.214', headers={'Connection': 'close', 'Host': 'web.dhui100.com:9092', 'Accept-Encoding': 'gzip'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=575ccaa509a05732b13748bd&shipping_status=10 (120.26.241.214) 1.91ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 3.82ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.38ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.40ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+ERROR:tornado.application:Uncaught exception GET /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=10 (218.2.208.50)
+HTTPServerRequest(protocol='http', host='web.dhui100.com:9092', method='GET', uri='/odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=10', version='HTTP/1.1', remote_ip='218.2.208.50', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': 'web.dhui100.com:9092', 'Accept': '*/*', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Postman-Token': 'ee2bab5f-b6ad-6c96-4450-5303735d29ed'})
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "/opt/odoo/develop/ods/tnd_server/handler.py", line 21, in get
+    if options.app_get_to_post:
+  File "/usr/local/lib/python2.7/dist-packages/tornado/options.py", line 119, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'app-get-to-post'
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=10 (218.2.208.50) 1.10ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=10 (218.2.208.50) 2.64ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.73ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=576129a609a0571c907085a5&shipping_status=1 (218.2.208.50) 2.87ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 3.51ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.33ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 3.33ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.51ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.45ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.50ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.42ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.44ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.57ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.68ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.76ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.66ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.34ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.65ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.42ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.32ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.50ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.36ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 3.70ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.47ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.35ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=1 (218.2.208.50) 2.52ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.37ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.35ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.58ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.48ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.56ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 3.52ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 2.71ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.38ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=1 (218.2.208.50) 2.66ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.70ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.43ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 2.48ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.48ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post?order_id=5762584509a05771071994eb&shipping_status=1 (218.2.208.50) 2.57ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.50ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.40ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 1.49ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.44ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.48ms
+INFO:tornado.access:200 POST /odoo/api/partner_deliver_order_status/post (120.26.241.214) 2.50ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.35ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.40ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.46ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.48ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.39ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.34ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.46ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.34ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.32ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.39ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.49ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.75ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.33ms

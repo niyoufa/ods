@@ -611,7 +611,6 @@ def create_order_invoice(*args,**kwargs):
         "pay_time": {"$gte": start_time, "$lte": end_time},
         "order_status": 1,
         "order_goods.goods_type": {"$nin": ["goldbean", "profit", "indiana_count"]}})
-
     partner_sale_order_dict = {}
     for sale_order in sale_order_list:
         sale_order["_id"] = objectid_str(sale_order["_id"])
