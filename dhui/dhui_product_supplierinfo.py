@@ -39,7 +39,7 @@ def update_product_supplierinfo(*args,**options):
             dhui_user_id = settings.DHUI_PARTNER_DICT["default"][1]
 
         good_id = utils.objectid_str(good["_id"])
-        if good_id == "575e6e1f09a0574776a2b226" or good_id =="574d0bf8006f875336deda8c":
+        if good_id == "575e6e1f09a0574776a2b226" or good_id =="574d0bf8006f875336deda8c" or good_id == "5761624c09a0570e49af74c3":
             dhui_user_id = settings.DHUI_PARTNER_DICT["other"][1]
 
         product_supplierinfo_obj = dict(
