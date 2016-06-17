@@ -26,6 +26,8 @@ class TABLES :
 
         SaleOrderLine = dict(table_name="sale.order.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
+        SaleOrderAddress = dict(table_name="sale.order.address",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
+
         PurchaseOrder = dict(table_name="purchase.order",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         PurchaseOrderLine = dict(table_name="purchase.order.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),

@@ -11,7 +11,7 @@ import ods.settings as settings
 def import_user_data(*args,**options):
     customer_coll = mongodb_client.get_coll("DHUI_User")
     address_coll = mongodb_client.get_coll("DHUI_Address")
-    user_list = customer_coll.find({}).skip(12000)
+    user_list = customer_coll.find({})
     for user in user_list :
         user_id = utils.objectid_str(user["_id"])
         address = address_coll.find_one({"user_id":user_id})
@@ -19,30 +19,27 @@ def import_user_data(*args,**options):
             address_id = ""
         else :
             address_id = utils.objectid_str(address["_id"])
-        try :
-            if user.has_key("wx_info"):
-                wx_info = user["wx_info"]
-                dhui_user_obj = dict(
-                    user_id=user_id,
-                    address_id=address_id,
-                    nickname= wx_info.get("nickname",""),
-                    province = wx_info.get("province",""),
-                    language = wx_info.get("language",""),
-                    openid = wx_info.get("openid",""),
-                    unionid = wx_info.get("unionid",""),
-                    sex = wx_info.get("sex",0),
-                    country = wx_info.get("country",""),
-                    privilege = json.dumps(wx_info.get("privilege",[])),
-                    headimgurl= wx_info.get("headimgurl",""),
-                    city = wx_info.get("city",""),
-                )
-            else :
-                dhui_user_obj = dict(
-                    user_id=user_id,
-                    address_id=address_id,
-                )
-        except Exception ,e:
-            continue
+        if user.has_key("wx_info"):
+            wx_info = user["wx_info"]
+            dhui_user_obj = dict(
+                user_id=user_id,
+                address_id=address_id,
+                nickname= wx_info.get("nickname",""),
+                province = wx_info.get("province",""),
+                language = wx_info.get("language",""),
+                openid = wx_info.get("openid",""),
+                unionid = wx_info.get("unionid",""),
+                sex = wx_info.get("sex",0),
+                country = wx_info.get("country",""),
+                privilege = json.dumps(wx_info.get("privilege",[])),
+                headimgurl= wx_info.get("headimgurl",""),
+                city = wx_info.get("city",""),
+            )
+        else :
+            dhui_user_obj = dict(
+                user_id=user_id,
+                address_id=address_id,
+            )
 
         query_params = dict(
             user_id= user_id,
