@@ -1,43 +1,6 @@
 #coding=utf-8
 
-#ODS_PARENT_PATH = '/home/dhui100/develop/'
-ODS_PARENT_PATH = '/home/nyf/develop/'
-
-ODOO_HOST = "192.168.151.54"
-ODOO_PORT = 8889
-ODOO_DB = "dhui"
-ODOO_USER = "admin"
-ODOO_PASS = "dhui123"
-
-SERVER_MONGODB_HOST = "localhost"
-SERVER_MONGODB_PORT = 27017
-SERVER_MONGO_DB = "dhui100"
-SERVER_MONGODB_USER = ""
-SERVER_MONGODB_PASS = ""
-
-LOCAL_MONGODB_HOST = "120.26.226.63"
-LOCAL_MONGODB_PORT = 27018
-LOCAL_MONGO_DB = "dhuiodoo"
-
-REPORT_PATH = "/home/nyf/develop/dhui/ods/reports/"
-
-# ODOO_HOST = "120.26.226.63"
-# ODOO_PORT = 8889
-# ODOO_DB = "dhui"
-# ODOO_USER = "admin"
-# ODOO_PASS = "dhui123"
-
-# SERVER_MONGODB_HOST = "120.26.226.63"
-# SERVER_MONGODB_PORT = 27017
-# SERVER_MONGO_DB = "dhui100"
-# SERVER_MONGODB_USER = "viewer"
-# SERVER_MONGODB_PASS = "DhuiViewer2016"
-
-# LOCAL_MONGODB_HOST = "120.26.226.63"
-# LOCAL_MONGODB_PORT = 27018
-# LOCAL_MONGO_DB = "dhuiodoo"
-
-# REPORT_PATH = "/opt/odoo/develop/ods/reports/"
+from local_settings import *
 
 #东汇商城数据库
 DHUI_ODOO_DATABASE = "dhui"
