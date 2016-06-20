@@ -14,13 +14,25 @@ free_trade_goods = ["575e6e1f09a0574776a2b226","574d0bf8006f875336deda8c","57616
 
 def update_product_supplierinfo(*args,**options):
     coll = mongodb_client.get_coll("DHUI_Product")
+    partner_coll = mongodb_client.get_coll("DHUI_Partner")
 
     print "update product supplierinfo ...\n"
+
+    partner_list = partner_coll.find()
+    partner_dict = {}
+    for partner in partner_list:
+        partner_type = partner["type"]
+        partner_dict[partner_type] = {}
+        dic = {}
+        dic["dhui_user_id"] = partner["dhui_user_id"]
+        dic["partner_id"] = partner["partner_id"]
+        partner_dict[partner_type] = dic
 
     good_list = coll.find()
     log_result = []
     for good in good_list:
         sku = good["sku"]
+        good_id = utils.objectid_str(good["_id"])
         query_params = dict(
             sku=sku,
             categ_id=settings.PRODUCT_CATEGRAY_ID,
@@ -34,14 +46,12 @@ def update_product_supplierinfo(*args,**options):
             continue
 
         # partner dhui user id
-        if good["goods_type"] == settings.DHUI_PARTNER_DICT["seckill"][2]:
-            dhui_user_id = settings.DHUI_PARTNER_DICT["seckill"][1]
+        if good["goods_type"] in ["seckill", "normal"]:
+            dhui_user_id = partner_dict[good["goods_type"]]["partner_id"]
+        elif good_id in free_trade_goods:
+            dhui_user_id = partner_dict["other"]["partner_id"]
         else:
-            dhui_user_id = settings.DHUI_PARTNER_DICT["default"][1]
-
-        good_id = utils.objectid_str(good["_id"])
-        if good_id in free_trade_goods :
-            dhui_user_id = settings.DHUI_PARTNER_DICT["other"][1]
+            dhui_user_id = partner_dict["normal"]["partner_id"]
 
         product_supplierinfo_obj = dict(
             # 东汇商城供应商

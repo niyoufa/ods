@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dhui',
+    'dhui',#数据导入
+    'report',#报表导出
 )
 
 MIDDLEWARE_CLASSES = (

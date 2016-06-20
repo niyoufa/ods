@@ -6,7 +6,6 @@ import pdb
 
 import ods.settings as settings
 import ods.utils as utils
-import ods.dhui.dhui_invoice as di
 
 class Xlsx_Reporter(object):
     """
@@ -44,7 +43,8 @@ class Xlsx_Reporter(object):
             filename = settings.REPORT_PATH + str(datetime.datetime.now()).replace("-","_").\
         replace(" ","_").replace(":","_").replace(".","_") + ".xlsx"
         else :
-            filename = settings.REPORT_PATH + filename + ".xlsx"
+            curr_time = datetime.datetime.now()
+            filename = settings.REPORT_PATH + filename + "(%s-%s-%s)"%(curr_time.year,curr_time.month,curr_time.day) + ".xlsx"
         return filename
 
 
@@ -188,30 +188,5 @@ class Xlsx_Reporter(object):
 
         self.close()
 
-    def __get_invoice_report_columns(self,*args,**options):
-        columns = []
-        data_set = []
-        invoice_data = di.get_good_invoice_data(delta=1)
-        columns = [u'发货单编号',u'创建时间',u'供应商',u'发货单状态']
-        if len(invoice_data):
-            for invoice in invoice_data:
-                data_set.append([
-                    invoice['_id'],
-                    invoice['create_time'],
-                    invoice['partner_id'],
-                    invoice['deliver_status'],
-                ])
-
-        return columns, data_set
-
-    # 每日生成发货单xlsx报表到指定目录
-    def report_invoice_xlsx(self):
-        columns, data_set = self.__get_invoice_report_columns()
-        worksheet = self.get_worksheet()
-        self.export_xlsx(columns=columns,data_set=data_set,worksheet=worksheet)
-
-
 if __name__ == "__main__":
     pass
-    # xlsx_reporter = Xlsx_Reporter(filename=utils.get_invoice_report_name())
-    # xlsx_reporter.report_invoice_xlsx()
