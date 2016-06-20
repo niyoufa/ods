@@ -623,3 +623,17 @@ INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720
 INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.49ms
 INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.75ms
 INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.33ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.39ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.43ms
+INFO:tornado.access:304 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb (218.2.208.50) 2.41ms
+WARNING:tornado.access:404 GET /server-status/ (121.42.0.16) 0.55ms
+WARNING:tornado.access:404 GET /server-status/ (121.42.0.16) 0.55ms
+WARNING:tornado.access:404 GET /odoo/api/.DS_Store (121.42.0.16) 0.50ms
+WARNING:tornado.access:404 GET /odoo/api/.DS_Store (121.42.0.16) 0.61ms
+WARNING:tornado.access:404 GET /odoo/api/.svn/entries (121.42.0.16) 0.53ms
+WARNING:tornado.access:404 GET /odoo/api/.svn/entries (121.42.0.16) 0.57ms
+WARNING:tornado.access:404 GET /odoo/api/.git/config (121.42.0.16) 0.59ms
+WARNING:tornado.access:404 GET /odoo/api/.htaccess (121.42.0.16) 0.51ms
+INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.44ms
+INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
