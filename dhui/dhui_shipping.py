@@ -10,14 +10,14 @@ import ods.settings as settings
 
 def import_shipping_data(*args,**kwargs):
     shipping_coll = mongodb_client.get_coll("DHUI_Shipping")
-    start_time, end_time = utils.get_time_range()
+    start_time, end_time = utils.get_time_range(delta=0)
     shipping_list = shipping_coll.find({
         "add_time":{
             "$gte":start_time,
             "$lte":end_time,
         }
     })
-    for shipping in shipping_list[1:2]:
+    for shipping in shipping_list:
         _id = utils.objectid_str(shipping['_id'])
         company = shipping['company']
         number = shipping['number']
@@ -60,8 +60,10 @@ def import_shipping_data(*args,**kwargs):
         else:
             utils.load_obj(xmlrpcclient, shipping_address_obj)
 
+        #sale_order
         order_id_list = []
         xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
+
         for order in orders :
             order_id = order["_id"]
             query_params = dict(
@@ -87,12 +89,12 @@ def import_shipping_data(*args,**kwargs):
         utils.update_obj_list(xmlrpcclient,obj_list)
 
         # kuaidi
-        status = track['status']
-        last_result = track['lastResult']
-        message = track['message']
-        billstatus = track['billstatus']
-        auto_check = track['autoCheck']
-        com_old = track['comOld']
+        status = track.get("status","")
+        last_result = track.get("lastResult",{})
+        message = track.get("message","")
+        billstatus = track.get("billstatus","")
+        auto_check = track.get("autoCheck",False)
+        com_old = track.get("comOld","")
         query_params = dict(
             shipping_id = shipping_id,
         )
@@ -112,14 +114,14 @@ def import_shipping_data(*args,**kwargs):
         else :
             kuaidi_id = utils.load_obj(xmlrpcclient,shipping_kuaidi_obj)
 
-        status = last_result['status']
-        state = last_result['state']
-        ischeck = last_result['ischeck']
-        message = last_result['message']
-        com = last_result['com']
-        nu = last_result['nu']
-        condition = last_result['condition']
-        data = last_result['data']
+        status = last_result.get("status","")
+        state = last_result.get("state","")
+        ischeck = last_result.get("ischeck",False)
+        message = last_result.get("message","")
+        com = last_result.get("com","")
+        nu = last_result.get("nu","")
+        condition = last_result.get("condition","")
+        data = last_result.get("data",[])
 
         query_params = dict(
             kuaidi_id = kuaidi_id,
@@ -164,6 +166,18 @@ def import_shipping_data(*args,**kwargs):
                 xmlrpcclient.update(result[0],last_result_line_obj)
             else :
                 utils.load_obj(xmlrpcclient,last_result_line_obj)
+
+def get_shippping_data(*args,**options):
+    start_time, end_time = utils.get_report_time(delta=options.get("delta", 0))
+    extra_query_params = dict(
+        start_time=("create_date", ">=", start_time),
+        end_time=("create_date", "<=", end_time),
+    )
+    query_params = dict()
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiShipping")
+    shipping_list = utils.read_obj(xmlrpcclient, query_params, extra_query_params)
+    print shipping_list
+    return shipping_list
 
 if __name__ == "__main__":
     import_shipping_data()

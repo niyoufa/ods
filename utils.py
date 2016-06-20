@@ -404,6 +404,12 @@ def get_date_time(date_time_str):
         start_time = str(this_date).split(" ")[0] + " " + "00:00:00"
     return start_time, end_time
 
+
+def get_invoice_report_name(*args, **options):
+    # 每天生成一个订单发货表
+    start_time, end_time = get_report_time()
+    return "物流单(%s)" % (start_time.split(" ")[0])
+
 # utc 与本地时间转换
 def utc2local(utc_st):
     """UTC时间转本地时间（+8:00）"""
@@ -572,7 +578,7 @@ def create_good_invoice(*args,**kwargs):
 
     try:
         # 发货信息
-        result = di.import_invoice()
+        result = di.import_good_invoice()
         InfoLogger.info(result)
     except Exception, e:
         print e

@@ -9,7 +9,7 @@ import ods.utils as utils
 import ods.settings as settings
 
 
-def import_invoice(*args,**options):
+def import_good_invoice(*args,**options):
     start_time, end_time = utils.get_report_time(delta=options.get("delta",0))
     coll = mongodb_client.get_coll("DHUI_PartnerGoodDeliverDetail")
     query_params = {
@@ -128,5 +128,26 @@ def import_invoice(*args,**options):
 
     return log_result
 
+def get_good_invoice_data(*args,**options):
+    start_time, end_time = utils.get_report_time(delta=options.get("delta", 0))
+
+    invoice_xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiInvoice")
+    extra_query_params = dict(
+        start_time=("create_time", ">=", start_time),
+        end_tme=("create_time", "<=", end_time),
+    )
+    query_params = {}
+    good_invoice_list = utils.read_obj(invoice_xmlrpcclient, query_params, extra_query_params)
+
+    good_invoice_data = []
+    for good_invoice in good_invoice_list :
+        good_invoice_data.append(dict(
+            _id=good_invoice["_id"],
+            create_time=good_invoice["create_time"],
+            partner_id=good_invoice["partner_id"][1],
+            deliver_status=u'未发货' if good_invoice["deliver_status"] == False else u'已发货'
+        ))
+    return good_invoice_data
+
 if __name__ == "__main__":
-    import_invoice()
+    import_good_invoice()
