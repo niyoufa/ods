@@ -125,7 +125,7 @@ def has_obj(xmlrpcclient,query_params):
         return False
 
 def read_obj(xmlrpcclient,query_params,*args):
-    if query_params.has_key("id_list"):
+    if query_params.has_key("id_list") and query_params.has_key("field_list") :
         result = xmlrpcclient.read_by_ids(query_params,*args)
     else :
         result = xmlrpcclient.read(query_params,*args)

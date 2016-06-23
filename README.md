@@ -3,6 +3,9 @@ odoo dock system
 
 odoo开源ERP系统对接系统
 
+author : niyoufa
+create date   : 2016-05-10
+
 1. 系统架构
 ods包括三个逻辑部分：
     ods.clients ： 操作odoo数据对象模块和操作mongodb数据模块,
