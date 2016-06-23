@@ -218,7 +218,6 @@ def update_sale_order_status(*args,**kwargs):
     utils.update_obj_list(xmlrpcclient, obj_list)
 
 def get_order_list(*args,**options):
-    pdb.set_trace()
     xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
     user_list = xmlrpcclient.read({})
 

@@ -79,16 +79,31 @@ def import_dhuitask_user(*args,**options):
                 headimgurl=wx_info.get("headimgurl", ""),
                 city=wx_info.get("city", ""),
 
-                #res.users
-                company_id = 1,
-                name = wx_info.get("nickname", u"东汇用户"),
-                login = wx_info.get("nickname", u"东汇用户") + "@dhui.com",
+                # res.users
+                company_id=1,
+                login=str(datetime.datetime.now()).replace("-", "").replace(" ", "").replace(":", "").replace(".", ""),
+                name=wx_info.get("nickname", u""),
+                email=str(datetime.datetime.now()).replace("-", "").replace(" ", "").replace(":", "").replace(".", "") \
+                      + "@dhui.com",
+                password_crypt="$pbkdf2-sha512$6400$5FzLOcdYaw2htFYq\
+                    5byXkg$g63/4Py02yxe8MQ1az7FfMI4yLm8Y.mMLpkWlkggZkmMhx3\
+                    Wrh2sUjwDcGRdXpAXeRksK17eQpPhwpwXIoQhtg",
 
             )
         else:
             dhui_user_obj = dict(
                 user_id=user_id,
                 address_id=address_id,
+
+                # res.users
+                company_id=1,
+                login= str(datetime.datetime.now()).replace("-","").replace(" ","").replace(":","").replace(".",""),
+                name=wx_info.get("nickname", u""),
+                email= str(datetime.datetime.now()).replace("-","").replace(" ","").replace(":","").replace(".","")\
+                      + "@dhui.com",
+                password_crypt = "$pbkdf2-sha512$6400$5FzLOcdYaw2htFYq\
+                5byXkg$g63/4Py02yxe8MQ1az7FfMI4yLm8Y.mMLpkWlkggZkmMhx3\
+                Wrh2sUjwDcGRdXpAXeRksK17eQpPhwpwXIoQhtg",
             )
 
         query_params = dict(
@@ -102,22 +117,6 @@ def import_dhuitask_user(*args,**options):
         else:
             utils.load_obj(xmlrpcclient, dhui_user_obj)
             print dhui_user_obj
-
-        #修改用户权限（修改所属群组)
-        # res_groups_users_rel
-        # self.write
-        # self = res.users
-        # cr = < openerp.sql_db.Cursor
-        # object
-        # at
-        # 0x7f94480ee5d0 >
-        # uid = 1
-        # fields = [151]
-        # args = ({'sel_groups_9_28_10': False, 'sel_groups_53_54': 53},)
-        # options = {
-        #     'context': {'lang': 'zh_CN', 'params': {'action': 76}, 'search_default_no_share': 1, 'tz': 'Asia/Shanghai',
-        #                 'uid': 1}}
-
 
 def get_user_list(*args,**options):
     xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiUser")
