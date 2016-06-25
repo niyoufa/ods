@@ -5,6 +5,7 @@ import datetime
 import pdb
 
 import ods.settings as settings
+import ods.utils as utils
 
 class Xlsx_Reporter(object):
     """
@@ -12,6 +13,16 @@ class Xlsx_Reporter(object):
         author : niyoufa
         date : 2016-06-16
         refer : xlsxwriter
+        example1 : 将数据写入xlsx指定位置
+            xlsx_reporter = Xlsx_Reporter(filename="example")
+            columns = [u'姓名','age','sex','address']
+            data_set = [["niyoufa", "25"], ["liuxiaoyan", "25",'woman'],["liuxiaoyan", "25"]]
+            worksheet = xlsx_reporter.get_worksheet()
+            xlsx_reporter.init_style(columns=columns,data_set=data_set,worksheet=worksheet)
+            xlsx_reporter.init_formula(columns=columns, data_set=data_set, worksheet=worksheet)
+            xlsx_reporter.report(columns=columns,data_set=data_set,worksheet=worksheet)
+            xlsx_reporter.close()
+
     """
     @classmethod
     def get_x_index_list(cls):
@@ -27,8 +38,15 @@ class Xlsx_Reporter(object):
             return chr(ord(x_index) + 1)
 
     def __get_workbook_name(self,*args,**options):
-        return options.get("filename",settings.REPORT_PATH + str(datetime.datetime.now()).replace("-","_").\
-        replace(" ","_").replace(":","_").replace(".","_")) + ".xlsx"
+        filename =  options.get("filename","")
+        if filename == "" :
+            filename = settings.REPORT_PATH + str(datetime.datetime.now()).replace("-","_").\
+        replace(" ","_").replace(":","_").replace(".","_") + ".xlsx"
+        else :
+            curr_time = datetime.datetime.now()
+            filename = settings.REPORT_PATH + filename + "(%s-%s-%s)"%(curr_time.year,curr_time.month,curr_time.day) + ".xlsx"
+        return filename
+
 
     def __create_workbook(self,filename,*args,**options):
         return xlsxwriter.Workbook(filename)
@@ -71,58 +89,104 @@ class Xlsx_Reporter(object):
     def close(self):
         self.workbook.close()
 
+    def __get_columns_range(self,columns,*args,**options):
+        if type(columns) != type([]):
+            raise Exception("params error : columns must be a list")
+        start_index = options.get("start_index","A")
+        length = len(columns)
+        if length :
+            col_range = start_index + ":" + chr(ord("A")+length-1)
+        else :
+            col_range = start_index + ":" + chr(ord("A"))
+        return col_range
+
+    def __get_rows_range(self,data_set,*args,**options):
+        if len(data_set):
+            if type(data_set[0]) != type([]):
+                raise Exception("params error : data_set must be like this [[],[]]")
+        if len(data_set):
+            rows_range = (len(data_set),max([len(row) for row in data_set ]))
+        else :
+            rows_range = (0,0)
+        return rows_range
+
+    def __get_data_set_range(self, columns, data_set, *args, **options):
+        columns_range = self.__get_columns_range(columns)
+        rows_range = self.__get_rows_range(data_set)
+        if len(columns_range) == 0 :
+            date_set_range = ""
+        else :
+            x_index_list = columns_range.split(":")
+            date_set_range = x_index_list[0]+str(1) + ":" + x_index_list[1]+str(rows_range[0]+1)
+        return date_set_range
+
+    def init_style(self, *args, **options):
+
+        # init style const
+        self.bold = self.workbook.add_format({'bold': 1})
+
+        worksheet = options.get("worksheet", None)
+        columns = options.get("columns", [])
+        data_set = options.get("data_set", [])
+
+        if len(data_set):
+            if type(data_set[0]) != type([]):
+                raise Exception("params error : data_set must be like this [[],[]]")
+
+        if len(data_set) and len(columns) < max([len(row) for row in data_set ]):
+            raise Exception("params error : the length of columns must equal the length of data_set ")
+
+        if not worksheet:
+            raise Exception("params error :please set worksheet")
+        else:
+            columns_range = self.__get_columns_range(columns)
+            worksheet.set_column(columns_range, 20)
+            worksheet.set_row(0, 20, self.bold)
+
+    def init_formula(self,*args,**options):
+        worksheet = options.get("worksheet", None)
+        columns = options.get("columns", [])
+        data_set = options.get("data_set", [])
+
+        if not worksheet:
+            raise Exception("params error :please set worksheet")
+        else:
+            data_set_range = self.__get_data_set_range(columns,data_set)
+            if data_set_range == "":
+                return
+            worksheet.autofilter(data_set_range)
+
     # 生成xlsx报表
     def report(self,*args,**options):
-        X_INDEXS = [chr(i).upper() for i in range(97,123)] + self.get_x_index_list()
-        Y_INDEXS = [str(i) for i in range(1,1000)]
-        worksheet = options.get("worksheet",None)
-        columns = options.get("columns",[])
-        data_set = options.get("data_set",[])
-        if worksheet == None or  type(columns) != type([]) or type(data_set) != type([]) :
+        """
+        :param args:
+        :param options: worksheet, columns 表头 [], data_set 数据数组 [[],[]]
+        :return: None
+        """
+        worksheet = options.get("worksheet", None)
+        columns = options.get("columns", [])
+        data_set = options.get("data_set", [])
+
+        if len(data_set):
+            if type(data_set[0]) != type([]):
+                raise Exception("params error : data_set must be like this [[],[]]")
+
+        if worksheet == None or type(columns) != type([]) or type(data_set) != type([]):
             raise Exception("worksheet can not be None Type")
-        else :
-            start_index = str(options.get("x_start","A1"))
-            if not ( len(start_index) == 2 and start_index[0] in X_INDEXS and start_index[1]  in Y_INDEXS ) : 
-                raise Exception("param error :start_index must be right format")
-            else :
-                start_x_index = start_index[0]
-                y_index = start_index[1]
-                x_index = start_x_index
-                for value in columns:
-                    worksheet.write(x_index+y_index,value)
-                    x_index = self.get_next_x_index(x_index)
+        else:
+            worksheet.write_row('A1', columns)
+            row = 1
+            for row_data in (data_set):
+                worksheet.write_row(row, 0, row_data)
+                row += 1
+        self.close()
 
-                x_index = start_x_index
-                start_y_index = int(start_index[1]) + 1
-                y_index = start_y_index
-                if len(data_set):
-                    if  type(data_set[0]) != type([]) :
-                        for value in data_set :
-                            worksheet.write(x_index+str(y_index),value)
-                            x_index = self.get_next_x_index(x_index)
-                    else :
-                        for i in data_set :
-                            for j in i:
-                                worksheet.write(x_index+str(y_index),j)
-                                x_index = self.get_next_x_index(x_index)
-                            x_index = start_x_index
-                            y_index += 1
-                            
-                else :
-                    pass
+    def export_xlsx(self,*args,**options):
+        self.init_style(*args,**options)
+        self.init_formula(*args,**options)
+        self.report(*args,**options)
 
-        # self.close()
-
-
-    # 生成发货单xlsx报表
-    def report_invoice(self):
-        pass
+        self.close()
 
 if __name__ == "__main__":
     pass
-# import ods
-# import ods.clients.report_client as report_client
-# xlsx_reporter = report_client.Xlsx_Reporter("test")
-# worksheet = xlsx_reporter.get_worksheet()
-# xlsx_reporter.report(columns=["name"],data_set=[ ["niyoufa"] , ["liuxiaoyan"] ] ,worksheet=worksheet)
-# xlsx_reporter.close()

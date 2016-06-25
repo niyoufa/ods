@@ -21,7 +21,6 @@ class Command(BaseCommand):
         print "\n"
         print "开始导入订单数据到odoo..."
         InfoLogger.info("开始导入订单数据到odoo...")
-
         try :
             # 订单基本信息
             result = do.import_sale_order_data(*args, **options)

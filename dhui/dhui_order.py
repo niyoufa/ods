@@ -217,5 +217,9 @@ def update_sale_order_status(*args,**kwargs):
         ))
     utils.update_obj_list(xmlrpcclient, obj_list)
 
+def get_order_list(*args,**options):
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("SaleOrder")
+    user_list = xmlrpcclient.read({})
+
 if __name__ == "__main__":
     import_sale_order_data()

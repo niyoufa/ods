@@ -63,12 +63,21 @@ class Collections :
             coll_type=None),
 
         DHUI_Partner = dict(
-            coll_name="partner",
-            db_name="dhui100",
-            host=settings.SERVER_MONGODB_HOST,
+            coll_name="Partner",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
             port=settings.LOCAL_MONGODB_PORT,
-            username=settings.SERVER_MONGODB_USER,
-            password=settings.SERVER_MONGODB_PASS,
+            username="",
+            password="",
+            coll_type=None),
+
+        DHUI_GoodPartner=dict(
+            coll_name="GoodPartner",
+            db_name="dhuiodoo",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+            username="",
+            password="",
             coll_type=None),
 
         DHUI_PartnerGoodDeliverDetail=dict(
@@ -104,6 +113,22 @@ class Collections :
             username="",
             password="",
             coll_type=None),
+        links = dict(
+            coll_name = "links",
+            db_name = "niyoufa",
+            username="",
+            password="",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+        ),
+        repository = dict(
+            coll_name = "repository",
+            db_name = "niyoufa",
+            username="",
+            password="",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+        ),
 
     )
 

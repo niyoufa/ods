@@ -13,8 +13,8 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 #配置ods系统根路径
-#ODS_PARENT_PATH = '/home/dhui100/develop/'
-ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
+ODS_PARENT_PATH = '/home/dhui100/develop/'
+#ODS_PARENT_PATH = '/home/nyf/develop/dhui/'
 #ODS_PARENT_PATH = '/opt/odoo/develop'
 sys.path.append(ODS_PARENT_PATH)
 from ods.settings import *
@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dhui',
+    'dhui',#数据导入
+    'report',#报表导出
 )
 
 MIDDLEWARE_CLASSES = (

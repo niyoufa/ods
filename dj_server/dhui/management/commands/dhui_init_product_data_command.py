@@ -11,6 +11,7 @@ from optparse import make_option
 import ods.dhui.dhui_product_template as dpt
 import ods.dhui.dhui_product_supplierinfo as dps
 import ods.dhui.dhui_stock_warehouse_orderpoint as dpwo
+import ods.dhui.dhui_init_partner_info as dipi
 
 InfoLogger = logging.getLogger("dhui_commands")
 ErrorLogger = logging.getLogger("dhui_commands_error")
@@ -24,6 +25,9 @@ class Command(BaseCommand):
         InfoLogger.info("开始导入商品数据到odoo...")
 
         try :
+            # 商品供应商信息
+            result = dipi.init_partner_info()
+            InfoLogger.info(result)
             # 商品基本信息
             result = dpt.import_product_template_data(*args, **options)
             InfoLogger.info(result)
