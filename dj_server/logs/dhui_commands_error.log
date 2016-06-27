@@ -140,3 +140,7 @@ Object dhui.user doesn't exist: ''>.
 2016-06-22 09:01:04,042 [dhui_init_product_data_command:handle:43] [ERROR]  - 错误信息：localhost:27017: [Errno 111] Connection refused.
 2016-06-22 10:32:59,842 [dhui_init_product_data_command:handle:43] [ERROR]  - 错误信息：[Errno 111] Connection refused.
 >>>>>>> 250857e24e680470f57345a212f446ca31f930cf
+2016-06-23 15:42:05,367 [dhui_task_user_command:handle:32] [ERROR]  - 错误信息：[Errno 111] Connection refused.
+2016-06-23 16:34:43,042 [dhui_init_product_data_command:handle:43] [ERROR]  - 错误信息：[Errno 111] Connection refused.
+2016-06-23 16:34:43,194 [dhui_task_user_command:handle:32] [ERROR]  - 错误信息：[Errno 111] Connection refused.
+2016-06-23 22:03:34,589 [dhui_init_product_data_command:handle:43] [ERROR]  - 错误信息：[Errno 111] Connection refused.
