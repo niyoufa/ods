@@ -637,3 +637,17 @@ WARNING:tornado.access:404 GET /odoo/api/.git/config (121.42.0.16) 0.59ms
 WARNING:tornado.access:404 GET /odoo/api/.htaccess (121.42.0.16) 0.51ms
 INFO:tornado.access:200 GET /odoo/api/partner_deliver_order_list?partner_id=5720201c006f873b606394fb&start_time&end_time (218.2.208.50) 2.44ms
 INFO:tornado.general:/opt/odoo/develop/ods/dhui/dhui_product_template.py modified; restarting server
+INFO:tornado.general:tnd_server/main.py modified; restarting server
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=571c8f7b006f877e14932708 (::1) 356.28ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=573c3fc5006f872880a4f80d (::1) 34.32ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=571e98dd006f87607b83418b (192.168.151.120) 38.21ms
+WARNING:tornado.access:404 GET /favicon.ico (192.168.151.120) 1.63ms
+WARNING:tornado.access:404 GET /favicon.ico (192.168.151.120) 0.68ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=573c3fc5006f872880a4f80d (192.168.151.120) 27.52ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=573c3fc5006f872880a4f80d (192.168.151.120) 21.01ms
+INFO:tornado.access:304 GET /odoo/api/task/list?user_id=571c8f7b006f877e14932708 (::1) 16.94ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=user_id%20573c3fc5006f872880a4f80d (::1) 5.18ms
+INFO:tornado.access:304 GET /odoo/api/task/list?user_id=user_id%20573c3fc5006f872880a4f80d (::1) 5.24ms
+INFO:tornado.access:304 GET /odoo/api/task/list?user_id=573c3fc5006f872880a4f80d (::1) 42.99ms
+INFO:tornado.access:200 GET /odoo/api/task/list?user_id=573c3fc5006f872880a4f80d (192.168.151.120) 22.24ms
+INFO:tornado.general:/home/dhui100/develop/ods/tnd_server/handlers/task_handlers.py modified; restarting server
