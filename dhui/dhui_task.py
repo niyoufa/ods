@@ -7,7 +7,7 @@ import ods.utils as utils
 import ods.settings as settings
 
 def get_task_list(*args,**options):
-    user_id = options.get("user_id","571e98dd006f87607b83418b")
+    user_id = options.get("user_id",None)
     if user_id == None :
         return []
     xmlrpcclient = xmlrpc_client.get_xmlrpcclient("ResUsers")
@@ -52,5 +52,18 @@ def get_task_list(*args,**options):
     task_list = utils.read_obj(xmlrpcclient,query_params)
     return task_list
 
+def get_task_type_list(*args,**options):
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiTaskType")
+    query_params = dict(
+        type = "task",
+    )
+    task_type_list = xmlrpcclient.search(query_params)
+    return task_type_list
+
+def read_task(*args,**options):
+    xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiTask")
+    query_params = {}
+    result = xmlrpcclient.read(query_params)
+
 if __name__ == "__main__":
-    get_task_list()
+    get_task_type_list()

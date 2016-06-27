@@ -113,6 +113,22 @@ class Collections :
             username="",
             password="",
             coll_type=None),
+        links = dict(
+            coll_name = "links",
+            db_name = "niyoufa",
+            username="",
+            password="",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+        ),
+        repository = dict(
+            coll_name = "repository",
+            db_name = "niyoufa",
+            username="",
+            password="",
+            host=settings.LOCAL_MONGODB_HOST,
+            port=settings.LOCAL_MONGODB_PORT,
+        ),
 
     )
 
