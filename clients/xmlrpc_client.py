@@ -49,6 +49,8 @@ class TABLES :
         DhuiUser = dict(table_name="dhui.user",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 
         DhuiTask = dict(table_name="project.task", db_name=settings.DHUI_ODOO_DATABASE, table_type=None),
+        
+        DhuiTaskType = dict(table_name="dhuitask.type", db_name=settings.DHUI_ODOO_DATABASE, table_type=None),
 
         DhuiPurchaseUserLine = dict(table_name="dhui.purchase.user.line",db_name=settings.DHUI_ODOO_DATABASE,table_type=None),
 

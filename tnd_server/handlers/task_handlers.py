@@ -23,9 +23,13 @@ class DhuiTaskList(handler.APIHandler):
             self.finish(result)
             return
         task_list = dt.get_task_list(user_id=user_id)
-        result["data"] = []
+        result["data"] = {}
+        data = []
         for task in task_list :
-            result["data"].append(task)
+            data.append(task)
+        result["data"]["data"] = data
+        result["data"]["type_list"] = dt.get_task_type_list()
+
         self.finish(result)
 
 
