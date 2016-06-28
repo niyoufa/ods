@@ -57,8 +57,9 @@ def get_task_type_list(*args,**options):
     query_params = dict(
         type = "task",
     )
-    task_type_list = xmlrpcclient.search(query_params)
-    return task_type_list
+    task_type_list = xmlrpcclient.read(query_params)
+    result = [task_type["name"] for task_type in task_type_list]
+    return result
 
 def read_task(*args,**options):
     xmlrpcclient = xmlrpc_client.get_xmlrpcclient("DhuiTask")
