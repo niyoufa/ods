@@ -1,5 +1,11 @@
 #coding=utf-8
 
+"""
+    author : niyoufa
+    date : 2016-05-11
+
+"""
+
 import time
 import datetime, logging
 import json, pdb, sys, traceback
