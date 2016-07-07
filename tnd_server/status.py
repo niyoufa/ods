@@ -1,4 +1,10 @@
 #coding=utf-8
+
+"""
+    author : niyoufa
+    date : 2016-05-11
+"""
+
 import pdb
 status_collection = {
     0 : "error" ,

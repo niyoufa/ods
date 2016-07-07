@@ -32,6 +32,8 @@ class DhuiGroupJoinHandler(handler.APIHandler):
             result = utils.reset_response_data(status.Status.PARMAS_ERROR,str(e))
             self.finish(result)
             return
+
+        #
       
         self.finish(result)
 

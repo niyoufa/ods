@@ -23,5 +23,6 @@ define("port" , default=9092, help="tornado server service port setting" , type=
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(app.Application())
     http_server.listen(options.port)
-    print "\nserver start ! \n"
+    print "\nserver start !"
+    print "port:%s"%options.port
     tornado.ioloop.IOLoop.instance().start()
