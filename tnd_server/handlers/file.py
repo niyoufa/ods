@@ -46,9 +46,20 @@ class FileListHandler(handler.APIHandler):
                 categ = file["categ"],
                 create_time = file["create_time"],
             ))
-        result["data"] = [data,dir_list]
+        result["data"] = data
+        self.finish(result)
+
+class CategList(handler.APIHandler):
+    def get(self):
+        result = utils.init_response_data()
+        result["data"] = []
+        files_coll = mongodb_client.get_coll("files")
+        categ_list = files_coll.find({},{"categ":1})
+        for categ_obj in categ_list:
+            result["data"].append(categ_obj["categ"])
         self.finish(result)
 
 handlers = [
+    (r"/newbie/api/categ/list",CategList),
     (r"/newbie/api/file/list",FileListHandler),
 ]

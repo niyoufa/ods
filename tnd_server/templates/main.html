@@ -1,5 +1,9 @@
+<!DOCTYPE HTML>
 <html>
 <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>{{ page_title }}</title>
 </head>
 <body>
@@ -9,7 +13,8 @@
         </header>
         <div id="main">
             <div id="content">
-                {% block body %}{% end %}
+                <p style="width:100px;height:500px;">{% block body %}
+                {% end %}</p>
             </div>
         </div>
         <footer>

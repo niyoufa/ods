@@ -1,21 +1,14 @@
 #coding=utf-8
 
-"""
-    author : niyoufa
-    date : 2016-06-30
-
-"""
-
 import urllib
 import urllib2
 import cookielib
-import json
+import json,pdb
 
 class CURL(object):
 
     @classmethod
-    def post(*args, **options):
-        result = {}
+    def post(cls,*args, **options):
         url = options.get('url', None)
         data = options.get('data', {})
         if not url:
@@ -30,19 +23,16 @@ class CURL(object):
             if response["meta"]["code"] != 200 :
                 return {"success": 0, "return_code": 'error', "error_msg": "error"}
             else :
-                response.update({"success":1,"return_code":"success"})
-                return response
+                return {"success": 1, "return_code": 'success', "data": response["response"]["data"]}
         except Exception ,e :
             return {"success":0,"return_code":str(e),"error_msg":"error"}
 
     @classmethod
-    def get(*args, **options):
+    def get(cls,*args, **options):
         url = options.get('url', None)
-        data = options.get('data', {})
+        url = url.encode("utf-8")
         if not url:
             raise "url error"
-        if type(data) != type({}):
-            raise "request data error"
         f = urllib.urlopen(url)
-        result = json.loads(f.read())
-        return result
+        response = f.read()
+        return response
