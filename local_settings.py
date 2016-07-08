@@ -1,17 +1,18 @@
 #coding=utf-8
 
-ODS_PARENT_PATH = '/opt/odoo/develop/'
+ODS_PARENT_PATH = '/home/dhui100/develop/'
 
-ODOO_HOST = "120.26.226.63"
+ODOO_HOST = "192.168.151.54"
 ODOO_PORT = 8889
+ODOO_DB = "dhui"
 ODOO_USER = "admin"
 ODOO_PASS = "dhui123"
 
-SERVER_MONGODB_HOST = "120.26.226.63"
+SERVER_MONGODB_HOST = "localhost"
 SERVER_MONGODB_PORT = 27017
 SERVER_MONGO_DB = "dhui100"
-SERVER_MONGODB_USER = "viewer"
-SERVER_MONGODB_PASS = "DhuiViewer2016"
+SERVER_MONGODB_USER = ""
+SERVER_MONGODB_PASS = ""
 
 LOCAL_MONGODB_HOST = "localhost"
 LOCAL_MONGODB_PORT = 27017
@@ -21,4 +22,4 @@ NEWBIE_MONGODB_HOST = "localhost"
 NEWBIE_MONGODB_PORT = 27017
 NEWBIE_MONGODB_DB = "niyoufa"
 
-REPORT_PATH = "/opt/odoo/develop/ods/reports/"
+REPORT_PATH = "/home/dhui100/develop/ods/reports/"

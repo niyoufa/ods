@@ -140,7 +140,7 @@ class Collections :
             db_name = "niyoufa",
             username="",
             password="",
-            host=settings.NEWBIE_MONGODB_PORT,
+            host=settings.NEWBIE_MONGODB_HOST,
             port=settings.NEWBIE_MONGODB_PORT,
         ),
 
