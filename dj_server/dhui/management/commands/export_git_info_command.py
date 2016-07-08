@@ -37,7 +37,7 @@ class Command(BaseCommand):
         coll.save(repository)
 
         repo_files = niyoufa.get_repo_files(repo_name)
-        coll = mongodb_client.get_coll("links")
+        coll = mongodb_client.get_coll("files")
         file_categs = repo_files.keys()
         for file_categ in file_categs:
             link = coll.find_one({"categ":file_categ})
