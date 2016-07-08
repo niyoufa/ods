@@ -6,7 +6,7 @@
 # date : 2016-06-23
 
 import pdb
-import ods.libs.github3.github3 as github3
+import ods.libs.github3 as github3
 from github3 import login
 
 class Github3Client(object):
