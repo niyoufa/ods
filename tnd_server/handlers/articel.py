@@ -20,15 +20,15 @@ articel_cache = {}
 class ArticelHandler(tornado.web.RequestHandler):
     def get(self, *args):
         url = self.get_argument("url","")
-        if articel_cache.has_key(url):
-            response = articel_cache[url]
-        else:
-            response = curl.CURL.get(url=url)
-            articel_cache[url] = response
+        # if articel_cache.has_key(url):
+        #     response = articel_cache[url]
+        # else:
+        #     response = curl.CURL.get(url=url)
+        #     articel_cache[url] = response
         params = {
             "page_title":"page_title",
             "header_text":"",
-            "content_text":response,
+            "content_text":u"系统维护中。。。",
         }
         self.render('newbie/articel.html',**params)
 
