@@ -35,16 +35,18 @@ class FileListHandler(handler.APIHandler):
             query_params = {
                 "categ" : categ,
             }
-        files = files_coll.find(query_params)[0:10]
+        files = files_coll.find(query_params)
         data = []
+        dir_list = []
         for file in files:
             del file["_id"]
+            dir_list.append(file["categ"])
             data.append(dict(
                 files = file["files"],
                 categ = file["categ"],
                 create_time = file["create_time"],
             ))
-        result["data"] = data
+        result["data"] = [data,dir_list]
         self.finish(result)
 
 handlers = [

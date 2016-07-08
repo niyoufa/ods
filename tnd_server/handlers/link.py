@@ -63,9 +63,6 @@ class LinkListHandler(handler.APIHandler):
             ))
         self.finish(result)
 
-
-
-
 handlers = [
     (r"/newbie/api/link/post",LinkHandler),
     (r"/newbie/api/link/list",LinkListHandler),
